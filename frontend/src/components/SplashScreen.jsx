@@ -110,12 +110,6 @@ export default function SplashScreen({ onComplete }) {
           </div>
           <div className="flex-1 h-[1px] bg-gradient-to-l from-[#c6a076]/5 to-[#c6a076]/85"></div>
         </div>
-
-        {/* Animated tagline phrase */}
-        <p className="font-script text-[clamp(2.4rem,4.2vw,3.8rem)] text-[#d9bd93] mt-2.5 opacity-0 animate-ocean-reveal drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
-          The Ocean of Art
-        </p>
-
       </div>
     </div>
   );
