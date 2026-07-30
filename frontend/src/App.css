@@ -1,0 +1,252 @@
+/* Luxury Splash and Landing Page Styles */
+
+:root {
+  --color-burgundy-base: #2b100d;
+  --color-burgundy-glow: #4a1f19;
+  --color-burgundy-dark: #2c110c;
+  --gold-primary: #d4af37;
+  --gold-light: #f4e3a1;
+  --gold-dark: #a67c1e;
+  --font-cinzel: "Cinzel", serif;
+  --font-outfit: "Outfit", sans-serif;
+}
+
+/* Reset and Container */
+.splash-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Deep warm burgundy-brown gradient background, lit from top-left like the reference */
+  background: radial-gradient(
+    ellipse at 32% 20%,
+    var(--color-burgundy-glow) 0%,
+    var(--color-burgundy-base) 62%,
+    var(--color-burgundy-dark) 100%
+  );
+  font-family: var(--font-cinzel);
+  color: var(--gold-light);
+  user-select: none;
+}
+
+/* Base leather texture layer using SVG noise filter */
+.splash-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ornate shadow cast overlay (leaves/shutters diagonal shadow) */
+.shadow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 2, 1, 0.35) 0%,
+    rgba(8, 2, 1, 0.08) 30%,
+    rgba(8, 2, 1, 0.05) 45%,
+    rgba(10, 3, 2, 0.28) 75%,
+    rgba(15, 5, 3, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Subtle organic/leaf soft shadow silhouette */
+.organic-shadow-svg {
+  position: absolute;
+  top: -12%;
+  left: -12%;
+  width: 85vw;
+  height: 85vw;
+  max-width: 760px;
+  max-height: 760px;
+  opacity: 0.42; /* Softer, more diffuse cast shadow, blending into background */
+  filter: blur(22px); /* Extra soft edges so it reads as ambient shadow, not a solid blob */
+  pointer-events: none;
+  z-index: 2;
+  transform: rotate(-15deg);
+}
+
+/* Ornate Corner Elements */
+.corner-ornament {
+  position: absolute;
+  width: clamp(220px, 28vw, 440px);
+  height: clamp(220px, 28vw, 440px);
+  color: var(--gold-primary); /* Gold tone for premium watermark look */
+  opacity: 0.34; /* Boosted for clear, even gold visibility on both corners */
+  pointer-events: none;
+  z-index: 3;
+  transition: opacity 1.5s ease;
+}
+
+.corner-tr {
+  top: 0;
+  right: 0;
+}
+
+.corner-bl {
+  bottom: 0;
+  left: 0;
+}
+
+/* Logo and Branding Container */
+.branding-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 90%;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.6));
+  animation: fade-in-up 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Metallic Gold Gradient Class - matched to reference (soft champagne to bronze) */
+.gold-gradient-text {
+  background: linear-gradient(
+    to bottom,
+    #fff6ea 0%,
+    #fbe8d0 12%,
+    #e0bf93 35%,
+    #c6a076 55%,
+    #9a7550 75%,
+    #4a301d 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Dandelion Logo styling */
+.dandelion-logo-svg {
+  width: clamp(115px, 15vw, 190px);
+  height: clamp(115px, 15vw, 190px);
+  margin-bottom: 1rem;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.55));
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.branding-wrap:hover .dandelion-logo-svg {
+  transform: scale(1.03) translateY(-2px);
+}
+
+/* Brand Name GHADSIRAM */
+.brand-name {
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  margin: 0;
+  padding-left: 0.32em; /* To offset letter spacing and keep centered */
+  text-transform: uppercase;
+  font-family: "Cormorant Garamond", serif; /* Elegant serif with curved-leg R */
+}
+
+/* Tagline Container: BANWARILAL & SONS */
+.tagline-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 650px;
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tagline-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(
+    to var(--direction, right),
+    rgba(198, 160, 118, 1) 0%,
+    rgba(198, 160, 118, 0.8) 70%,
+    rgba(198, 160, 118, 0.35) 100%
+  );
+}
+
+.tagline-line.left {
+  --direction: right;
+  margin-left: 8px;
+}
+
+.tagline-line.right {
+  --direction: left;
+  margin-right: 8px;
+}
+
+.tagline-diamond {
+  display: inline-flex;
+  align-items: center;
+  color: #c6a076;
+  font-size: 6px;
+  opacity: 0.95;
+}
+
+.tagline-text {
+  font-family: var(--font-cinzel); /* Cinzel serif font matches image */
+  font-size: clamp(0.6rem, 1.05vw, 0.8rem);
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: #d9bd93; /* Muted champagne-gold, matched to reference tagline color */
+  padding: 0 1.2rem;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Bottom separator styling */
+.bottom-separator-svg {
+  width: clamp(100px, 12vw, 190px);
+  height: 20px;
+  margin-top: 0.5rem;
+  opacity: 0.85;
+}
+
+/* Subtle animations */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Make it fully responsive and visually stunning */
+@media (max-width: 480px) {
+  .tagline-text {
+    letter-spacing: 0.25em;
+    padding: 0 0.6rem;
+  }
+  .tagline-diamond {
+    font-size: 6px;
+  }
+  .branding-wrap {
+    padding: 1rem;
+  }
+  .dandelion-logo-svg {
+    margin-bottom: 1.5rem;
+  }
+}

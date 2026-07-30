@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-mahogany-dark: #150305;
+  --color-mahogany-light: #3D0C11;
+  --color-gold-dark: #A67C1E;
+  --color-gold-primary: #D4AF37;
+  --color-gold-light: #F4E3A1;
+  --color-cream-dark: #D9C8B4;
+  --color-cream-light: #FAF4EE;
+  
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Outfit", sans-serif;
+}
+
+/* Custom CSS utilities and animations */
+.bg-mahogany-gradient {
+  background-image:
+    radial-gradient(ellipse at center, rgba(61, 12, 17, 0.55) 0%, rgba(0, 0, 0, 0) 55%),
+    radial-gradient(ellipse at center, var(--color-mahogany-light) 0%, var(--color-mahogany-dark) 65%, #060001 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes logo-entrance {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-logo-entrance {
+  animation: logo-entrance 1s ease-out forwards;
+}
+
+/* Custom Scrollbar for premium look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #150305;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A67C1E;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background-image: url('/background.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #FAF4EE;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
