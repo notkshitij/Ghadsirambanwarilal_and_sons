@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -12,29 +12,152 @@
   
   --font-display: "Playfair Display", serif;
   --font-sans: "Outfit", sans-serif;
-}
+  --font-script: "Great Vibes", cursive;
 
-/* Custom CSS utilities and animations */
-.bg-mahogany-gradient {
-  background-image:
-    radial-gradient(ellipse at center, rgba(61, 12, 17, 0.55) 0%, rgba(0, 0, 0, 0) 55%),
-    radial-gradient(ellipse at center, var(--color-mahogany-light) 0%, var(--color-mahogany-dark) 65%, #060001 100%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+  /* Custom staggered animations */
+  --animate-logo-fade-in: logo-fade-in 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-brand-reveal: brand-reveal 2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  --animate-tagline-reveal: tagline-reveal 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
+  --animate-separator-reveal: separator-reveal 2.4s cubic-bezier(0.16, 1, 0.3, 1) 2.0s forwards;
+  --animate-ocean-reveal: ocean-reveal 3s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
+  --animate-draw-circle-mask: draw-circle-mask 3.2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+  --animate-circle-glow: circle-glow 3s ease-in-out 4.4s infinite;
+  --animate-star-reveal: star-reveal 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+  
+  --animate-navbar-entrance: navbar-entrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-hero-fade-in-up-1: hero-fade-in-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  --animate-hero-title-expand: hero-title-expand 2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  --animate-hero-fade-in-up-2: hero-fade-in-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  --animate-hero-fade-in-up-3: hero-fade-in-up 1.8s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+  --animate-hero-fade-in-up-4: hero-fade-in-up 1.8s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
+  --animate-hero-fade-in-up-5: hero-fade-in-up 1.8s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
 
-@keyframes logo-entrance {
-  0% {
-    opacity: 0;
+  @keyframes logo-fade-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.92) translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
   }
-  100% {
-    opacity: 1;
-  }
-}
 
-.animate-logo-entrance {
-  animation: logo-entrance 1s ease-out forwards;
+  @keyframes brand-reveal {
+    0% {
+      opacity: 0;
+      letter-spacing: 0.12em;
+      filter: blur(12px);
+      transform: translateY(8px);
+    }
+    100% {
+      opacity: 1;
+      letter-spacing: 0.32em;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes tagline-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes separator-reveal {
+    0% {
+      opacity: 0;
+      transform: scaleX(0.2);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes draw-circle-mask {
+    0% {
+      stroke-dashoffset: 600;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes circle-glow {
+    0%, 100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 0.95;
+    }
+  }
+
+  @keyframes star-reveal {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1) rotate(180deg);
+      opacity: 1;
+    }
+  }
+
+  @keyframes ocean-reveal {
+    0% {
+      opacity: 0;
+      letter-spacing: 0.1em;
+      filter: blur(8px);
+      transform: translateY(12px);
+    }
+    100% {
+      opacity: 0.75;
+      letter-spacing: 0.28em;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes navbar-entrance {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-title-expand {
+    0% {
+      opacity: 0;
+      letter-spacing: 0.1em;
+      filter: blur(8px);
+    }
+    100% {
+      opacity: 1;
+      letter-spacing: 0.26em;
+      filter: blur(0);
+    }
+  }
 }
 
 /* Custom Scrollbar for premium look */
@@ -57,7 +180,6 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 body {
