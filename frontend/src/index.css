@@ -15,14 +15,14 @@
   --font-script: "Great Vibes", cursive;
 
   /* Custom staggered animations */
-  --animate-logo-fade-in: logo-fade-in 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-brand-reveal: brand-reveal 2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
-  --animate-tagline-reveal: tagline-reveal 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
-  --animate-separator-reveal: separator-reveal 2.4s cubic-bezier(0.16, 1, 0.3, 1) 2.0s forwards;
-  --animate-ocean-reveal: ocean-reveal 3s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
-  --animate-draw-circle-mask: draw-circle-mask 3.2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
-  --animate-circle-glow: circle-glow 3s ease-in-out 4.4s infinite;
-  --animate-star-reveal: star-reveal 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+  --animate-logo-fade-in: logo-fade-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-brand-reveal: brand-reveal 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  --animate-tagline-reveal: tagline-reveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
+  --animate-separator-reveal: separator-reveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
+  --animate-ocean-reveal: ocean-reveal 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+  --animate-draw-circle-mask: draw-circle-mask 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  --animate-circle-glow: circle-glow 3s ease-in-out 3.2s infinite;
+  --animate-star-reveal: star-reveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
   
   --animate-navbar-entrance: navbar-entrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-hero-fade-in-up-1: hero-fade-in-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 
-export default function SplashScreen({ onComplete }) {
+export default function SplashScreen({ onComplete, isFadingOut }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (onComplete) onComplete();
-    }, 5200); // Trigger transition after animations finish
+    }, 2400); // Trigger transition immediately after keyframe animations finish
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -17,7 +17,7 @@ export default function SplashScreen({ onComplete }) {
       <div className="absolute inset-0 bg-gradient-to-br from-[rgba(8,2,1,0.35)] via-[rgba(8,2,1,0.05)] to-[rgba(15,5,3,0.4)] pointer-events-none z-[2]" />
 
       {/* Realistic blurred leaf branch shadow overlay */}
-      <svg className="absolute top-[-12%] left-[-12%] w-[85vw] h-[85vw] max-w-[760px] max-h-[760px] opacity-42 blur-[22px] pointer-events-none z-[2] rotate-[-15deg]" viewBox="0 0 500 500" fill="black">
+      <svg className={`absolute top-[-12%] left-[-12%] w-[85vw] h-[85vw] max-w-[760px] max-h-[760px] opacity-42 blur-[22px] pointer-events-none z-[2] rotate-[-15deg] transition-all duration-[1500ms] ${isFadingOut ? 'opacity-0 scale-[1.1] rotate-[-20deg]' : ''}`} viewBox="0 0 500 500" fill="black">
         <path d="M -50,-50 C 50,50 150,120 220,180 C 250,210 290,260 320,310" stroke="black" strokeWidth="12" fill="none" strokeLinecap="round" />
         <path d="M 60,60 C 20,70 -10,95 -20,120 C -25,145 0,165 30,150 C 60,135 75,100 80,75 Z" />
         <path d="M 60,60 C 80,30 110,10 135,15 C 160,20 165,50 145,75 C 125,100 90,105 75,90 Z" />
@@ -37,10 +37,10 @@ export default function SplashScreen({ onComplete }) {
           <img
             src="/flowers.png"
             alt="Ghadsiram flowers mark"
-            className="w-[clamp(115px,15vw,190px)] h-auto object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.55)] transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] opacity-0 animate-logo-fade-in z-2 group-hover:scale-[1.03] group-hover:-translate-y-0.5"
+            className={`w-[clamp(115px,15vw,190px)] h-auto object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.55)] transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.3,1)] opacity-0 animate-logo-fade-in z-2 group-hover:scale-[1.03] group-hover:-translate-y-0.5 ${isFadingOut ? 'scale-[22] opacity-0' : ''}`}
             draggable="false"
           />
-          <svg className="absolute w-[145%] h-[145%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 pointer-events-none z-1" viewBox="0 0 200 200">
+          <svg className={`absolute w-[145%] h-[145%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 pointer-events-none z-1 transition-all duration-[1500ms] ease-in-out ${isFadingOut ? 'scale-[3.5] opacity-0' : ''}`} viewBox="0 0 200 200">
             <defs>
               <linearGradient id="goldCircleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#fff6ea" />
@@ -81,12 +81,12 @@ export default function SplashScreen({ onComplete }) {
         </div>
 
         {/* Brand Name */}
-        <h1 className="text-[clamp(2rem,3.6vw,3.4rem)] font-medium tracking-[0.32em] m-0 pl-[0.32em] uppercase font-display opacity-0 animate-brand-reveal bg-gradient-to-b from-[#fff6ea] via-[#c6a076] to-[#4a301d] bg-clip-text text-transparent">
+        <h1 className={`text-[clamp(2rem,3.6vw,3.4rem)] font-medium tracking-[0.32em] m-0 pl-[0.32em] uppercase font-display opacity-0 animate-brand-reveal bg-gradient-to-b from-[#fff6ea] via-[#c6a076] to-[#4a301d] bg-clip-text text-transparent transition-all duration-[550ms] ease-in ${isFadingOut ? 'opacity-0 translate-y-6 blur-sm' : ''}`}>
           GHADSIRAM
         </h1>
 
         {/* Tagline Separator & Text */}
-        <div className="flex items-center justify-center w-full max-w-[650px] mt-1.5 mb-4 opacity-0 animate-tagline-reveal">
+        <div className={`flex items-center justify-center w-full max-w-[650px] mt-1.5 mb-4 opacity-0 animate-tagline-reveal transition-all duration-[550ms] ease-in ${isFadingOut ? 'opacity-0 translate-y-6 blur-sm' : ''}`}>
           <div className="flex items-center flex-1 gap-1.5">
             <span className="text-[#c6a076] text-[0.45rem] opacity-85 leading-none">◄</span>
             <div className="flex-1 h-[1px] bg-gradient-to-r from-[#c6a076]/15 to-[#c6a076]/85"></div>
@@ -101,7 +101,7 @@ export default function SplashScreen({ onComplete }) {
         </div>
 
         {/* Bottom Decorative Separator */}
-        <div className="flex items-center w-[clamp(160px,22vw,320px)] mt-2.5 opacity-0 animate-separator-reveal">
+        <div className={`flex items-center w-[clamp(160px,22vw,320px)] mt-2.5 opacity-0 animate-separator-reveal transition-all duration-[550ms] ease-in ${isFadingOut ? 'opacity-0 translate-y-6 blur-sm' : ''}`}>
           <div className="flex-1 h-[1px] bg-gradient-to-r from-[#c6a076]/5 to-[#c6a076]/85"></div>
           <div className="flex items-center gap-1 px-1 flex-shrink-0">
             <div className="w-1 h-1 rounded-full bg-[#c6a076] opacity-75"></div>

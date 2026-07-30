@@ -28,16 +28,24 @@ export default function App() {
 
   const handleSplashComplete = () => {
     setIsFadingOut(true);
-    // Unmount splash screen after the blur fade-out animation completes (800ms)
+    // Unmount splash screen after the slow zoom-in transition completes (1500ms)
     setTimeout(() => {
       setShowSplash(false);
       localStorage.setItem('visited_ghadsiram', 'true');
-    }, 800);
+    }, 1500);
   };
 
   return (
-    <div className="w-full h-full min-h-screen">
-      <SplashScreen />
+    <div className="w-full h-full min-h-screen relative">
+      {/* Base Landing Page is always loaded underneath */}
+      <LandingPage />
+
+      {/* Overlay Splash Screen */}
+      {showSplash && (
+        <div className={`fixed inset-0 w-full h-screen z-[9999] transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+          <SplashScreen isFadingOut={isFadingOut} onComplete={handleSplashComplete} />
+        </div>
+      )}
     </div>
   );
 }
