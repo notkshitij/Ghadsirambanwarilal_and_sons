@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ReactLenis } from 'lenis/react';
+import 'lenis/dist/lenis.css';
 import SplashScreen from './components/SplashScreen';
 import LandingPage from './components/LandingPage';
 import CartPage from './components/CartPage';
 import CartToast from './components/CartToast';
 import CartDrawer from './components/CartDrawer';
+import AppointmentPage from './components/AppointmentPage';
+import PrivacyPolicyPage from './components/PrivacyPolicyPage';
+import NotFoundPage from './components/NotFoundPage';
+import TermsOfServicePage from './components/TermsOfServicePage';
 
 function useDesktopCart() {
   const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 768);
@@ -21,29 +27,58 @@ function useDesktopCart() {
 }
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const getPageFromPath = () => {
+    const path = window.location.pathname;
+    if (path === '/' || path === '') return 'shop';
+    if (path === '/cart') return 'cart';
+    if (path === '/appointment') return 'appointment';
+    if (path === '/privacy') return 'privacy';
+    if (path === '/terms') return 'terms';
+    return 'notFound';
+  };
+
+  const [showSplash, setShowSplash] = useState(() => {
+    return getPageFromPath() === 'shop';
+  });
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [currentPage, setCurrentPage] = useState('shop');
+  const [currentPage, setCurrentPage] = useState(getPageFromPath);
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   const isDesktop = useDesktopCart();
+  const lenisRef = useRef(null);
+
+  // Synchronize state with history back/forward navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(getPageFromPath());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const handleNavigate = (page) => {
+    const path = page === 'shop' ? '/' : `/${page}`;
+    window.history.pushState(null, '', path);
+    setCurrentPage(page);
+  };
 
   useEffect(() => {
-    // Check if the user has visited the site in this session
-    const hasVisited = localStorage.getItem('visited_ghadsiram');
-    if (hasVisited === 'true') {
-      setShowSplash(false);
-    }
-  }, []);
+    // Scroll past header/hero smoothly when routing triggers on history pop state
+    window.scrollTo({ top: 0 });
+  }, [currentPage]);
 
   // Dynamically lock/unlock scrolling depending on splash screen visibility
   useEffect(() => {
+    const currentLenis = lenisRef.current;
     if (showSplash) {
       document.body.style.overflow = 'hidden';
+      currentLenis?.lenis?.stop();
     } else {
       document.body.style.overflow = 'unset';
+      currentLenis?.lenis?.start();
     }
     return () => {
       document.body.style.overflow = 'unset';
+      currentLenis?.lenis?.start();
     };
   }, [showSplash]);
 
@@ -58,10 +93,14 @@ export default function App() {
       return undefined;
     }
 
+    const currentLenis = lenisRef.current;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    currentLenis?.lenis?.stop();
+
     return () => {
       document.body.style.overflow = previousOverflow;
+      currentLenis?.lenis?.start();
     };
   }, [isCartDrawerOpen]);
 
@@ -70,7 +109,6 @@ export default function App() {
     // Unmount splash screen after the slow zoom-in transition completes (1500ms)
     setTimeout(() => {
       setShowSplash(false);
-      localStorage.setItem('visited_ghadsiram', 'true');
     }, 1500);
   };
 
@@ -80,27 +118,57 @@ export default function App() {
       return;
     }
 
-    setCurrentPage('cart');
+    handleNavigate('cart');
   };
 
   return (
-    <div className="w-full h-full min-h-screen relative">
-      {/* Base Landing Page is always loaded underneath */}
-      {currentPage === 'cart' ? (
-        <CartPage onContinueShopping={() => setCurrentPage('shop')} />
-      ) : (
-        <LandingPage onOpenCart={handleCartClick} />
-      )}
+    <ReactLenis root ref={lenisRef} options={{ lerp: 0.1, duration: 1.2, smoothWheel: true }}>
+      <div className="w-full h-full min-h-screen relative">
+        {/* Page Switcher */}
+        {currentPage === 'cart' ? (
+          <CartPage 
+            onContinueShopping={() => handleNavigate('shop')} 
+            onBookClick={() => handleNavigate('appointment')} 
+            onNavigate={handleNavigate}
+          />
+        ) : currentPage === 'appointment' ? (
+          <AppointmentPage 
+            onBackToShop={() => handleNavigate('shop')} 
+            onNavigate={handleNavigate}
+          />
+        ) : currentPage === 'privacy' ? (
+          <PrivacyPolicyPage 
+            onBackToShop={() => handleNavigate('shop')}
+            onNavigate={handleNavigate}
+          />
+        ) : currentPage === 'terms' ? (
+          <TermsOfServicePage 
+            onBackToShop={() => handleNavigate('shop')}
+            onNavigate={handleNavigate}
+          />
+        ) : currentPage === 'notFound' ? (
+          <NotFoundPage 
+            onBackToShop={() => handleNavigate('shop')}
+            onNavigate={handleNavigate}
+          />
+        ) : (
+          <LandingPage 
+            onOpenCart={handleCartClick} 
+            onBookClick={() => handleNavigate('appointment')} 
+            onNavigate={handleNavigate}
+          />
+        )}
 
-      {currentPage === 'shop' && <CartDrawer isOpen={isCartDrawerOpen} onClose={() => setIsCartDrawerOpen(false)} />}
+        {currentPage === 'shop' && <CartDrawer isOpen={isCartDrawerOpen} onClose={() => setIsCartDrawerOpen(false)} />}
 
-      {/* Overlay Splash Screen */}
-      {showSplash && currentPage === 'shop' && (
-        <div className={`fixed inset-0 w-full h-screen z-[9999] transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-          <SplashScreen isFadingOut={isFadingOut} onComplete={handleSplashComplete} />
-        </div>
-      )}
-      <CartToast />
-    </div>
+        {/* Overlay Splash Screen */}
+        {showSplash && currentPage === 'shop' && (
+          <div className={`fixed inset-0 w-full h-screen z-[9999] transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+            <SplashScreen isFadingOut={isFadingOut} onComplete={handleSplashComplete} />
+          </div>
+        )}
+        <CartToast />
+      </div>
+    </ReactLenis>
   );
 }
