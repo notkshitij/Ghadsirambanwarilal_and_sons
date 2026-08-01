@@ -25,6 +25,7 @@ export default function CartDrawer({ isOpen, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label="Your cart"
+        data-lenis-prevent
         className={`absolute right-0 top-0 h-full w-full max-w-[430px] bg-white text-black shadow-[-10px_0_30px_rgba(0,0,0,0.08)] flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         {/* Header */}
