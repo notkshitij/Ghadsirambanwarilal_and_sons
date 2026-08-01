@@ -9,13 +9,19 @@ const formatPrice = (price) => new Intl.NumberFormat('en-IN', {
   maximumFractionDigits: 0,
 }).format(price);
 
-export default function CartPage({ onContinueShopping }) {
+export default function CartPage({ onContinueShopping, onBookClick, onNavigate }) {
   const { cartItems, removeItem, updateQuantity, clearCart, totalPrice, itemCount } = useCart();
 
   return (
     <div className="min-h-screen bg-white text-black flex flex-col justify-between">
       <div className="w-full">
-        <Navbar onCartClick={() => {}} onBrandClick={onContinueShopping} alwaysShowBg={true} />
+        <Navbar 
+          onCartClick={() => {}} 
+          onBookClick={onBookClick} 
+          onShopClick={onContinueShopping} 
+          onBrandClick={onContinueShopping} 
+          alwaysShowBg={true} 
+        />
         <main className="max-w-[1100px] mx-auto px-4 md:px-8 pt-32 pb-16">
           {/* Cart Header */}
           <div className="flex items-center justify-between gap-5 mb-10">
@@ -129,7 +135,7 @@ export default function CartPage({ onContinueShopping }) {
           )}
         </main>
       </div>
-      <Footer onBrandClick={onContinueShopping} />
+      <Footer onBrandClick={onContinueShopping} onNavigate={onNavigate} />
     </div>
   );
 }
