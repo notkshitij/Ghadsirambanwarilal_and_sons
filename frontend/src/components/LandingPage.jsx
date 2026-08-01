@@ -16,8 +16,8 @@ function ScrollReveal({ children, className = "", id }) {
         setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.08,
-        rootMargin: "0px 0px -60px 0px"
+        threshold: 0.05,
+        rootMargin: "0px 0px -18% 0px"
       }
     );
 
@@ -36,10 +36,10 @@ function ScrollReveal({ children, className = "", id }) {
     <div
       ref={ref}
       id={id}
-      className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] transform ${
+      className={`transition-all duration-[900ms] ease-[cubic-bezier(0.25,1,0.5,1)] transform ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-12 pointer-events-none'
+          : 'opacity-0 translate-y-16 pointer-events-none'
       } ${className}`}
     >
       {children}
