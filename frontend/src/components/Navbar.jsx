@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 
-export default function Navbar({ onCartClick, onBrandClick, alwaysShowBg = false }) {
+export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopClick, alwaysShowBg = false }) {
   const { itemCount } = useCart();
   const [isSpinning, setIsSpinning] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,6 +29,15 @@ export default function Navbar({ onCartClick, onBrandClick, alwaysShowBg = false
     setIsSpinning(true);
     if (onBrandClick) {
       onBrandClick();
+    }
+  };
+
+  const handleShopClick = (e) => {
+    e.preventDefault();
+    if (onShopClick) {
+      onShopClick();
+    } else {
+      document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -63,6 +72,7 @@ export default function Navbar({ onCartClick, onBrandClick, alwaysShowBg = false
       <div className="flex items-center gap-[1.8rem]">
         <a
           href="#shop"
+          onClick={handleShopClick}
           className={`font-sans text-[0.75rem] font-light tracking-[0.08em] transition-colors duration-300 ${
             showBg ? 'text-mahogany-dark hover:text-gold-dark' : 'text-cream-light'
           }`}
@@ -71,6 +81,7 @@ export default function Navbar({ onCartClick, onBrandClick, alwaysShowBg = false
         </a>
 
         <button
+          onClick={onBookClick}
           className={`font-sans text-[0.75rem] font-light tracking-[0.08em] bg-transparent border-none cursor-pointer p-0 transition-colors duration-300 ${
             showBg ? 'text-mahogany-dark hover:text-gold-dark' : 'text-cream-light'
           }`}
