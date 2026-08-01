@@ -1,11 +1,23 @@
 import React from 'react';
 
-export default function Footer({ onBrandClick }) {
+export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
   const handleBrandClick = () => {
     if (onBrandClick) {
       onBrandClick();
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleLinkClick = (e, href) => {
+    if (href.startsWith('/')) {
+      e.preventDefault();
+      if (onNavigate) {
+        onNavigate(href.substring(1)); // e.g. '/privacy' -> 'privacy'
+      } else {
+        window.history.pushState(null, '', href);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }
     }
   };
 
@@ -17,14 +29,17 @@ export default function Footer({ onBrandClick }) {
   ];
 
   const usefulLinks = [
-    { label: 'Privacy Policy', href: '#privacy' },
-    { label: 'Cookie Policy', href: '#cookies' },
-    { label: 'Terms and Conditions', href: '#terms' },
+    { label: 'Contact', href: '/appointment' },
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms and Conditions', href: '/terms' },
     { label: 'Delivery and Return', href: '#shipping' },
   ];
 
   return (
-    <footer className="relative w-full min-h-screen bg-white text-neutral-800 px-4 md:px-8 pt-12 pb-4 box-border flex flex-col justify-between overflow-hidden border-t border-neutral-100">
+    <footer 
+      className={`relative w-full min-h-screen bg-white text-neutral-800 px-4 md:px-8 pt-12 pb-4 box-border flex flex-col justify-between overflow-hidden ${noBorder ? '' : 'border-t border-neutral-100'}`}
+      style={style}
+    >
       
       {/* Decorative Faded Damask Floral Graphics in Corners */}
       <div className="absolute left-0 bottom-0 w-52 md:w-80 h-auto opacity-[0.04] pointer-events-none select-none z-0">
@@ -102,7 +117,7 @@ export default function Footer({ onBrandClick }) {
         </div>
 
         {/* Four columns links section (Centered vertically in the remaining space) */}
-        <div className="max-w-[1200px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 my-6">
+        <div className="max-w-[1200px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-16 my-6">
           
           {/* CONTACT COLUMN */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
@@ -115,7 +130,7 @@ export default function Footer({ onBrandClick }) {
               </svg>
             </div>
             
-            <div className="flex flex-col gap-3.5 w-full">
+            <div className="flex flex-col gap-5 w-full">
               {/* Address */}
               <div className="flex items-start justify-center md:justify-start gap-3">
                 <div className="w-7.5 h-7.5 rounded-full border border-[#c89b3c]/35 flex items-center justify-center shrink-0 text-[#c89b3c]">
@@ -137,8 +152,12 @@ export default function Footer({ onBrandClick }) {
                     <path d="M22 6l-10 7L2 6" />
                   </svg>
                 </div>
-                <a href="mailto:Ghadsirambanwarilalandsons@gmail.com" className="font-sans text-[0.86rem] font-light text-neutral-600 hover:text-gold-dark transition-colors duration-200 no-underline">
-                  Ghadsirambanwarilalandsons@gmail.com
+                <a 
+                  href="mailto:ghadsirambanwarilalandsons@gmail.com" 
+                  className="font-sans text-[0.86rem] font-light text-neutral-600 hover:text-gold-dark transition-colors duration-200 no-underline break-all"
+                  style={{ wordBreak: 'break-all' }}
+                >
+                  ghadsirambanwarilalandsons@gmail.com
                 </a>
               </div>
               
@@ -190,10 +209,14 @@ export default function Footer({ onBrandClick }) {
               </svg>
             </div>
             
-            <ul className="list-none p-0 m-0 flex flex-col gap-3.5 w-full items-center md:items-start">
+             <ul className="list-none p-0 m-0 flex flex-col gap-3.5 w-full items-center md:items-start">
               {usefulLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="font-sans text-[0.86rem] font-light text-neutral-600 hover:text-gold-dark transition-colors duration-200 no-underline flex items-center gap-2 group">
+                  <a 
+                    href={link.href} 
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="font-sans text-[0.86rem] font-light text-neutral-600 hover:text-gold-dark transition-colors duration-200 no-underline flex items-center gap-2 group"
+                  >
                     <span className="text-[#c89b3c] font-medium text-[0.68rem] transition-transform duration-200 group-hover:translate-x-1">&gt;</span>
                     {link.label}
                   </a>
