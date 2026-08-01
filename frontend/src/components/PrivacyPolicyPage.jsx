@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-export default function PrivacyPolicyPage({ onBackToShop, onNavigate }) {
+export default function PrivacyPolicyPage({ onBackToShop, onNavigate, onCartClick }) {
   const handleBrandClick = () => {
     if (onNavigate) {
       onNavigate('shop');
@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage({ onBackToShop, onNavigate }) {
   return (
     <div className="min-h-screen bg-white text-black flex flex-col justify-between font-sans">
       <Navbar 
-        onCartClick={() => {}} 
+        onCartClick={onCartClick} 
         onBookClick={() => {
           if (onNavigate) onNavigate('appointment');
         }} 

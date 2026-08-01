@@ -10,6 +10,7 @@ import AppointmentPage from './components/AppointmentPage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import NotFoundPage from './components/NotFoundPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
+import ContactPage from './components/ContactPage';
 
 function useDesktopCart() {
   const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 768);
@@ -34,6 +35,7 @@ export default function App() {
     if (path === '/appointment') return 'appointment';
     if (path === '/privacy') return 'privacy';
     if (path === '/terms') return 'terms';
+    if (path === '/contact') return 'contact';
     return 'notFound';
   };
 
@@ -66,18 +68,15 @@ export default function App() {
     window.scrollTo({ top: 0 });
   }, [currentPage]);
 
-  // Dynamically lock/unlock scrolling depending on splash screen visibility
+  // Dynamically lock/unlock scrolling depending on splash screen visibility (Lenis-only scroll-lock to prevent layout shifting)
   useEffect(() => {
     const currentLenis = lenisRef.current;
     if (showSplash) {
-      document.body.style.overflow = 'hidden';
       currentLenis?.lenis?.stop();
     } else {
-      document.body.style.overflow = 'unset';
       currentLenis?.lenis?.start();
     }
     return () => {
-      document.body.style.overflow = 'unset';
       currentLenis?.lenis?.start();
     };
   }, [showSplash]);
@@ -88,18 +87,16 @@ export default function App() {
     }
   }, [isDesktop]);
 
+  // Dynamically lock/unlock scrolling depending on cart drawer visibility (Lenis-only scroll-lock to prevent layout shifting)
   useEffect(() => {
     if (!isCartDrawerOpen) {
       return undefined;
     }
 
     const currentLenis = lenisRef.current;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
     currentLenis?.lenis?.stop();
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       currentLenis?.lenis?.start();
     };
   }, [isCartDrawerOpen]);
@@ -130,26 +127,37 @@ export default function App() {
             onContinueShopping={() => handleNavigate('shop')} 
             onBookClick={() => handleNavigate('appointment')} 
             onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
           />
         ) : currentPage === 'appointment' ? (
           <AppointmentPage 
             onBackToShop={() => handleNavigate('shop')} 
             onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
           />
         ) : currentPage === 'privacy' ? (
           <PrivacyPolicyPage 
             onBackToShop={() => handleNavigate('shop')}
             onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
           />
         ) : currentPage === 'terms' ? (
           <TermsOfServicePage 
             onBackToShop={() => handleNavigate('shop')}
             onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
+          />
+        ) : currentPage === 'contact' ? (
+          <ContactPage 
+            onBackToShop={() => handleNavigate('shop')}
+            onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
           />
         ) : currentPage === 'notFound' ? (
           <NotFoundPage 
             onBackToShop={() => handleNavigate('shop')}
             onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
           />
         ) : (
           <LandingPage 
@@ -159,7 +167,8 @@ export default function App() {
           />
         )}
 
-        {currentPage === 'shop' && <CartDrawer isOpen={isCartDrawerOpen} onClose={() => setIsCartDrawerOpen(false)} />}
+        {/* Render CartDrawer globally so it can slide open smoothly from any page layout */}
+        <CartDrawer isOpen={isCartDrawerOpen} onClose={() => setIsCartDrawerOpen(false)} />
 
         {/* Overlay Splash Screen */}
         {showSplash && currentPage === 'shop' && (

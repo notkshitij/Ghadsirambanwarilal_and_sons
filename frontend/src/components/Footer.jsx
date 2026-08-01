@@ -29,7 +29,7 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
   ];
 
   const usefulLinks = [
-    { label: 'Contact', href: '/appointment' },
+    { label: 'Contact', href: '/contact' },
     { label: 'Privacy Policy', href: '/privacy' },
     { label: 'Terms and Conditions', href: '/terms' },
     { label: 'Delivery and Return', href: '#shipping' },

@@ -17,7 +17,7 @@ function ScrollReveal({ children, className = "", id }) {
       },
       {
         threshold: 0.05,
-        rootMargin: "0px 0px -18% 0px"
+        rootMargin: "-10% 0px -25% 0px"
       }
     );
 
@@ -241,7 +241,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
       </main>
 
       {/* New styled Footer */}
-      <Footer onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} onNavigate={onNavigate} />
+      <Footer onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} onNavigate={onNavigate} noBorder={true} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import appointmentBg from '../assets/appointment.png';
 
-export default function AppointmentPage({ onBackToShop, onNavigate }) {
+export default function AppointmentPage({ onBackToShop, onNavigate, onCartClick }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -51,7 +51,7 @@ export default function AppointmentPage({ onBackToShop, onNavigate }) {
   return (
     <div className="min-h-screen relative flex flex-col justify-between overflow-x-hidden font-sans text-black bg-white">
       <Navbar 
-        onCartClick={() => {}} 
+        onCartClick={onCartClick} 
         onBookClick={() => {}} 
         onShopClick={onBackToShop} 
         onBrandClick={onBackToShop} 
