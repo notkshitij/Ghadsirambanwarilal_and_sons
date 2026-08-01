@@ -10,6 +10,7 @@ function ScrollReveal({ children, className = "", id }) {
   const ref = useRef(null);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -20,13 +21,13 @@ function ScrollReveal({ children, className = "", id }) {
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -46,20 +47,29 @@ function ScrollReveal({ children, className = "", id }) {
   );
 }
 
-export default function LandingPage({ onOpenCart }) {
+export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
   return (
     <div className="relative w-full min-h-screen bg-white text-mahogany-dark font-sans flex flex-col justify-between overflow-x-hidden">
       
       {/* Top Hero Container (Background image + dark overlay) - full screen height */}
       <div
-        className="relative w-full min-h-screen flex flex-col justify-between bg-no-repeat bg-center bg-cover text-cream-light pb-12"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        className="relative w-full min-h-screen flex flex-col justify-between text-cream-light pb-12 overflow-hidden bg-[#150305]"
       >
+        {/* Adjusted Background Image position to cover full height/width without cutting head */}
+        <div 
+          className="absolute inset-0 bg-no-repeat bg-[85%_12%] bg-cover"
+          style={{ backgroundImage: `url(${heroBg})` }}
+        />
+
         {/* Dark vignette overlay for contrast - lighter to make background image clearly visible */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(21,3,5,0.1)_0%,rgba(21,3,5,0.4)_70%,rgba(21,3,5,0.65)_100%)] pointer-events-none z-1" />
 
         {/* Elegant Header / Navigation */}
-        <Navbar onCartClick={onOpenCart} onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+        <Navbar 
+          onCartClick={onOpenCart} 
+          onBookClick={onBookClick} 
+          onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+        />
 
         {/* Hero Area - centered vertically, shifted to the left on desktop (1.5% margin) */}
         <div className="relative z-10 flex-1 flex flex-col items-center md:items-start justify-center px-[4%] md:pl-[4%] md:pr-[8%] text-center md:text-left max-w-[650px] mx-auto md:ml-[1.5%] md:mr-auto py-12">
@@ -231,7 +241,7 @@ export default function LandingPage({ onOpenCart }) {
       </main>
 
       {/* New styled Footer */}
-      <Footer onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+      <Footer onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} onNavigate={onNavigate} />
     </div>
   );
 }
