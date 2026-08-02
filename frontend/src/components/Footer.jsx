@@ -32,6 +32,7 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
     { label: 'Contact', href: '/contact' },
     { label: 'Privacy Policy', href: '/privacy' },
     { label: 'Terms and Conditions', href: '/terms' },
+    { label: 'Care Guide', href: '/care-guide' },
     { label: 'Delivery and Return', href: '#shipping' },
   ];
 

@@ -11,6 +11,8 @@ import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import NotFoundPage from './components/NotFoundPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
 import ContactPage from './components/ContactPage';
+import CareGuidePage from './components/CareGuidePage';
+
 
 function useDesktopCart() {
   const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 768);
@@ -36,6 +38,7 @@ export default function App() {
     if (path === '/privacy') return 'privacy';
     if (path === '/terms') return 'terms';
     if (path === '/contact') return 'contact';
+    if (path === '/care-guide') return 'care-guide';
     return 'notFound';
   };
 
@@ -149,6 +152,12 @@ export default function App() {
           />
         ) : currentPage === 'contact' ? (
           <ContactPage 
+            onBackToShop={() => handleNavigate('shop')}
+            onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
+          />
+        ) : currentPage === 'care-guide' ? (
+          <CareGuidePage 
             onBackToShop={() => handleNavigate('shop')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
