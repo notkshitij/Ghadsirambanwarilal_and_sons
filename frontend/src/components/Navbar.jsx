@@ -1,10 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 
-export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopClick, alwaysShowBg = false }) {
+export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopClick, alwaysShowBg = false, isLoggedIn = false, onProfileClick }) {
   const { itemCount } = useCart();
   const [isSpinning, setIsSpinning] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedInState, setIsLoggedInState] = useState(() => {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  });
+
+  useEffect(() => {
+    const checkLogin = () => {
+      setIsLoggedInState(localStorage.getItem('isLoggedIn') === 'true');
+    };
+    checkLogin();
+    window.addEventListener('storage', checkLogin);
+    window.addEventListener('auth-change', checkLogin);
+    return () => {
+      window.removeEventListener('storage', checkLogin);
+      window.removeEventListener('auth-change', checkLogin);
+    };
+  }, []);
+
+  const handleProfileClick = () => {
+    if (onProfileClick) {
+      onProfileClick();
+    } else {
+      window.history.pushState(null, '', '/profile');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  };
 
   useEffect(() => {
     if (alwaysShowBg) return;
@@ -103,6 +128,19 @@ export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopC
             </span>
           )}
         </button>
+
+        {(isLoggedIn || isLoggedInState) && (
+          <button
+            onClick={handleProfileClick}
+            className="bg-transparent border-none cursor-pointer p-1.5 flex items-center justify-center text-[#c6a076] hover:scale-110 transition-all duration-300 outline-none focus:outline-none"
+            title="Profile"
+          >
+            <svg viewBox="0 0 24 24" className="w-5.5 h-5.5 fill-none stroke-current stroke-[1.8]" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </button>
+        )}
       </div>
     </header>
   );

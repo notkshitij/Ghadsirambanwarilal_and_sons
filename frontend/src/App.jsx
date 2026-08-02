@@ -12,6 +12,9 @@ import NotFoundPage from './components/NotFoundPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
 import ContactPage from './components/ContactPage';
 import CareGuidePage from './components/CareGuidePage';
+import LoginPage from './components/LoginPage';
+import AboutUsPage from './components/AboutUsPage';
+import ProfilePage from './components/ProfilePage';
 
 
 function useDesktopCart() {
@@ -39,7 +42,42 @@ export default function App() {
     if (path === '/terms') return 'terms';
     if (path === '/contact') return 'contact';
     if (path === '/care-guide') return 'care-guide';
+    if (path === '/login') return 'login';
+    if (path === '/about') return 'about';
+    if (path === '/profile') return 'profile';
     return 'notFound';
+  };
+
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  });
+
+  useEffect(() => {
+    const checkLogin = () => {
+      setIsLoggedIn(localStorage.getItem('isLoggedIn') === 'true');
+    };
+    checkLogin();
+    window.addEventListener('storage', checkLogin);
+    window.addEventListener('auth-change', checkLogin);
+    return () => {
+      window.removeEventListener('storage', checkLogin);
+      window.removeEventListener('auth-change', checkLogin);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    window.dispatchEvent(new CustomEvent('auth-change'));
+    handleNavigate('shop');
+  };
+
+  const handleCheckout = () => {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      alert('Proceeding to checkout! Thank you for choosing Ghadsiram.');
+    } else {
+      sessionStorage.setItem('postLoginRedirect', 'cart');
+      handleNavigate('login');
+    }
   };
 
   const [showSplash, setShowSplash] = useState(() => {
@@ -64,11 +102,28 @@ export default function App() {
     const path = page === 'shop' ? '/' : `/${page}`;
     window.history.pushState(null, '', path);
     setCurrentPage(page);
+
+    // Scroll to top immediately on navigation
+    window.scrollTo(0, 0);
+    lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+    }, 50);
   };
 
   useEffect(() => {
     // Scroll past header/hero smoothly when routing triggers on history pop state
-    window.scrollTo({ top: 0 });
+    window.scrollTo(0, 0);
+    lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+    }, 50);
+
+    return () => clearTimeout(timer);
   }, [currentPage]);
 
   // Dynamically lock/unlock scrolling depending on splash screen visibility (Lenis-only scroll-lock to prevent layout shifting)
@@ -131,6 +186,7 @@ export default function App() {
             onBookClick={() => handleNavigate('appointment')} 
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
+            onCheckout={handleCheckout}
           />
         ) : currentPage === 'appointment' ? (
           <AppointmentPage 
@@ -162,6 +218,25 @@ export default function App() {
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
+        ) : currentPage === 'login' ? (
+          <LoginPage 
+            onBackToShop={() => handleNavigate('shop')}
+            onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
+          />
+        ) : currentPage === 'about' ? (
+          <AboutUsPage 
+            onBackToShop={() => handleNavigate('shop')}
+            onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
+          />
+        ) : currentPage === 'profile' ? (
+          <ProfilePage 
+            onBackToShop={() => handleNavigate('shop')}
+            onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
+            onLogout={handleLogout}
+          />
         ) : currentPage === 'notFound' ? (
           <NotFoundPage 
             onBackToShop={() => handleNavigate('shop')}
@@ -177,7 +252,7 @@ export default function App() {
         )}
 
         {/* Render CartDrawer globally so it can slide open smoothly from any page layout */}
-        <CartDrawer isOpen={isCartDrawerOpen} onClose={() => setIsCartDrawerOpen(false)} />
+        <CartDrawer isOpen={isCartDrawerOpen} onClose={() => setIsCartDrawerOpen(false)} onCheckout={handleCheckout} />
 
         {/* Overlay Splash Screen */}
         {showSplash && currentPage === 'shop' && (

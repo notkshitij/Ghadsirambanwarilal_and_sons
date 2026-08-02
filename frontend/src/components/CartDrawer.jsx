@@ -7,7 +7,7 @@ const formatPrice = (price) => new Intl.NumberFormat('en-IN', {
   maximumFractionDigits: 0,
 }).format(price);
 
-export default function CartDrawer({ isOpen, onClose }) {
+export default function CartDrawer({ isOpen, onClose, onCheckout }) {
   const { cartItems, removeItem, updateQuantity, totalPrice, itemCount } = useCart();
 
   return (
@@ -115,6 +115,10 @@ export default function CartDrawer({ isOpen, onClose }) {
           <button
             type="button"
             disabled={cartItems.length === 0}
+            onClick={() => {
+              onClose();
+              if (onCheckout) onCheckout();
+            }}
             className="w-full bg-[#111] hover:bg-[#c89b3c] text-white font-sans text-xs font-semibold tracking-[0.2em] uppercase py-4 cursor-pointer transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#111] select-none rounded-none shadow-md"
           >
             Checkout

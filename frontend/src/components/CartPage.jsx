@@ -9,7 +9,7 @@ const formatPrice = (price) => new Intl.NumberFormat('en-IN', {
   maximumFractionDigits: 0,
 }).format(price);
 
-export default function CartPage({ onContinueShopping, onBookClick, onNavigate }) {
+export default function CartPage({ onContinueShopping, onBookClick, onNavigate, onCheckout }) {
   const { cartItems, removeItem, updateQuantity, clearCart, totalPrice, itemCount } = useCart();
 
   return (
@@ -136,6 +136,7 @@ export default function CartPage({ onContinueShopping, onBookClick, onNavigate }
 
                 <button
                   type="button"
+                  onClick={onCheckout}
                   className="w-full bg-[#111] hover:bg-[#c89b3c] text-white font-sans text-xs font-semibold tracking-[0.2em] uppercase py-4 border-none cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Proceed to Checkout
