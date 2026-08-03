@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 
-export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopClick, alwaysShowBg = false, isLoggedIn = false, onProfileClick }) {
+export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopClick, alwaysShowBg = false, isLoggedIn = false, onProfileClick, isDark = false, bgColorClass = '' }) {
   const { itemCount } = useCart();
   const [isSpinning, setIsSpinning] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,9 +68,11 @@ export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopC
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 md:px-8 transition-all duration-300 animate-navbar-entrance ${
-      showBg 
-        ? 'py-3 bg-white/95 backdrop-blur-md' 
-        : 'py-5 bg-transparent border-b border-transparent'
+      bgColorClass
+        ? `py-3 ${bgColorClass}`
+        : (isDark 
+            ? 'py-3 bg-[#150305]/95 backdrop-blur-md' 
+            : (showBg ? 'py-3 bg-white/95 backdrop-blur-md' : 'py-5 bg-transparent border-b border-transparent'))
     }`}>
       <button
         type="button"
@@ -81,7 +83,9 @@ export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopC
         <img
           src="/flowers.png"
           alt="Ghadsiram Mark"
-          className={`w-10 h-10 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] ${
+          className={`w-10 h-10 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] transition-all duration-300 ${
+            isDark || !showBg ? 'brightness-100' : 'brightness-[0.42] contrast-[1.15]'
+          } ${
             isSpinning
               ? 'animate-logo-spin-once'
               : 'transition-transform duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:rotate-[360deg]'
@@ -89,7 +93,7 @@ export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopC
           onAnimationEnd={() => setIsSpinning(false)}
         />
         <span className={`font-sans font-light text-xl tracking-[0.25em] transition-colors duration-300 ${
-          showBg ? 'text-mahogany-dark' : 'text-cream-light'
+          isDark || !showBg ? 'text-cream-light' : 'text-mahogany-dark'
         }`}>
           GHADSIRAM
         </span>
@@ -99,7 +103,7 @@ export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopC
           href="#shop"
           onClick={handleShopClick}
           className={`font-sans text-[0.75rem] font-light tracking-[0.08em] transition-colors duration-300 ${
-            showBg ? 'text-mahogany-dark hover:text-gold-dark' : 'text-cream-light'
+            isDark || !showBg ? 'text-cream-light hover:text-gold-light' : 'text-mahogany-dark hover:text-gold-dark'
           }`}
         >
           Shop
@@ -108,7 +112,7 @@ export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopC
         <button
           onClick={onBookClick}
           className={`font-sans text-[0.75rem] font-light tracking-[0.08em] bg-transparent border-none cursor-pointer p-0 transition-colors duration-300 ${
-            showBg ? 'text-mahogany-dark hover:text-gold-dark' : 'text-cream-light'
+            isDark || !showBg ? 'text-cream-light hover:text-gold-light' : 'text-mahogany-dark hover:text-gold-dark'
           }`}
         >
           Book an Appointment

@@ -60,33 +60,33 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col justify-between overflow-x-hidden font-sans text-black bg-white">
-      <Navbar 
-        onCartClick={onCartClick} 
-        onBookClick={() => {}} 
-        onShopClick={onBackToShop} 
-        onBrandClick={handleBrandClick} 
-        alwaysShowBg={true} 
+    <div className="min-h-screen relative flex flex-col justify-between overflow-x-hidden font-sans text-black bg-[#f4dbb7]">
+      {/* Full-viewport cover background image */}
+      <div 
+        className="fixed inset-0 w-full h-full bg-no-repeat bg-center bg-cover pointer-events-none z-0"
+        style={{ 
+          backgroundImage: `url(${appointmentBg})`, 
+        }}
       />
 
-      {/* Scrollable Form & Background Section (Excluding Footer) */}
-      <div className="relative w-full flex-1 flex flex-col justify-center">
-        {/* Contain-scaled Right-Aligned Portrait that scrolls naturally */}
-        <div 
-          className="absolute inset-0 bg-no-repeat bg-right-bottom pointer-events-none z-0"
-          style={{ 
-            backgroundImage: `url(${appointmentBg})`, 
-            backgroundSize: 'contain',
-            top: '95px',
-          }}
-        />
+      {/* Scrollable Form Content */}
+      <div className="relative w-full flex-1 flex flex-col justify-center z-10">
 
         <main 
           className="w-full md:mx-0 md:ml-[12%] px-6 relative z-10"
-          style={{ maxWidth: '480px', paddingTop: '9rem', paddingBottom: '6rem' }}
+          style={{ maxWidth: '480px', paddingTop: '6rem', paddingBottom: '6rem' }}
         >
         {!isSubmitted ? (
           <div className="flex flex-col items-start w-full">
+            {/* Elegant Back Navigation Link */}
+            <button 
+              type="button" 
+              onClick={handleBrandClick}
+              className="flex items-center gap-1.5 text-[0.72rem] tracking-[0.14em] text-neutral-500 hover:text-black uppercase bg-transparent border-none cursor-pointer p-0 mb-6 font-sans font-medium transition-colors duration-300"
+            >
+              ← Back to Home
+            </button>
+
             {/* Header Section */}
             <h1 className="font-cormorant font-normal text-3xl md:text-[2.15rem] tracking-[0.06em] text-left m-0 mb-3 text-neutral-800 uppercase">
               Book An Appointment
@@ -226,7 +226,6 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
       </main>
       </div>
 
-      <Footer onBrandClick={handleBrandClick} noBorder={true} style={{ backgroundColor: '#ffffff' }} onNavigate={onNavigate} />
     </div>
   );
 }
