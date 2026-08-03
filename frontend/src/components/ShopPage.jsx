@@ -79,7 +79,7 @@ export default function ShopPage({ onNavigate, onCartClick }) {
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[2.2rem] w-full">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} onNavigate={onNavigate} />
           ))}
         </div>
       </main>

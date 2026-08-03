@@ -16,6 +16,7 @@ import LoginPage from './components/LoginPage';
 import AboutUsPage from './components/AboutUsPage';
 import ProfilePage from './components/ProfilePage';
 import ShopPage from './components/ShopPage';
+import ProductDetailsPage from './components/ProductDetailsPage';
 
 
 function useDesktopCart() {
@@ -38,6 +39,7 @@ export default function App() {
     const path = window.location.pathname;
     if (path === '/' || path === '') return 'home';
     if (path === '/shop') return 'shop';
+    if (path.startsWith('/product/')) return 'product';
     if (path === '/cart') return 'cart';
     if (path === '/appointment') return 'appointment';
     if (path === '/privacy') return 'privacy';
@@ -100,8 +102,15 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const handleNavigate = (page) => {
-    const path = page === 'home' ? '/' : `/${page}`;
+  const handleNavigate = (page, productId = null) => {
+    let path;
+    if (page === 'home') {
+      path = '/';
+    } else if (page === 'product' && productId) {
+      path = `/product/${productId}`;
+    } else {
+      path = `/${page}`;
+    }
     window.history.pushState(null, '', path);
     setCurrentPage(page);
 
@@ -193,6 +202,12 @@ export default function App() {
           />
         ) : currentPage === 'shop' ? (
           <ShopPage 
+            onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
+          />
+        ) : currentPage === 'product' ? (
+          <ProductDetailsPage 
+            productId={window.location.pathname.substring(9)}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />

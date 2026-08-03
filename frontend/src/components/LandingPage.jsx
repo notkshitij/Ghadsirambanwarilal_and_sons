@@ -235,7 +235,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
               <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#c6a076]/40 to-transparent"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-[2.2rem] w-full">
-              {products.map((product) => <ProductCard key={product.id} product={product} />)}
+              {products.slice(0, 3).map((product) => <ProductCard key={product.id} product={product} onNavigate={onNavigate} />)}
             </div>
           </section>
         </ScrollReveal>
