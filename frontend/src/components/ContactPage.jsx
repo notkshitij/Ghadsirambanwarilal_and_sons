@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-export default function ContactPage({ onBackToShop, onNavigate, onCartClick }) {
+export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, onCartClick }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,6 +14,17 @@ export default function ContactPage({ onBackToShop, onNavigate, onCartClick }) {
   const [errors, setErrors] = useState({});
 
   const handleBrandClick = () => {
+    if (onBackToHome) {
+      onBackToHome();
+    } else if (onNavigate) {
+      onNavigate('home');
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  };
+
+  const handleShopClick = () => {
     if (onNavigate) {
       onNavigate('shop');
     } else {
@@ -84,7 +95,7 @@ export default function ContactPage({ onBackToShop, onNavigate, onCartClick }) {
         onBookClick={() => {
           if (onNavigate) onNavigate('appointment');
         }} 
-        onShopClick={handleBrandClick} 
+        onShopClick={handleShopClick} 
         onBrandClick={handleBrandClick} 
         alwaysShowBg={true} 
       />

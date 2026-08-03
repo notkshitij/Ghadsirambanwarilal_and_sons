@@ -2,8 +2,19 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-export default function NotFoundPage({ onBackToShop, onNavigate, onCartClick }) {
+export default function NotFoundPage({ onBackToShop, onBackToHome, onNavigate, onCartClick }) {
   const handleBrandClick = () => {
+    if (onBackToHome) {
+      onBackToHome();
+    } else if (onNavigate) {
+      onNavigate('home');
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  };
+
+  const handleShopClick = () => {
     if (onNavigate) {
       onNavigate('shop');
     } else {
@@ -18,7 +29,7 @@ export default function NotFoundPage({ onBackToShop, onNavigate, onCartClick }) 
         onBookClick={() => {
           if (onNavigate) onNavigate('appointment');
         }} 
-        onShopClick={handleBrandClick} 
+        onShopClick={handleShopClick} 
         onBrandClick={handleBrandClick} 
         alwaysShowBg={true} 
       />
@@ -45,7 +56,7 @@ export default function NotFoundPage({ onBackToShop, onNavigate, onCartClick }) 
         {/* Back to Home Button */}
         <button
           type="button"
-          onClick={handleBrandClick}
+          onClick={handleShopClick}
           className="px-8 py-3.5 bg-[#1a1a1a] hover:bg-[#c89b3c] text-white font-sans text-xs tracking-[0.16em] uppercase font-semibold border-none cursor-pointer transition-colors duration-300 shadow-sm"
         >
           Return to Shop

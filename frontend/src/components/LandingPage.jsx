@@ -69,6 +69,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
           onCartClick={onOpenCart} 
           onBookClick={onBookClick} 
           onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+          onShopClick={() => onNavigate('shop')}
         />
 
         {/* Hero Area - centered vertically, shifted to the left on desktop (1.5% margin) */}
@@ -155,10 +156,10 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
 
             <div className="flex justify-center md:justify-start opacity-0 animate-hero-fade-in-up-4 items-center w-full">
               <a 
-                href="#shop" 
+                href="/shop" 
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  onNavigate('shop');
                 }}
                 className="shop-now-btn group"
               >

@@ -2,8 +2,19 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-export default function ProfilePage({ onBackToShop, onNavigate, onCartClick, onLogout }) {
+export default function ProfilePage({ onBackToShop, onBackToHome, onNavigate, onCartClick, onLogout }) {
   const handleBrandClick = () => {
+    if (onBackToHome) {
+      onBackToHome();
+    } else if (onNavigate) {
+      onNavigate('home');
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  };
+
+  const handleShopClick = () => {
     if (onNavigate) {
       onNavigate('shop');
     } else {
@@ -46,7 +57,7 @@ export default function ProfilePage({ onBackToShop, onNavigate, onCartClick, onL
         onBookClick={() => {
           if (onNavigate) onNavigate('appointment');
         }} 
-        onShopClick={handleBrandClick} 
+        onShopClick={handleShopClick} 
         onBrandClick={handleBrandClick} 
         alwaysShowBg={true}
         isLoggedIn={true}

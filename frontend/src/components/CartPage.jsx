@@ -9,8 +9,19 @@ const formatPrice = (price) => new Intl.NumberFormat('en-IN', {
   maximumFractionDigits: 0,
 }).format(price);
 
-export default function CartPage({ onContinueShopping, onBookClick, onNavigate, onCheckout }) {
+export default function CartPage({ onContinueShopping, onBackToHome, onBookClick, onNavigate, onCheckout }) {
   const { cartItems, removeItem, updateQuantity, clearCart, totalPrice, itemCount } = useCart();
+
+  const handleBrandClick = () => {
+    if (onBackToHome) {
+      onBackToHome();
+    } else if (onNavigate) {
+      onNavigate('home');
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white text-black flex flex-col justify-between font-sans">
@@ -19,7 +30,7 @@ export default function CartPage({ onContinueShopping, onBookClick, onNavigate, 
           onCartClick={() => {}} 
           onBookClick={onBookClick} 
           onShopClick={onContinueShopping} 
-          onBrandClick={onContinueShopping} 
+          onBrandClick={handleBrandClick} 
           alwaysShowBg={true} 
         />
         <main className="max-w-[1100px] mx-auto px-6 md:px-8 pt-36 pb-20">
@@ -153,7 +164,7 @@ export default function CartPage({ onContinueShopping, onBookClick, onNavigate, 
           )}
         </main>
       </div>
-      <Footer onBrandClick={onContinueShopping} onNavigate={onNavigate} />
+      <Footer onBrandClick={handleBrandClick} onNavigate={onNavigate} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import appointmentBg from '../assets/appointment.png';
 
-export default function AppointmentPage({ onBackToShop, onNavigate, onCartClick }) {
+export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate, onCartClick }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -14,6 +14,17 @@ export default function AppointmentPage({ onBackToShop, onNavigate, onCartClick 
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+
+  const handleBrandClick = () => {
+    if (onBackToHome) {
+      onBackToHome();
+    } else if (onNavigate) {
+      onNavigate('home');
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +65,7 @@ export default function AppointmentPage({ onBackToShop, onNavigate, onCartClick 
         onCartClick={onCartClick} 
         onBookClick={() => {}} 
         onShopClick={onBackToShop} 
-        onBrandClick={onBackToShop} 
+        onBrandClick={handleBrandClick} 
         alwaysShowBg={true} 
       />
 
@@ -215,7 +226,7 @@ export default function AppointmentPage({ onBackToShop, onNavigate, onCartClick 
       </main>
       </div>
 
-      <Footer onBrandClick={onBackToShop} noBorder={true} style={{ backgroundColor: '#ffffff' }} onNavigate={onNavigate} />
+      <Footer onBrandClick={handleBrandClick} noBorder={true} style={{ backgroundColor: '#ffffff' }} onNavigate={onNavigate} />
     </div>
   );
 }

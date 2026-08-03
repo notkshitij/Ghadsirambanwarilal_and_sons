@@ -15,6 +15,7 @@ import CareGuidePage from './components/CareGuidePage';
 import LoginPage from './components/LoginPage';
 import AboutUsPage from './components/AboutUsPage';
 import ProfilePage from './components/ProfilePage';
+import ShopPage from './components/ShopPage';
 
 
 function useDesktopCart() {
@@ -35,7 +36,8 @@ function useDesktopCart() {
 export default function App() {
   const getPageFromPath = () => {
     const path = window.location.pathname;
-    if (path === '/' || path === '') return 'shop';
+    if (path === '/' || path === '') return 'home';
+    if (path === '/shop') return 'shop';
     if (path === '/cart') return 'cart';
     if (path === '/appointment') return 'appointment';
     if (path === '/privacy') return 'privacy';
@@ -68,7 +70,7 @@ export default function App() {
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     window.dispatchEvent(new CustomEvent('auth-change'));
-    handleNavigate('shop');
+    handleNavigate('home');
   };
 
   const handleCheckout = () => {
@@ -81,7 +83,7 @@ export default function App() {
   };
 
   const [showSplash, setShowSplash] = useState(() => {
-    return getPageFromPath() === 'shop';
+    return getPageFromPath() === 'home';
   });
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [currentPage, setCurrentPage] = useState(getPageFromPath);
@@ -99,7 +101,7 @@ export default function App() {
   }, []);
 
   const handleNavigate = (page) => {
-    const path = page === 'shop' ? '/' : `/${page}`;
+    const path = page === 'home' ? '/' : `/${page}`;
     window.history.pushState(null, '', path);
     setCurrentPage(page);
 
@@ -183,56 +185,70 @@ export default function App() {
         {currentPage === 'cart' ? (
           <CartPage 
             onContinueShopping={() => handleNavigate('shop')} 
+            onBackToHome={() => handleNavigate('home')}
             onBookClick={() => handleNavigate('appointment')} 
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
             onCheckout={handleCheckout}
           />
+        ) : currentPage === 'shop' ? (
+          <ShopPage 
+            onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
+          />
         ) : currentPage === 'appointment' ? (
           <AppointmentPage 
             onBackToShop={() => handleNavigate('shop')} 
+            onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
         ) : currentPage === 'privacy' ? (
           <PrivacyPolicyPage 
             onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
         ) : currentPage === 'terms' ? (
           <TermsOfServicePage 
             onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
         ) : currentPage === 'contact' ? (
           <ContactPage 
             onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
         ) : currentPage === 'care-guide' ? (
           <CareGuidePage 
             onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
         ) : currentPage === 'login' ? (
           <LoginPage 
             onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
         ) : currentPage === 'about' ? (
           <AboutUsPage 
             onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
         ) : currentPage === 'profile' ? (
           <ProfilePage 
             onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
             onLogout={handleLogout}
@@ -240,6 +256,7 @@ export default function App() {
         ) : currentPage === 'notFound' ? (
           <NotFoundPage 
             onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
@@ -255,7 +272,7 @@ export default function App() {
         <CartDrawer isOpen={isCartDrawerOpen} onClose={() => setIsCartDrawerOpen(false)} onCheckout={handleCheckout} />
 
         {/* Overlay Splash Screen */}
-        {showSplash && currentPage === 'shop' && (
+        {showSplash && currentPage === 'home' && (
           <div className={`fixed inset-0 w-full h-screen z-[9999] transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
             <SplashScreen isFadingOut={isFadingOut} onComplete={handleSplashComplete} />
           </div>
