@@ -59,7 +59,7 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
           ) : (
             <div className="flex flex-col gap-6">
               {cartItems.map((item) => (
-                <article key={item.id} className="flex flex-col pb-6 border-b border-neutral-100/70 last:border-none">
+                <article key={`${item.id}-${item.selectedSize || 'standard'}`} className="flex flex-col pb-6 border-b border-neutral-100/70 last:border-none">
                   {/* Top Item Row (Image, Details, Delete) */}
                   <div className="flex gap-4 items-start relative">
                     <div className="w-16 h-16 shrink-0 bg-[#fdfcfb] border border-neutral-100/60 flex items-center justify-center rounded-sm">
@@ -67,11 +67,14 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
                     </div>
                     <div className="min-w-0 flex-1 pr-6">
                       <h3 className="font-sans text-sm font-normal text-neutral-900 m-0 truncate tracking-wide">{item.name}</h3>
+                      {item.selectedSize && (
+                        <p className="font-sans text-[0.7rem] font-light text-neutral-400 m-0 mt-0.5">Size: {item.selectedSize}</p>
+                      )}
                       <p className="font-sans text-xs font-light text-neutral-500 m-0 mt-1">{formatPrice(item.price)}</p>
                     </div>
                     <button
                       type="button"
-                      onClick={() => removeItem(item.id)}
+                      onClick={() => removeItem(item.id, item.selectedSize)}
                       aria-label={`Remove ${item.name} from cart`}
                       className="absolute right-0 top-0 text-neutral-400 hover:text-red-700 bg-transparent border-none cursor-pointer p-1 transition-colors"
                     >
@@ -86,7 +89,7 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
                   <div className="flex items-center justify-between mt-3.5 border border-neutral-200/60 bg-neutral-50/50 rounded-sm py-1.5 px-3 w-full">
                     <button
                       type="button"
-                      onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
+                      onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1), item.selectedSize)}
                       className="text-neutral-400 hover:text-black bg-transparent border-none cursor-pointer px-3 py-0.5 text-sm font-light select-none transition-colors"
                     >
                       —
@@ -94,7 +97,7 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
                     <span className="font-sans text-xs text-neutral-800 font-medium">{item.quantity}</span>
                     <button
                       type="button"
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      onClick={() => updateQuantity(item.id, item.quantity + 1, item.selectedSize)}
                       className="text-neutral-400 hover:text-black bg-transparent border-none cursor-pointer px-3 py-0.5 text-sm font-light select-none transition-colors"
                     >
                       +

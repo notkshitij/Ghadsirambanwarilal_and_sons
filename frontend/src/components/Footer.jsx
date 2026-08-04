@@ -23,13 +23,17 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
 
 
 
-  const usefulLinks = [
+  const companyLinks = [
     { label: 'About Us', href: '/about' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Contact Us', href: '/contact' },
     { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Terms and Conditions', href: '/terms' },
+    { label: 'Terms & Conditions', href: '/terms' },
+  ];
+
+  const supportLinks = [
     { label: 'Care Guide', href: '/care-guide' },
-    { label: 'Delivery and Return', href: '#shipping' },
+    { label: 'Size Guide', href: '/size-guide' },
+    { label: 'Delivery & Return', href: '#shipping' },
   ];
 
   return (
@@ -113,8 +117,8 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
           </p>
         </div>
 
-        {/* Three columns links section (Centered vertically in the remaining space) */}
-        <div className="max-w-[1200px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 lg:gap-16 my-6">
+        {/* Four columns links section (Centered vertically in the remaining space) */}
+        <div className="max-w-[1200px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-16 my-6">
           
           {/* CONTACT COLUMN */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
@@ -172,10 +176,10 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
             </div>
           </div>
 
-          {/* USEFUL COLUMN */}
+          {/* COMPANY COLUMN */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex flex-col items-center md:items-start mb-4">
-              <h4 className="font-sans text-[0.8rem] font-semibold tracking-[0.24em] text-neutral-700 uppercase m-0 mb-1">Useful</h4>
+              <h4 className="font-sans text-[0.8rem] font-semibold tracking-[0.24em] text-neutral-700 uppercase m-0 mb-1">Company</h4>
               <svg viewBox="0 0 100 10" className="w-10 h-2 fill-[#c89b3c]/70">
                 <polygon points="50,1 54,5 50,9 46,5" />
                 <line x1="0" y1="5" x2="42" y2="5" stroke="#c89b3c" strokeWidth="0.5" strokeOpacity="0.4" />
@@ -183,8 +187,35 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
               </svg>
             </div>
             
-             <ul className="list-none p-0 m-0 flex flex-col gap-3.5 w-full items-center md:items-start">
-              {usefulLinks.map((link) => (
+            <ul className="list-none p-0 m-0 flex flex-col gap-3.5 w-full items-center md:items-start">
+              {companyLinks.map((link) => (
+                <li key={link.label}>
+                  <a 
+                    href={link.href} 
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="font-sans text-[0.86rem] font-light text-neutral-600 hover:text-gold-dark transition-colors duration-200 no-underline flex items-center gap-2 group"
+                  >
+                    <span className="text-[#c89b3c] font-medium text-[0.68rem] transition-transform duration-200 group-hover:translate-x-1">&gt;</span>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* CUSTOMER CARE COLUMN */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="flex flex-col items-center md:items-start mb-4">
+              <h4 className="font-sans text-[0.8rem] font-semibold tracking-[0.24em] text-neutral-700 uppercase m-0 mb-1">Customer Care</h4>
+              <svg viewBox="0 0 100 10" className="w-10 h-2 fill-[#c89b3c]/70">
+                <polygon points="50,1 54,5 50,9 46,5" />
+                <line x1="0" y1="5" x2="42" y2="5" stroke="#c89b3c" strokeWidth="0.5" strokeOpacity="0.4" />
+                <line x1="58" y1="5" x2="100" y2="5" stroke="#c89b3c" strokeWidth="0.5" strokeOpacity="0.4" />
+              </svg>
+            </div>
+            
+            <ul className="list-none p-0 m-0 flex flex-col gap-3.5 w-full items-center md:items-start">
+              {supportLinks.map((link) => (
                 <li key={link.label}>
                   <a 
                     href={link.href} 

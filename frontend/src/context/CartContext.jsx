@@ -29,36 +29,40 @@ export function CartProvider({ children }) {
     return () => clearTimeout(timeoutId);
   }, [notification]);
 
-  const addItem = (product, quantityToAdd = 1) => {
+  const addItem = (product, quantityToAdd = 1, selectedSize = '') => {
     const qty = Number(quantityToAdd) || 1;
     setCartItems((items) => {
-      const existingItem = items.find((item) => item.id === product.id);
+      const existingItem = items.find((item) => item.id === product.id && item.selectedSize === selectedSize);
 
       if (existingItem) {
         return items.map((item) => (
-          item.id === product.id ? { ...item, quantity: item.quantity + qty } : item
+          item.id === product.id && item.selectedSize === selectedSize
+            ? { ...item, quantity: item.quantity + qty }
+            : item
         ));
       }
 
-      return [...items, { ...product, quantity: qty }];
+      return [...items, { ...product, quantity: qty, selectedSize }];
     });
-    setNotification(`${product.name} added to your cart`);
+    setNotification(`${product.name}${selectedSize ? ` (${selectedSize})` : ''} added to your cart`);
   };
 
-  const removeItem = (productId) => {
-    setCartItems((items) => items.filter((item) => item.id !== productId));
+  const removeItem = (productId, selectedSize = '') => {
+    setCartItems((items) => items.filter((item) => !(item.id === productId && item.selectedSize === selectedSize)));
   };
 
-  const updateQuantity = (productId, quantity) => {
+  const updateQuantity = (productId, quantity, selectedSize = '') => {
     const nextQuantity = Number(quantity);
 
     if (!Number.isFinite(nextQuantity) || nextQuantity < 1) {
-      removeItem(productId);
+      removeItem(productId, selectedSize);
       return;
     }
 
     setCartItems((items) => items.map((item) => (
-      item.id === productId ? { ...item, quantity: Math.floor(nextQuantity) } : item
+      item.id === productId && item.selectedSize === selectedSize
+        ? { ...item, quantity: Math.floor(nextQuantity) }
+        : item
     )));
   };
 

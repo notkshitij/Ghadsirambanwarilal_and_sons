@@ -177,58 +177,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center py-20 px-[4%] w-full box-border bg-white text-mahogany-dark">
         {/* Categories / Showcase section */}
         <ScrollReveal>
-          <section className="w-full max-w-[1200px] mb-12 scroll-mt-24" id="collections">
-            <div className="flex items-center justify-center gap-5 mb-12">
-              <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#c6a076]/40 to-transparent"></div>
-              <h4 className="font-display text-[1rem] md:text-[1.35rem] font-medium tracking-[0.28em] uppercase text-gold-dark m-0">Signature Collections</h4>
-              <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#c6a076]/40 to-transparent"></div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-[2.2rem] w-full">
-              {/* Card 1 */}
-              <div className="relative bg-[#fcfbfa] hover:bg-white border border-[#c6a076]/25 rounded-sm py-12 px-9 overflow-hidden hover:translate-y-[-8px] hover:border-gold-primary/70 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08),0_0_15px_rgba(212,175,55,0.15)] transition-all duration-600 box-border group">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-primary/5 to-transparent pointer-events-none transition-opacity duration-600" />
-                <div className="relative z-2">
-                  <span className="font-display text-[0.7rem] font-semibold tracking-[0.26em] text-[#c6a076] block mb-3.5 uppercase">POLKI &amp; KUNDAN</span>
-                  <h5 className="font-display text-[1.3rem] font-medium tracking-[0.12em] text-mahogany-dark m-0 mb-4 group-hover:text-gold-dark transition-colors duration-400">Imperial Treasures</h5>
-                  <p className="text-[0.88rem] leading-[1.7] text-neutral-600 mb-8">
-                    Ornate traditional bridal jewelry set in pure gold with uncut diamonds and precious gemstones.
-                  </p>
-                  <a href="#kundan" className="font-display text-[0.78rem] font-semibold tracking-[0.12em] text-gold-dark hover:text-[#fff6ea] hover:tracking-[0.16em] uppercase no-underline transition-all duration-300">Explore Collection ➔</a>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="relative bg-[#fcfbfa] hover:bg-white border border-[#c6a076]/25 rounded-sm py-12 px-9 overflow-hidden hover:translate-y-[-8px] hover:border-gold-primary/70 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08),0_0_15px_rgba(212,175,55,0.15)] transition-all duration-600 box-border group">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-primary/5 to-transparent pointer-events-none transition-opacity duration-600" />
-                <div className="relative z-2">
-                  <span className="font-display text-[0.7rem] font-semibold tracking-[0.26em] text-[#c6a076] block mb-3.5 uppercase">ANTIQUE GOLD</span>
-                  <h5 className="font-display text-[1.3rem] font-medium tracking-[0.12em] text-mahogany-dark m-0 mb-4 group-hover:text-gold-dark transition-colors duration-400">Heritage Classics</h5>
-                  <p className="text-[0.88rem] leading-[1.7] text-neutral-600 mb-8">
-                    Intricately detailed designs reviving the royal aesthetics of the Indian princely heritage era.
-                  </p>
-                  <a href="#antique" className="font-display text-[0.78rem] font-semibold tracking-[0.12em] text-gold-dark hover:text-[#fff6ea] hover:tracking-[0.16em] uppercase no-underline transition-all duration-300">Explore Collection ➔</a>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="relative bg-[#fcfbfa] hover:bg-white border border-[#c6a076]/25 rounded-sm py-12 px-9 overflow-hidden hover:translate-y-[-8px] hover:border-gold-primary/70 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08),0_0_15px_rgba(212,175,55,0.15)] transition-all duration-600 box-border group">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-primary/5 to-transparent pointer-events-none transition-opacity duration-600" />
-                <div className="relative z-2">
-                  <span className="font-display text-[0.7rem] font-semibold tracking-[0.26em] text-[#c6a076] block mb-3.5 uppercase">FINE DIAMONDS</span>
-                  <h5 className="font-display text-[1.3rem] font-medium tracking-[0.12em] text-mahogany-dark m-0 mb-4 group-hover:text-gold-dark transition-colors duration-400">Modern Royal Splendour</h5>
-                  <p className="text-[0.88rem] leading-[1.7] text-neutral-600 mb-8">
-                    Exquisite diamond collections reflecting brilliant craftsmanship and timeless luxury elegance.
-                  </p>
-                  <a href="#diamonds" className="font-display text-[0.78rem] font-semibold tracking-[0.12em] text-gold-dark hover:text-[#fff6ea] hover:tracking-[0.16em] uppercase no-underline transition-all duration-300">Explore Collection ➔</a>
-                </div>
-              </div>
-            </div>
-          </section>
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <section className="w-full max-w-[1200px] scroll-mt-24" id="shop">
+          <section className="w-full max-w-[1200px] mb-20 scroll-mt-24" id="shop">
             <div className="flex items-center justify-center gap-5 mb-12">
               <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#c6a076]/40 to-transparent"></div>
               <h4 className="font-display text-[1rem] md:text-[1.35rem] font-medium tracking-[0.28em] uppercase text-gold-dark m-0">Featured Pieces</h4>
@@ -236,6 +185,95 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-[2.2rem] w-full">
               {products.slice(0, 3).map((product) => <ProductCard key={product.id} product={product} onNavigate={onNavigate} />)}
+            </div>
+          </section>
+        </ScrollReveal>
+
+        <ScrollReveal>
+          <section className="w-full max-w-[1200px] mb-12 scroll-mt-24" id="collections">
+            <div className="flex items-center justify-center gap-5 mb-12">
+              <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#c6a076]/40 to-transparent"></div>
+              <h4 className="font-display text-[1rem] md:text-[1.35rem] font-medium tracking-[0.28em] uppercase text-gold-dark m-0">Our Promise</h4>
+              <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#c6a076]/40 to-transparent"></div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[2.2rem] w-full">
+              {/* Card 1: Certified Jewellery */}
+              <div className="relative bg-[#fcfbfa] hover:bg-white border border-[#c6a076]/25 rounded-sm py-12 px-8 text-center overflow-hidden hover:translate-y-[-8px] hover:border-gold-primary/70 hover:shadow-[0_12px_30px_rgba(0,0,0,0.06),0_0_15px_rgba(212,175,55,0.1)] transition-all duration-500 box-border group">
+                <div className="absolute inset-0 bg-gradient-to-br from-gold-primary/5 to-transparent pointer-events-none transition-opacity duration-500" />
+                <div className="relative z-2 flex flex-col items-center">
+                  <div className="mb-4 text-gold-dark transition-transform duration-500 group-hover:scale-110">
+                    <svg viewBox="0 0 24 24" className="w-12 h-12 stroke-current fill-none stroke-[1.2]" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="8" r="6" />
+                      <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+                    </svg>
+                  </div>
+                  <h5 className="font-display text-[1.15rem] font-medium tracking-[0.1em] text-mahogany-dark m-0 mb-2 group-hover:text-gold-dark transition-colors duration-400">Certified Jewellery</h5>
+                  <p className="text-[0.85rem] leading-[1.6] text-neutral-500 font-light m-0">
+                    Authenticity you can trust
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 2: Free Insured Shipping */}
+              <div className="relative bg-[#fcfbfa] hover:bg-white border border-[#c6a076]/25 rounded-sm py-12 px-8 text-center overflow-hidden hover:translate-y-[-8px] hover:border-gold-primary/70 hover:shadow-[0_12px_30px_rgba(0,0,0,0.06),0_0_15px_rgba(212,175,55,0.1)] transition-all duration-500 box-border group">
+                <div className="absolute inset-0 bg-gradient-to-br from-gold-primary/5 to-transparent pointer-events-none transition-opacity duration-500" />
+                <div className="relative z-2 flex flex-col items-center">
+                  <div className="mb-4 text-gold-dark transition-transform duration-500 group-hover:scale-110">
+                    <svg viewBox="0 0 24 24" className="w-12 h-12 stroke-current fill-none stroke-[1.2]" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M16.5 8.5v6.5a1 1 0 0 1-.5.87l-5.5 3.18a1 1 0 0 1-1 0L4 15.87A1 1 0 0 1 3.5 15V8.5a1 1 0 0 1 .5-.87l5.5-3.18a1 1 0 0 1 1 0l5.5 3.18a1 1 0 0 1 .5.87z" />
+                      <path d="M3.8 7.9L10 11.5l6.2-3.6" />
+                      <path d="M10 11.5v7.2" />
+                      <path d="M15 15.5c0-1.5 3-2.5 3-2.5s3 1 3 2.5c0 2.5-3 4.5-3 4.5s-3-2-3-4.5z" />
+                      <path d="M16.8 15.3l.8.8 1.6-1.6" />
+                    </svg>
+                  </div>
+                  <h5 className="font-display text-[1.15rem] font-medium tracking-[0.1em] text-mahogany-dark m-0 mb-2 group-hover:text-gold-dark transition-colors duration-400">Free Insured Shipping</h5>
+                  <p className="text-[0.85rem] leading-[1.6] text-neutral-500 font-light m-0">
+                    Secure delivery, no extra cost
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 3: Worldwide Shipping */}
+              <div className="relative bg-[#fcfbfa] hover:bg-white border border-[#c6a076]/25 rounded-sm py-12 px-8 text-center overflow-hidden hover:translate-y-[-8px] hover:border-gold-primary/70 hover:shadow-[0_12px_30px_rgba(0,0,0,0.06),0_0_15px_rgba(212,175,55,0.1)] transition-all duration-500 box-border group">
+                <div className="absolute inset-0 bg-gradient-to-br from-gold-primary/5 to-transparent pointer-events-none transition-opacity duration-500" />
+                <div className="relative z-2 flex flex-col items-center">
+                  <div className="mb-4 text-gold-dark transition-transform duration-500 group-hover:scale-110">
+                    <svg viewBox="0 0 24 24" className="w-12 h-12 stroke-current fill-none stroke-[1.2]" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M2 12h20" />
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      <path d="M16 8l4 4-4 4" />
+                    </svg>
+                  </div>
+                  <h5 className="font-display text-[1.15rem] font-medium tracking-[0.1em] text-mahogany-dark m-0 mb-2 group-hover:text-gold-dark transition-colors duration-400">Worldwide Shipping</h5>
+                  <p className="text-[0.85rem] leading-[1.6] text-neutral-500 font-light m-0">
+                    Jewels delivered globally
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 4: 100000+ Units Sold */}
+              <div className="relative bg-[#fcfbfa] hover:bg-white border border-[#c6a076]/25 rounded-sm py-12 px-8 text-center overflow-hidden hover:translate-y-[-8px] hover:border-gold-primary/70 hover:shadow-[0_12px_30px_rgba(0,0,0,0.06),0_0_15px_rgba(212,175,55,0.1)] transition-all duration-500 box-border group">
+                <div className="absolute inset-0 bg-gradient-to-br from-gold-primary/5 to-transparent pointer-events-none transition-opacity duration-500" />
+                <div className="relative z-2 flex flex-col items-center">
+                  <div className="mb-4 text-gold-dark transition-transform duration-500 group-hover:scale-110">
+                    <svg viewBox="0 0 24 24" className="w-12 h-12 stroke-current fill-none stroke-[1.2]" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M8 8h8v7H8z" />
+                      <path d="M7 6h10v2H7z" />
+                      <path d="M12 6v9" />
+                      <path d="M9 4.5a1.5 1.5 0 0 1 3 0 1.5 1.5 0 0 1 3 0" />
+                      <path d="M3 20h12a2 2 0 0 0 2-1.5l1.5-5.5" />
+                      <path d="M7 16h6" />
+                    </svg>
+                  </div>
+                  <h5 className="font-display text-[1.15rem] font-medium tracking-[0.1em] text-mahogany-dark m-0 mb-2 group-hover:text-gold-dark transition-colors duration-400">100000+ Units Sold</h5>
+                  <p className="text-[0.85rem] leading-[1.6] text-neutral-500 font-light m-0">
+                    Trusted by thousands
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
         </ScrollReveal>

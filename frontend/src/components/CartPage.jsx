@@ -69,9 +69,9 @@ export default function CartPage({ onContinueShopping, onBackToHome, onBookClick
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 items-start">
               {/* Items List */}
-              <section className="bg-white border border-neutral-100 shadow-[0_4px_25px_rgba(0,0,0,0.02)] divide-y divide-neutral-100">
+              <section className="flex flex-col gap-6">
                 {cartItems.map((item) => (
-                  <div key={item.id} className="flex flex-col sm:flex-row gap-6 p-6 items-start sm:items-center relative">
+                  <div key={`${item.id}-${item.selectedSize || 'standard'}`} className="flex flex-col sm:flex-row gap-5 items-center sm:items-center bg-[#fdfcfb] border border-neutral-100/60 p-5 shadow-[0_4px_20px_rgba(0,0,0,0.01)] rounded-sm">
                     {/* Item Image */}
                     <div className="w-24 h-24 shrink-0 bg-[#fdfcfb] border border-neutral-100/60 flex items-center justify-center rounded-sm">
                       <img src={item.image} alt={item.name} className="w-16 h-16 object-contain" />
@@ -80,6 +80,9 @@ export default function CartPage({ onContinueShopping, onBackToHome, onBookClick
                     {/* Item Info */}
                     <div className="flex-1 min-w-0">
                       <h2 className="font-sans text-base font-normal text-neutral-900 m-0 truncate tracking-wide">{item.name}</h2>
+                      {item.selectedSize && (
+                        <p className="font-sans text-xs font-light text-neutral-400 m-0 mt-1">Size: {item.selectedSize}</p>
+                      )}
                       <p className="font-sans text-sm font-light text-neutral-500 m-0 mt-1.5">{formatPrice(item.price)} each</p>
                     </div>
 
@@ -88,7 +91,7 @@ export default function CartPage({ onContinueShopping, onBackToHome, onBookClick
                       {/* Close button (top right style in item container) */}
                       <button
                         type="button"
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => removeItem(item.id, item.selectedSize)}
                         aria-label={`Remove ${item.name}`}
                         className="text-neutral-400 hover:text-black hover:scale-110 bg-transparent border-none cursor-pointer p-1 transition-all self-end sm:self-auto"
                       >
@@ -102,7 +105,7 @@ export default function CartPage({ onContinueShopping, onBackToHome, onBookClick
                       <div className="flex items-center justify-between border border-neutral-200/60 bg-neutral-50/50 rounded-sm py-1.5 px-3 w-32 transition-all hover:border-neutral-300">
                         <button
                           type="button"
-                          onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
+                          onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1), item.selectedSize)}
                           className="text-neutral-400 hover:text-black bg-transparent border-none cursor-pointer px-2 py-0.5 text-sm font-light select-none transition-colors"
                         >
                           —
@@ -110,7 +113,7 @@ export default function CartPage({ onContinueShopping, onBackToHome, onBookClick
                         <span className="font-sans text-sm text-neutral-800 font-medium">{item.quantity}</span>
                         <button
                           type="button"
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() => updateQuantity(item.id, item.quantity + 1, item.selectedSize)}
                           className="text-neutral-400 hover:text-black bg-transparent border-none cursor-pointer px-2 py-0.5 text-sm font-light select-none transition-colors"
                         >
                           +

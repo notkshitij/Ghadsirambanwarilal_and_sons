@@ -17,6 +17,7 @@ import AboutUsPage from './components/AboutUsPage';
 import ProfilePage from './components/ProfilePage';
 import ShopPage from './components/ShopPage';
 import ProductDetailsPage from './components/ProductDetailsPage';
+import SizeGuidePage from './components/SizeGuidePage';
 
 
 function useDesktopCart() {
@@ -46,6 +47,7 @@ export default function App() {
     if (path === '/terms') return 'terms';
     if (path === '/contact') return 'contact';
     if (path === '/care-guide') return 'care-guide';
+    if (path === '/size-guide') return 'size-guide';
     if (path === '/login') return 'login';
     if (path === '/about') return 'about';
     if (path === '/profile') return 'profile';
@@ -241,6 +243,13 @@ export default function App() {
           />
         ) : currentPage === 'care-guide' ? (
           <CareGuidePage 
+            onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
+            onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
+          />
+        ) : currentPage === 'size-guide' ? (
+          <SizeGuidePage 
             onBackToShop={() => handleNavigate('shop')}
             onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}

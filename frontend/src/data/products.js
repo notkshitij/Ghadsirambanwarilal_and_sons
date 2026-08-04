@@ -12,6 +12,7 @@ export const products = [
     originalPrice: 320000,
     stock: 12,
     image: image1,
+    images: [image1, image5],
     category: 'Polki & Kundan',
     subcategory: 'Necklaces',
     specs: {
@@ -49,21 +50,6 @@ export const products = [
       gold: '14-15 gram (approx)',
       polki: '8 carats',
       stones: '65 carats'
-    }
-  },
-  {
-    id: 'royal-chandrika-necklace-ii',
-    name: 'Royal Chandrika Necklace',
-    price: 250000,
-    originalPrice: 320000,
-    stock: 12,
-    image: image5,
-    category: 'Polki & Kundan',
-    subcategory: 'Necklaces',
-    specs: {
-      gold: '5-6 gram (approx)',
-      polki: '7 carats',
-      pearls: '41 carats'
     }
   },
 ];
