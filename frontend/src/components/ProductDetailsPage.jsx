@@ -42,11 +42,13 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
 
   useEffect(() => {
     if (product) {
+      document.title = `${product.name} | Ghadsiram`;
       setActiveImage(product.image);
       setQty(1);
       const szs = getSizesForType(getProductType(product));
       setSelectedSize(szs[0] || '');
-
+    } else {
+      document.title = 'Product Not Found | Ghadsiram';
     }
   }, [productId, product]);
 

@@ -138,6 +138,29 @@ export default function App() {
     return () => clearTimeout(timer);
   }, [currentPage]);
 
+  // Dynamically update document title based on current page
+  useEffect(() => {
+    const titles = {
+      home: 'Ghadsiram Banwarilal & Sons — Fine Luxury Jewellery',
+      shop: 'The Collection — Shop Fine Jewellery | Ghadsiram',
+      cart: 'Your Bag | Ghadsiram',
+      contact: 'Get in Touch — Contact Us | Ghadsiram',
+      about: 'Our Story & Heritage | Ghadsiram',
+      appointment: 'Book a Bespoke Appointment | Ghadsiram',
+      'care-guide': 'Jewellery Care Guide | Ghadsiram',
+      'size-guide': 'Jewellery Size Guide | Ghadsiram',
+      login: 'Sign In / Account | Ghadsiram',
+      profile: 'My Account | Ghadsiram',
+      privacy: 'Privacy Policy | Ghadsiram',
+      terms: 'Terms & Conditions | Ghadsiram',
+      notFound: '404 Page Not Found | Ghadsiram',
+    };
+
+    if (currentPage !== 'product') {
+      document.title = titles[currentPage] || 'Ghadsiram Banwarilal & Sons';
+    }
+  }, [currentPage]);
+
   useEffect(() => {
     if (!isDesktop) {
       setIsCartDrawerOpen(false);
