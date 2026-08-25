@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 
-export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopClick, alwaysShowBg = false, isLoggedIn = false, onProfileClick, isDark = false, bgColorClass = '' }) {
+export default function Navbar({ 
+  onCartClick, 
+  onBrandClick, 
+  onBookClick, 
+  onShopClick, 
+  onNavigate,
+  alwaysShowBg = true, 
+  isLoggedIn = false, 
+  onProfileClick, 
+  isDark = true, 
+  bgColorClass = '' 
+}) {
   const { itemCount } = useCart();
-  const [isSpinning, setIsSpinning] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoggedInState, setIsLoggedInState] = useState(() => {
     return localStorage.getItem('isLoggedIn') === 'true';
   });
@@ -25,6 +36,8 @@ export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopC
   const handleProfileClick = () => {
     if (onProfileClick) {
       onProfileClick();
+    } else if (onNavigate) {
+      onNavigate('profile');
     } else {
       window.history.pushState(null, '', '/profile');
       window.dispatchEvent(new PopStateEvent('popstate'));
@@ -32,11 +45,8 @@ export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopC
   };
 
   useEffect(() => {
-    if (alwaysShowBg) return;
-
     const handleScroll = () => {
-      // Scroll past hero section (min-h-screen minus navbar height)
-      if (window.scrollY > window.innerHeight - 80) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -46,106 +56,229 @@ export default function Navbar({ onCartClick, onBrandClick, onBookClick, onShopC
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [alwaysShowBg]);
-
-  const showBg = alwaysShowBg || isScrolled;
+  }, []);
 
   const handleBrandClick = () => {
-    setIsSpinning(true);
     if (onBrandClick) {
       onBrandClick();
+    } else if (onNavigate) {
+      onNavigate('home');
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
     }
   };
 
-  const handleShopClick = (e) => {
+  const handleNavClick = (page) => {
+    setIsMobileMenuOpen(false);
+    if (onNavigate) {
+      onNavigate(page);
+    } else {
+      window.history.pushState(null, '', `/${page === 'home' ? '' : page}`);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  };
+
+  const handleShop = (e) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false);
     if (onShopClick) {
       onShopClick();
+    } else if (onNavigate) {
+      onNavigate('shop');
     } else {
-      document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.pushState(null, '', '/shop');
+      window.dispatchEvent(new PopStateEvent('popstate'));
     }
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 md:px-8 transition-all duration-300 animate-navbar-entrance ${
-      bgColorClass
-        ? `py-3 ${bgColorClass}`
-        : (isDark 
-            ? 'py-3 bg-[#150305]/95 backdrop-blur-md' 
-            : (showBg ? 'py-3 bg-white/95 backdrop-blur-md' : 'py-5 bg-transparent border-b border-transparent'))
-    }`}>
-      <button
-        type="button"
-        onClick={handleBrandClick}
-        className="flex items-center gap-2.5 bg-transparent border-none cursor-pointer p-0 text-left outline-none focus:outline-none"
-      >
-        {/* Decoupled logo: Removed circle background & border */}
-        <img
-          src="/flowers.png"
-          alt="Ghadsiram Mark"
-          className={`w-10 h-10 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] transition-all duration-300 ${
-            isDark || !showBg ? 'brightness-100' : 'brightness-[0.42] contrast-[1.15]'
-          } ${
-            isSpinning
-              ? 'animate-logo-spin-once'
-              : 'transition-transform duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:rotate-[360deg]'
-          }`}
-          onAnimationEnd={() => setIsSpinning(false)}
-        />
-        <span className={`font-sans font-light text-xl tracking-[0.25em] transition-colors duration-300 ${
-          isDark || !showBg ? 'text-cream-light' : 'text-mahogany-dark'
-        }`}>
-          GHADSIRAM
-        </span>
-      </button>
-      <div className="flex items-center gap-[1.8rem]">
-        <a
-          href="#shop"
-          onClick={handleShopClick}
-          className={`font-sans text-[0.75rem] font-light tracking-[0.08em] transition-colors duration-300 ${
-            isDark || !showBg ? 'text-cream-light hover:text-gold-light' : 'text-mahogany-dark hover:text-gold-dark'
-          }`}
-        >
-          Shop
-        </a>
-
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 animate-navbar-entrance py-4 md:py-5 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-[#0D0A08]/55 backdrop-blur-xl border-b border-[#2E231A]' 
+          : 'bg-[#0D0A08] border-b border-transparent'
+      } ${bgColorClass || ''}`}
+    >
+      <div className="w-full px-6 md:px-12 lg:px-16 flex justify-between items-center">
+        
+        {/* Brand Logo & Name (Left Corner) */}
         <button
-          onClick={onBookClick}
-          className={`font-sans text-[0.75rem] font-light tracking-[0.08em] bg-transparent border-none cursor-pointer p-0 transition-colors duration-300 ${
-            isDark || !showBg ? 'text-cream-light hover:text-gold-light' : 'text-mahogany-dark hover:text-gold-dark'
-          }`}
+          type="button"
+          onClick={handleBrandClick}
+          className="flex items-center bg-transparent border-none cursor-pointer p-0 text-left outline-none focus:outline-none"
         >
-          Book an Appointment
+          <span className="font-display font-semibold md:font-bold text-lg md:text-xl tracking-[0.14em] md:tracking-[0.18em] text-[#C9AA6B] uppercase select-none drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+            GHADSIRAM
+          </span>
         </button>
 
-        <button
-          onClick={onCartClick}
-          className="relative bg-transparent border-none cursor-pointer p-1.5 flex items-center justify-center"
-          title="Cart"
-        >
-          <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#c6a076] hover:scale-110 hover:rotate-12 transition-all duration-300">
-            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
-          </svg>
-          {itemCount > 0 && (
-            <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 rounded-full text-[0.55rem] font-bold flex items-center justify-center bg-gold-primary text-mahogany-dark">
-              {itemCount}
-            </span>
-          )}
-        </button>
-
-        {(isLoggedIn || isLoggedInState) && (
-          <button
-            onClick={handleProfileClick}
-            className="bg-transparent border-none cursor-pointer p-1.5 flex items-center justify-center text-[#c6a076] hover:scale-110 transition-all duration-300 outline-none focus:outline-none"
-            title="Profile"
+        {/* Desktop Navigation Links (Right Corner) */}
+        <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+          <a
+            href="/shop"
+            onClick={handleShop}
+            className="font-sans text-[0.82rem] font-light tracking-[0.14em] uppercase text-[#EADCC9] no-underline cursor-pointer select-none"
           >
-            <svg viewBox="0 0 24 24" className="w-5.5 h-5.5 fill-none stroke-current stroke-[1.8]" strokeLinecap="round" strokeLinejoin="round">
+            Shop
+          </a>
+
+          <button
+            type="button"
+            onClick={() => handleNavClick('care-guide')}
+            className="font-sans text-[0.82rem] font-light tracking-[0.14em] uppercase text-[#EADCC9] bg-transparent border-none p-0 cursor-pointer select-none"
+          >
+            Journal
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleNavClick('about')}
+            className="font-sans text-[0.82rem] font-light tracking-[0.14em] uppercase text-[#EADCC9] bg-transparent border-none p-0 cursor-pointer select-none"
+          >
+            About
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleNavClick('contact')}
+            className="font-sans text-[0.82rem] font-light tracking-[0.14em] uppercase text-[#EADCC9] bg-transparent border-none p-0 cursor-pointer select-none"
+          >
+            Contact
+          </button>
+
+          {/* Cart Pill Button */}
+          <button
+            type="button"
+            onClick={onCartClick}
+            className="border border-[#C9AA6B] text-[#FAF4EE] px-4 py-1.5 rounded-full text-[0.78rem] font-sans font-light tracking-[0.12em] uppercase flex items-center gap-1.5 cursor-pointer shadow-[0_2px_10px_rgba(0,0,0,0.3)] select-none"
+            title="Cart"
+          >
+            <span>Cart</span>
+            <span className="font-normal text-[#C9AA6B]">({itemCount})</span>
+          </button>
+
+          {/* User / Profile Icon Only */}
+          <button
+            type="button"
+            onClick={isLoggedIn || isLoggedInState ? handleProfileClick : () => handleNavClick('login')}
+            className="bg-transparent border-none cursor-pointer p-1.5 flex items-center justify-center text-[#C9AA6B] outline-none focus:outline-none"
+            title={isLoggedIn || isLoggedInState ? "Profile" : "Login"}
+            aria-label={isLoggedIn || isLoggedInState ? "Profile" : "Login"}
+          >
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-[1.8]" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
           </button>
-        )}
+        </nav>
+
+        {/* Mobile Action Controls */}
+        <div className="flex md:hidden items-center gap-3">
+          {/* Cart Pill Button for Mobile */}
+          <button
+            type="button"
+            onClick={onCartClick}
+            className="border border-[#C9AA6B] text-[#FAF4EE] px-3.5 py-1.5 rounded-full text-[0.74rem] font-sans font-light tracking-[0.1em] uppercase flex items-center gap-1.5 bg-black/40 backdrop-blur-sm cursor-pointer shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+          >
+            <span>Cart</span>
+            <span className="font-normal text-[#C9AA6B]">({itemCount})</span>
+          </button>
+
+          {/* Hamburger Menu Toggle */}
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="text-[#FAF4EE] p-1 bg-transparent border-none cursor-pointer flex items-center justify-center outline-none"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <svg viewBox="0 0 24 24" className="w-6 h-6 stroke-current fill-none stroke-[1.8]">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" className="w-6 h-6 stroke-current fill-none stroke-[1.8]">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+          </button>
+        </div>
+
       </div>
+
+      {/* Full-Screen Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 w-full h-[100dvh] bg-[#0D0A08] z-[100] flex flex-col justify-between px-6 py-6 animate-fade-in overflow-y-auto">
+          {/* Top Bar */}
+          <div className="w-full flex justify-between items-center pb-4">
+            <button
+              type="button"
+              onClick={handleBrandClick}
+              className="flex items-center bg-transparent border-none cursor-pointer p-0 text-left outline-none"
+            >
+              <span className="font-display font-semibold text-lg tracking-[0.18em] text-[#C9AA6B] uppercase select-none">
+                GHADSIRAM
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-[#FAF4EE] p-1 bg-transparent border-none cursor-pointer flex items-center justify-center outline-none"
+              aria-label="Close menu"
+            >
+              <span className="text-2xl font-light leading-none">×</span>
+            </button>
+          </div>
+
+          {/* Links Section */}
+          <div className="flex flex-col gap-0 my-auto py-6">
+            <a
+              href="/shop"
+              onClick={handleShop}
+              className="font-cormorant text-3xl font-normal text-[#FAF4EE] py-4 border-b border-[#2E231A] no-underline block"
+            >
+              Shop
+            </a>
+            <button
+              type="button"
+              onClick={() => handleNavClick('care-guide')}
+              className="text-left font-cormorant text-3xl font-normal text-[#FAF4EE] py-4 border-b border-[#2E231A] bg-transparent border-none cursor-pointer w-full"
+            >
+              Journal
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick('about')}
+              className="text-left font-cormorant text-3xl font-normal text-[#FAF4EE] py-4 border-b border-[#2E231A] bg-transparent border-none cursor-pointer w-full"
+            >
+              About
+            </button>
+            <button
+              type="button"
+              onClick={() => handleNavClick('contact')}
+              className="text-left font-cormorant text-3xl font-normal text-[#FAF4EE] py-4 border-b border-[#2E231A] bg-transparent border-none cursor-pointer w-full"
+            >
+              Contact
+            </button>
+          </div>
+
+          {/* Bottom Action Button */}
+          <div className="w-full pt-4">
+            <button
+              type="button"
+              onClick={handleShop}
+              className="w-full py-4 rounded-xl font-sans text-xs font-semibold tracking-[0.2em] uppercase border-none cursor-pointer shadow-lg"
+              style={{ background: '#C9AA6B', color: '#0D0A08' }}
+            >
+              Shop the collection
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
