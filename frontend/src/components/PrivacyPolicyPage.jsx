@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage({ onBackToShop, onBackToHome, onNaviga
   };
 
   return (
-    <div className="min-h-screen bg-white text-black flex flex-col justify-between font-sans">
+    <div className="min-h-screen bg-[#0D0A08] text-[#FAF4EE] flex flex-col justify-between font-sans">
       <Navbar 
         onCartClick={onCartClick} 
         onBookClick={() => {
@@ -31,17 +31,18 @@ export default function PrivacyPolicyPage({ onBackToShop, onBackToHome, onNaviga
         }} 
         onShopClick={handleShopClick} 
         onBrandClick={handleBrandClick} 
+        onNavigate={onNavigate}
         alwaysShowBg={true} 
       />
 
-      <main className="flex-1 w-full max-w-[960px] mx-auto px-6 md:px-12 pt-36 pb-24 text-neutral-800 leading-relaxed">
-        {/* Page Title - matches the mockup's light sans-serif layout */}
-        <h1 className="font-sans font-light text-3xl md:text-[2.2rem] tracking-[0.16em] m-0 mb-8 text-neutral-900 uppercase">
+      <main className="flex-1 w-full max-w-[960px] mx-auto px-6 md:px-12 pt-36 pb-24 text-[#D9C8B4] leading-relaxed">
+        {/* Page Title */}
+        <h1 className="font-sans font-light text-3xl md:text-[2.2rem] tracking-[0.16em] m-0 mb-8 text-[#FAF4EE] uppercase">
           Privacy Policy
         </h1>
 
         {/* Intro description */}
-        <div className="text-sm md:text-[0.92rem] font-light text-neutral-600 mb-12 flex flex-col gap-5">
+        <div className="text-sm md:text-[0.92rem] font-light text-[#D9C8B4] mb-12 flex flex-col gap-5">
           <p>
             Ghadsirambanwarilal and sons ("we," "our," "us") respects your privacy and is committed to protecting the personal data you share with us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services, including our website <a href="https://www.ghadsirambanwarilalandsons.com" className="text-[#c89b3c] hover:underline font-normal">www.ghadsirambanwarilalandsons.com</a>, platform, and membership-based services (collectively referred to as the "Service"). We comply with international privacy standards, including the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA). By using our Service, you consent to the practices described in this policy.
           </p>

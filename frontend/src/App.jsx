@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ReactLenis } from 'lenis/react';
 import 'lenis/dist/lenis.css';
-import SplashScreen from './components/SplashScreen';
 import LandingPage from './components/LandingPage';
 import CartPage from './components/CartPage';
 import CartToast from './components/CartToast';
@@ -139,46 +138,11 @@ export default function App() {
     return () => clearTimeout(timer);
   }, [currentPage]);
 
-  // Dynamically lock/unlock scrolling depending on splash screen visibility (Lenis-only scroll-lock to prevent layout shifting)
-  useEffect(() => {
-    const currentLenis = lenisRef.current;
-    if (showSplash) {
-      currentLenis?.lenis?.stop();
-    } else {
-      currentLenis?.lenis?.start();
-    }
-    return () => {
-      currentLenis?.lenis?.start();
-    };
-  }, [showSplash]);
-
   useEffect(() => {
     if (!isDesktop) {
       setIsCartDrawerOpen(false);
     }
   }, [isDesktop]);
-
-  // Dynamically lock/unlock scrolling depending on cart drawer visibility (Lenis-only scroll-lock to prevent layout shifting)
-  useEffect(() => {
-    if (!isCartDrawerOpen) {
-      return undefined;
-    }
-
-    const currentLenis = lenisRef.current;
-    currentLenis?.lenis?.stop();
-
-    return () => {
-      currentLenis?.lenis?.start();
-    };
-  }, [isCartDrawerOpen]);
-
-  const handleSplashComplete = () => {
-    setIsFadingOut(true);
-    // Unmount splash screen after the slow zoom-in transition completes (1500ms)
-    setTimeout(() => {
-      setShowSplash(false);
-    }, 1500);
-  };
 
   const handleCartClick = () => {
     if (isDesktop) {
@@ -295,12 +259,6 @@ export default function App() {
         {/* Render CartDrawer globally so it can slide open smoothly from any page layout */}
         <CartDrawer isOpen={isCartDrawerOpen} onClose={() => setIsCartDrawerOpen(false)} onCheckout={handleCheckout} />
 
-        {/* Overlay Splash Screen */}
-        {showSplash && currentPage === 'home' && (
-          <div className={`fixed inset-0 w-full h-screen z-[9999] transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${isFadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-            <SplashScreen isFadingOut={isFadingOut} onComplete={handleSplashComplete} />
-          </div>
-        )}
         <CartToast />
       </div>
     </ReactLenis>
