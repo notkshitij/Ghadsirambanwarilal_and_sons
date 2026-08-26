@@ -103,7 +103,7 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
 
             {/* Thumbnails */}
             {allImages.length > 1 && (
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-5 gap-2 md:gap-2.5">
                 {allImages.map((img, idx) => (
                   <button
                     key={idx}
@@ -112,7 +112,7 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
                     className={`aspect-square w-full overflow-hidden rounded-lg bg-[#16120F] border-2 cursor-pointer transition-all ${
                       (activeImage || product.image) === img
                         ? 'border-[#C9AA6B]'
-                        : 'border-transparent opacity-60'
+                        : 'border-transparent opacity-60 hover:opacity-100'
                     }`}
                   >
                     <img src={img} alt={`${product.name} ${idx + 1}`} className="w-full h-full object-cover" />
