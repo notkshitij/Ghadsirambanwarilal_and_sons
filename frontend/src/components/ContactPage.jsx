@@ -59,7 +59,7 @@ export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, on
         alwaysShowBg={true}
       />
 
-      <main className="flex-1 w-full max-w-[1100px] mx-auto px-6 md:px-8 pt-40 pb-36">
+      <main className="flex-1 w-full max-w-[1100px] mx-auto px-6 md:px-8 pt-40 pb-16 md:pb-20">
 
         {isSubmitted && (
           <div className="bg-[#16120F] border border-emerald-500/30 rounded-lg p-5 text-center mb-10">
@@ -215,6 +215,20 @@ export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, on
 
         </div>
       </main>
+
+      {/* Call To Action Banner — Find the one you keep */}
+      <section className="w-full bg-[#0D0A08] py-20 md:py-28 px-4 flex flex-col items-center justify-center text-center border-t border-[#1C1612]">
+        <h2 className="font-cormorant font-normal text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#FAF4EE] m-0 mb-8 leading-[1.05]">
+          Find the one<br />
+          you keep.
+        </h2>
+        <button
+          onClick={handleShopClick}
+          className="bg-[#C9AA6B] hover:bg-[#D4B879] text-[#14100C] font-sans text-[0.72rem] md:text-xs font-semibold tracking-[0.22em] uppercase px-8 py-3.5 rounded transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 border-none cursor-pointer"
+        >
+          Shop The Collection
+        </button>
+      </section>
 
       <Footer onBrandClick={handleBrandClick} onNavigate={onNavigate} />
     </div>
