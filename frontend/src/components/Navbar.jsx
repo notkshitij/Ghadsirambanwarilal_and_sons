@@ -34,6 +34,7 @@ export default function Navbar({
   }, []);
 
   const handleProfileClick = () => {
+    setIsMobileMenuOpen(false);
     if (onProfileClick) {
       onProfileClick();
     } else if (onNavigate) {
@@ -106,10 +107,21 @@ export default function Navbar({
         <button
           type="button"
           onClick={handleBrandClick}
-          className="flex items-center bg-transparent border-none cursor-pointer p-0 text-left outline-none focus:outline-none"
+          className="flex items-center gap-2 md:gap-2.5 bg-transparent border-none cursor-pointer p-0 text-left outline-none focus:outline-none group"
         >
-          <span className="font-display font-semibold md:font-bold text-lg md:text-xl tracking-[0.14em] md:tracking-[0.18em] text-[#C9AA6B] uppercase select-none drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
-            GHADSIRAM
+          <img
+            src="/flow.png"
+            alt="Ghadsiram Emblem"
+            className="w-5 h-5 md:w-6 md:h-6 object-contain transition-transform duration-300 group-hover:scale-105"
+            style={{
+              filter: 'drop-shadow(0 1px 4px rgba(201, 170, 107, 0.45))'
+            }}
+          />
+          <span 
+            className="font-display font-semibold md:font-bold text-lg md:text-xl tracking-[0.14em] md:tracking-[0.18em] uppercase select-none drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
+            style={{ color: '#C9AA6B' }}
+          >
+            GHADSIRAM'S
           </span>
         </button>
 
@@ -123,13 +135,6 @@ export default function Navbar({
             Shop
           </a>
 
-          <button
-            type="button"
-            onClick={() => handleNavClick('care-guide')}
-            className="font-sans text-[0.82rem] font-light tracking-[0.14em] uppercase text-[#EADCC9] bg-transparent border-none p-0 cursor-pointer select-none"
-          >
-            Journal
-          </button>
 
           <button
             type="button"
@@ -217,10 +222,21 @@ export default function Navbar({
             <button
               type="button"
               onClick={handleBrandClick}
-              className="flex items-center bg-transparent border-none cursor-pointer p-0 text-left outline-none"
+              className="flex items-center gap-2 bg-transparent border-none cursor-pointer p-0 text-left outline-none"
             >
-              <span className="font-display font-semibold text-lg tracking-[0.18em] text-[#C9AA6B] uppercase select-none">
-                GHADSIRAM
+              <img
+                src="/flow.png"
+                alt="Ghadsiram Emblem"
+                className="w-5 h-5 object-contain"
+                style={{
+                  filter: 'drop-shadow(0 1px 4px rgba(201, 170, 107, 0.45))'
+                }}
+              />
+              <span 
+                className="font-display font-semibold text-lg tracking-[0.18em] uppercase select-none"
+                style={{ color: '#C9AA6B' }}
+              >
+                GHADSIRAM'S
               </span>
             </button>
 
@@ -245,13 +261,6 @@ export default function Navbar({
             </a>
             <button
               type="button"
-              onClick={() => handleNavClick('care-guide')}
-              className="text-left font-cormorant text-3xl font-normal text-[#FAF4EE] py-4 border-b border-[#2E231A] bg-transparent border-none cursor-pointer w-full"
-            >
-              Journal
-            </button>
-            <button
-              type="button"
               onClick={() => handleNavClick('about')}
               className="text-left font-cormorant text-3xl font-normal text-[#FAF4EE] py-4 border-b border-[#2E231A] bg-transparent border-none cursor-pointer w-full"
             >
@@ -263,6 +272,19 @@ export default function Navbar({
               className="text-left font-cormorant text-3xl font-normal text-[#FAF4EE] py-4 border-b border-[#2E231A] bg-transparent border-none cursor-pointer w-full"
             >
               Contact
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (isLoggedIn || isLoggedInState) {
+                  handleProfileClick();
+                } else {
+                  handleNavClick('login');
+                }
+              }}
+              className="text-left font-cormorant text-3xl font-normal text-[#FAF4EE] py-4 border-b border-[#2E231A] bg-transparent border-none cursor-pointer w-full"
+            >
+              {isLoggedIn || isLoggedInState ? 'Profile' : 'Sign In'}
             </button>
           </div>
 

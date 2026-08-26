@@ -82,7 +82,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
           <section className="text-left flex flex-col items-start w-full">
             {/* Top Label */}
             <p className="font-sans text-[0.68rem] md:text-[0.75rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-3 md:mb-5 text-left">
-              Fine Jewelry — Solid Gold
+              Fine Signature Jewellery
             </p>
 
             {/* Main Editorial Headline */}
@@ -169,7 +169,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 max-w-[800px]">
                 <div className="w-20 h-[1px] bg-[#2A1F16] shrink-0 hidden sm:block" />
                 <p className="font-sans text-sm font-light text-[#7A6A58] leading-[1.8] m-0">
-                  Fine jewelry, cast in solid gold and kept close — pieces made to be worn every day and handed on.
+                  Fine signature jewellery, crafted and kept close — pieces made to be worn every day and handed on.
                 </p>
               </div>
             </div>
@@ -255,17 +255,29 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
           ( From Our Hands &nbsp;·&nbsp; To Yours )
         </p>
 
-        {/* Giant Brand Name */}
-        <h2
-          className="font-display font-bold uppercase text-center leading-none m-0 mb-10 select-none"
-          style={{
-            fontSize: 'clamp(4rem, 15vw, 13rem)',
-            color: '#FAF4EE',
-            letterSpacing: '-0.01em',
-          }}
-        >
-          GHADSIRAM
-        </h2>
+        {/* Full Brand Name Display */}
+        <div className="flex flex-col items-center justify-center text-center select-none mb-10 max-w-[1200px] w-full px-4">
+          <h2
+            className="font-display font-medium uppercase text-center leading-[1.15] m-0 tracking-[0.12em] md:tracking-[0.22em] text-[#C9AA6B]"
+            style={{
+              fontSize: 'clamp(1.6rem, 4.8vw, 4rem)',
+            }}
+          >
+            Ghadsiram Banwarilal
+          </h2>
+          <div className="flex items-center justify-center gap-4 mt-3 md:mt-4 w-full max-w-[420px]">
+            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#C9AA6B]/50" />
+            <span
+              className="font-display font-normal text-center text-[#FAF4EE] tracking-[0.28em] md:tracking-[0.38em] uppercase"
+              style={{
+                fontSize: 'clamp(0.85rem, 1.8vw, 1.3rem)',
+              }}
+            >
+              &amp; Sons
+            </span>
+            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#C9AA6B]/50" />
+          </div>
+        </div>
 
         {/* Shop Button */}
         <a
