@@ -12,8 +12,8 @@ export default function ProductCard({ product, onNavigate, badge }) {
       onClick={() => onNavigate && onNavigate('product', product.id)}
       className="w-full flex flex-col cursor-pointer group"
     >
-      {/* Large Image */}
-      <div className="relative w-full overflow-hidden rounded-2xl bg-[#16120F] border border-[#2A1F16]" style={{ aspectRatio: '3/4' }}>
+      {/* Large Image Card */}
+      <div className="relative w-full overflow-hidden rounded-2xl bg-[#16120F] border border-[#2A1F16] transition-all duration-300 group-hover:border-[#C9AA6B]/30" style={{ aspectRatio: '3/4' }}>
         <img
           src={product.image}
           alt={product.name}
@@ -21,18 +21,18 @@ export default function ProductCard({ product, onNavigate, badge }) {
         />
         {/* Badge */}
         {badge && (
-          <span className="absolute top-3.5 left-3.5 bg-[#1A1410]/90 text-[#FAF4EE] px-3 py-1 text-[0.6rem] tracking-[0.18em] font-sans font-semibold uppercase rounded-full border border-[#2E231A] select-none">
+          <span className="absolute top-3.5 left-3.5 bg-[#16120F]/85 backdrop-blur-md text-[#C9AA6B] px-3 py-1 text-[0.6rem] tracking-[0.22em] font-sans font-semibold uppercase rounded-full border border-[#C9AA6B]/25 select-none shadow-md">
             {badge}
           </span>
         )}
       </div>
 
       {/* Name + Price row */}
-      <div className="flex items-baseline justify-between mt-3 px-0.5">
-        <h3 className="font-cormorant font-semibold text-base md:text-lg text-[#FAF4EE] m-0 leading-tight">
+      <div className="flex items-baseline justify-between mt-3.5 px-0.5">
+        <h3 className="font-serif font-bold text-base md:text-[1.05rem] text-[#FAF4EE] m-0 leading-tight group-hover:text-[#C9AA6B] transition-colors">
           {product.name}
         </h3>
-        <span className="font-sans text-sm font-light text-[#7A6A58] shrink-0 ml-4">
+        <span className="font-sans text-sm font-light text-[#8C7A6B] shrink-0 ml-3">
           {formatPrice(product.price)}
         </span>
       </div>
