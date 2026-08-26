@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import ProductCard from './ProductCard';
 import { products } from '../data/products';
 import heroBg from '../assets/background.png';
+import bannerImg from '../assets/banner.png';
 import Footer from './Footer';
 import ScrollProgressLine from './ScrollProgressLine';
 
@@ -125,12 +126,12 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
       </div>
 
       {/* Main Content Area (Obsidian Gold background) */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center pt-20 pb-4 md:pb-8 px-[4%] w-full box-border bg-[#0D0A08] text-[#FAF4EE]">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center pt-20 pb-4 md:pb-8 w-full box-border bg-[#0D0A08] text-[#FAF4EE]">
         {/* Bestsellers Showcase section */}
-        <ScrollReveal>
-          <section className="w-full max-w-[1200px] mb-20 md:mb-24 scroll-mt-24" id="shop">
+        <ScrollReveal className="w-full">
+          <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 mb-20 md:mb-24 scroll-mt-24" id="shop">
             {/* Centered Heading */}
-            <div className="text-center mb-12">
+            <div className="text-center mb-12 sm:mb-14">
               <p className="font-sans text-[0.68rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-3">
                 Most Loved
               </p>
@@ -139,8 +140,8 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
               </h2>
             </div>
 
-            {/* Products Grid (4 columns) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+            {/* Products Grid (4 columns - Extra Large Visual Display) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 lg:gap-8 w-full">
               {products.map((product) => (
                 <ProductCard 
                   key={product.id} 
@@ -153,92 +154,82 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
           </section>
         </ScrollReveal>
 
-        <ScrollReveal>
-          <section className="w-full max-w-[1200px] mb-4 md:mb-6 scroll-mt-24" id="collections">
-            {/* Editorial Header Banner */}
-            <div className="mb-14">
-              <p className="font-sans text-[0.68rem] font-semibold tracking-[0.3em] text-[#C9AA6B] uppercase mb-5">
+        {/* Editorial Cinematic Jewelry Banner (100% Full-Bleed Edge-to-Edge) */}
+        <ScrollReveal className="w-full mb-20 md:mb-28">
+          <div className="relative w-full h-[190px] sm:h-[250px] md:h-[320px] lg:h-[360px] overflow-hidden bg-[#0D0A08]">
+            <img
+              src={bannerImg}
+              alt="Fine Luxury Jewellery Showcase"
+              className="w-full h-full object-cover object-center block brightness-[0.78] contrast-[1.05]"
+            />
+            {/* Ambient Dark Bottom Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/15 pointer-events-none" />
+
+            {/* Bottom Tagline */}
+            <div className="absolute bottom-4 left-6 sm:bottom-6 sm:left-12 lg:left-20 z-10">
+              <span className="font-sans text-[0.65rem] sm:text-[0.75rem] tracking-[0.28em] text-[#C9AA6B] uppercase font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] select-none">
+                Fine Signature Jewellery
+              </span>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal className="w-full">
+          <section className="w-full max-w-[1240px] mx-auto px-6 md:px-12 mb-16 md:mb-24 scroll-mt-24" id="collections">
+            {/* Centered Editorial Header */}
+            <div className="text-center mb-14 md:mb-16">
+              <p className="font-sans text-[0.68rem] font-semibold tracking-[0.3em] text-[#C9AA6B] uppercase mb-4 text-center">
                 ( The House of Ghadsiram )
               </p>
               
-              <h2 className="font-cormorant font-light text-5xl md:text-7xl lg:text-8xl leading-[1.08] text-[#FAF4EE] m-0 mb-8 max-w-[950px]">
+              <h2 className="font-cormorant font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#FAF4EE] m-0 text-center leading-[1.1] max-w-[900px] mx-auto mb-4">
                 Made by <span className="italic text-[#C9AA6B]">hand</span>, kept<br className="hidden sm:inline" />
                 for a <span className="italic text-[#C9AA6B]">lifetime.</span>
               </h2>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 max-w-[800px]">
-                <div className="w-16 md:w-20 h-[1px] bg-[#C9AA6B]/40 shrink-0 hidden sm:block" />
-                <p className="font-sans text-sm font-light text-[#A69280] leading-[1.8] m-0">
-                  Fine jewelry, cast in solid gold and kept close — pieces made to be worn every day and handed on.
-                </p>
-              </div>
+              <p className="font-sans text-sm font-light text-[#A69280] leading-[1.8] m-0 max-w-[650px] mx-auto text-center">
+                Fine jewelry, cast in solid gold and kept close — pieces made to be worn every day and handed on.
+              </p>
             </div>
 
-            {/* Promise Cards (4 columns) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-              {/* Card 1: Certified Jewellery */}
-              <div className="bg-[#16120F] border border-[#2A1F16] rounded-2xl p-8 flex flex-col items-start transition-all duration-300 hover:border-[#C9AA6B]/40 group">
-                <div className="mb-6 text-[#C9AA6B]">
-                  <svg viewBox="0 0 24 24" className="w-8 h-8 stroke-current fill-none stroke-[1.2]" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="8" r="6" />
-                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
-                  </svg>
-                </div>
-                <h5 className="font-cormorant text-xl font-semibold text-[#FAF4EE] m-0 mb-2 leading-tight">
+            {/* 4 Clean Minimal Value Columns with Top Border Divider */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 w-full">
+              {/* Col 1: Certified Jewellery */}
+              <div className="flex flex-col pt-6 border-t border-[#2A1F16]">
+                <h3 className="font-serif font-bold text-xl md:text-[1.35rem] text-[#FAF4EE] m-0 mb-2 leading-tight">
                   Certified Jewellery
-                </h5>
-                <p className="font-sans text-xs font-light text-[#7A6A58] m-0 leading-relaxed">
+                </h3>
+                <p className="font-sans text-xs md:text-sm font-light text-[#8C7A6B] m-0 leading-relaxed">
                   Authenticity you can trust
                 </p>
               </div>
 
-              {/* Card 2: Free Insured Shipping */}
-              <div className="bg-[#16120F] border border-[#2A1F16] rounded-2xl p-8 flex flex-col items-start transition-all duration-300 hover:border-[#C9AA6B]/40 group">
-                <div className="mb-6 text-[#C9AA6B]">
-                  <svg viewBox="0 0 24 24" className="w-8 h-8 stroke-current fill-none stroke-[1.2]" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16.5 8.5v6.5a1 1 0 0 1-.5.87l-5.5 3.18a1 1 0 0 1-1 0L4 15.87A1 1 0 0 1 3.5 15V8.5a1 1 0 0 1 .5-.87l5.5-3.18a1 1 0 0 1 1 0l5.5 3.18a1 1 0 0 1 .5.87z" />
-                    <path d="M3.8 7.9L10 11.5l6.2-3.6" />
-                    <path d="M10 11.5v7.2" />
-                  </svg>
-                </div>
-                <h5 className="font-cormorant text-xl font-semibold text-[#FAF4EE] m-0 mb-2 leading-tight">
+              {/* Col 2: Free Insured Shipping */}
+              <div className="flex flex-col pt-6 border-t border-[#2A1F16]">
+                <h3 className="font-serif font-bold text-xl md:text-[1.35rem] text-[#FAF4EE] m-0 mb-2 leading-tight">
                   Free Insured Shipping
-                </h5>
-                <p className="font-sans text-xs font-light text-[#7A6A58] m-0 leading-relaxed">
+                </h3>
+                <p className="font-sans text-xs md:text-sm font-light text-[#8C7A6B] m-0 leading-relaxed">
                   Secure delivery, no extra cost
                 </p>
               </div>
 
-              {/* Card 3: Worldwide Shipping */}
-              <div className="bg-[#16120F] border border-[#2A1F16] rounded-2xl p-8 flex flex-col items-start transition-all duration-300 hover:border-[#C9AA6B]/40 group">
-                <div className="mb-6 text-[#C9AA6B]">
-                  <svg viewBox="0 0 24 24" className="w-8 h-8 stroke-current fill-none stroke-[1.2]" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M2 12h20" />
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                </div>
-                <h5 className="font-cormorant text-xl font-semibold text-[#FAF4EE] m-0 mb-2 leading-tight">
+              {/* Col 3: Worldwide Shipping */}
+              <div className="flex flex-col pt-6 border-t border-[#2A1F16]">
+                <h3 className="font-serif font-bold text-xl md:text-[1.35rem] text-[#FAF4EE] m-0 mb-2 leading-tight">
                   Worldwide Shipping
-                </h5>
-                <p className="font-sans text-xs font-light text-[#7A6A58] m-0 leading-relaxed">
+                </h3>
+                <p className="font-sans text-xs md:text-sm font-light text-[#8C7A6B] m-0 leading-relaxed">
                   Jewels delivered globally
                 </p>
               </div>
 
-              {/* Card 4: 100000+ Units Sold */}
-              <div className="bg-[#16120F] border border-[#2A1F16] rounded-2xl p-8 flex flex-col items-start transition-all duration-300 hover:border-[#C9AA6B]/40 group">
-                <div className="mb-6 text-[#C9AA6B]">
-                  <svg viewBox="0 0 24 24" className="w-8 h-8 stroke-current fill-none stroke-[1.2]" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M8 8h8v7H8z" />
-                    <path d="M7 6h10v2H7z" />
-                    <path d="M12 6v9" />
-                  </svg>
-                </div>
-                <h5 className="font-cormorant text-xl font-semibold text-[#FAF4EE] m-0 mb-2 leading-tight">
+              {/* Col 4: 100000+ Units Sold */}
+              <div className="flex flex-col pt-6 border-t border-[#2A1F16]">
+                <h3 className="font-serif font-bold text-xl md:text-[1.35rem] text-[#FAF4EE] m-0 mb-2 leading-tight">
                   100000+ Units Sold
-                </h5>
-                <p className="font-sans text-xs font-light text-[#7A6A58] m-0 leading-relaxed">
+                </h3>
+                <p className="font-sans text-xs md:text-sm font-light text-[#8C7A6B] m-0 leading-relaxed">
                   Trusted by thousands
                 </p>
               </div>
