@@ -139,8 +139,8 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
               </h2>
             </div>
 
-            {/* Products Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 w-full">
+            {/* Products Grid (4 columns) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               {products.map((product) => (
                 <ProductCard 
                   key={product.id} 
@@ -162,14 +162,14 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
               </p>
               
               <h2 className="font-cormorant font-light text-5xl md:text-7xl lg:text-8xl leading-[1.08] text-[#FAF4EE] m-0 mb-8 max-w-[950px]">
-                Made by <span className="font-serif italic font-normal text-[#C9AA6B]">hand</span>, kept<br className="hidden sm:inline" />
-                for a <span className="font-serif italic font-normal text-[#C9AA6B]">lifetime.</span>
+                Made by <span className="italic text-[#C9AA6B]">hand</span>, kept<br className="hidden sm:inline" />
+                for a <span className="italic text-[#C9AA6B]">lifetime.</span>
               </h2>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 max-w-[800px]">
-                <div className="w-20 h-[1px] bg-[#2A1F16] shrink-0 hidden sm:block" />
-                <p className="font-sans text-sm font-light text-[#7A6A58] leading-[1.8] m-0">
-                  Fine signature jewellery, crafted and kept close — pieces made to be worn every day and handed on.
+                <div className="w-16 md:w-20 h-[1px] bg-[#C9AA6B]/40 shrink-0 hidden sm:block" />
+                <p className="font-sans text-sm font-light text-[#A69280] leading-[1.8] m-0">
+                  Fine jewelry, cast in solid gold and kept close — pieces made to be worn every day and handed on.
                 </p>
               </div>
             </div>
@@ -242,6 +242,64 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
                   Trusted by thousands
                 </p>
               </div>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        {/* The Making Section */}
+        <ScrollReveal>
+          <section className="w-full max-w-[840px] mx-auto pt-10 md:pt-16 mb-24 md:mb-36 px-4 sm:px-6">
+            {/* Centered Heading */}
+            <div className="text-center mb-10 sm:mb-12">
+              <p className="font-sans text-[0.68rem] font-semibold tracking-[0.3em] text-[#C9AA6B] uppercase mb-3 text-center">
+                The Making
+              </p>
+              <h2 className="font-cormorant font-normal text-4xl sm:text-5xl md:text-6xl text-[#FAF4EE] m-0 text-center leading-tight">
+                Four hands, one piece
+              </h2>
+            </div>
+
+            {/* Step Cards Stack */}
+            <div className="flex flex-col gap-4 w-full">
+              {[
+                {
+                  num: '01',
+                  title: 'Design',
+                  desc: 'Every piece starts as a sketch, then a wax model carved by hand.',
+                },
+                {
+                  num: '02',
+                  title: 'Craft',
+                  desc: 'Gold is melted, crafted, and prepared for setting.',
+                },
+                {
+                  num: '03',
+                  title: 'Set',
+                  desc: 'Each stone is set by hand under magnification for a flush fit.',
+                },
+                {
+                  num: '04',
+                  title: 'Finish',
+                  desc: 'Filing, sanding and polishing bring the final light.',
+                },
+              ].map((step) => (
+                <div
+                  key={step.num}
+                  className="bg-[#14100D] border border-[#2A1F16] rounded-2xl p-6 sm:p-7 flex items-center gap-6 sm:gap-8 transition-all duration-300 hover:border-[#C9AA6B]/35 group"
+                >
+                  <span className="font-cormorant italic font-normal text-3xl sm:text-4xl text-[#C9AA6B] shrink-0 select-none w-10 sm:w-12">
+                    {step.num}
+                  </span>
+                  <div className="flex flex-col text-left">
+                    <h4 className="font-cormorant font-bold text-xl sm:text-2xl text-[#FAF4EE] m-0 mb-1 leading-tight group-hover:text-[#FAF4EE] transition-colors">
+                      {step.title}
+                    </h4>
+                    <p className="font-sans text-xs sm:text-[0.84rem] font-light text-[#8C7A6B] m-0 leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
         </ScrollReveal>
