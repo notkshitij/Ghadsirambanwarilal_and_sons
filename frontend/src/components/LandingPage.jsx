@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import ProductCard from './ProductCard';
 import { products } from '../data/products';
 import heroBg from '../assets/background.png';
+import heroBgMobile from '../assets/background-mobile.png';
 import bannerImg from '../assets/banner.png';
 import Footer from './Footer';
 import ScrollProgressLine from './ScrollProgressLine';
@@ -57,9 +58,15 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
       <div
         className="relative w-full min-h-screen flex flex-col justify-between text-cream-light pb-12 overflow-hidden bg-[#0D0A08]"
       >
-        {/* Background Image */}
+        {/* Mobile Background Image */}
         <div 
-          className="absolute inset-0 bg-no-repeat bg-cover bg-[center_top] md:bg-[72%_30%]"
+          className="block md:hidden absolute inset-0 bg-no-repeat bg-cover bg-[35%_center] animate-hero-bg"
+          style={{ backgroundImage: `url(${heroBgMobile})` }}
+        />
+
+        {/* Desktop / Tablet Background Image */}
+        <div 
+          className="hidden md:block absolute inset-0 bg-no-repeat bg-cover md:bg-[72%_30%] animate-hero-bg"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
 
@@ -82,17 +89,22 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
         <div className="relative z-10 flex-1 flex flex-col justify-end md:justify-center items-start text-left px-6 md:px-12 lg:px-16 pb-12 md:pb-16 pt-36 md:pt-16 max-w-[700px]">
           <section className="text-left flex flex-col items-start w-full">
             {/* Top Label */}
-            <p className="font-sans text-[0.68rem] md:text-[0.75rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-3 md:mb-5 text-left">
+            <p className="font-sans text-[0.68rem] md:text-[0.75rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-3 md:mb-5 text-left animate-hero-badge">
               Fine Signature Jewellery
             </p>
 
             {/* Main Editorial Headline */}
             <h1 className="font-cormorant font-light text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] tracking-tight leading-[1.06] text-[#FAF4EE] m-0 mb-4 md:mb-6 text-left">
-              Shine with every<br />precious moment.
+              <span className="block overflow-hidden pb-1">
+                <span className="animate-hero-headline-1">Shine with every</span>
+              </span>
+              <span className="block overflow-hidden pb-1">
+                <span className="animate-hero-headline-2">precious moment.</span>
+              </span>
             </h1>
 
             {/* Subtitle */}
-            <p className="font-sans text-[0.82rem] md:text-[0.95rem] leading-[1.7] md:leading-[1.8] text-[#C2B4A3] font-light mb-7 md:mb-8 max-w-[480px] text-left">
+            <p className="font-sans text-[0.82rem] md:text-[0.95rem] leading-[1.7] md:leading-[1.8] text-[#C2B4A3] font-light mb-7 md:mb-8 max-w-[480px] text-left animate-hero-subtitle">
               Discover beautiful jewelry made with care to add a touch of elegance to your everyday life and life's most precious moments.
             </p>
 
@@ -104,7 +116,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
                   e.preventDefault();
                   onNavigate('shop');
                 }}
-                className="px-6 md:px-8 py-3.5 rounded-full font-sans text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 shadow-lg cursor-pointer no-underline"
+                className="px-6 md:px-8 py-3.5 rounded-full font-sans text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-300 shadow-lg cursor-pointer no-underline animate-hero-btn-1"
                 style={{ background: '#C9AA6B', color: '#0D0A08' }}
               >
                 Shop the collection
@@ -116,7 +128,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
                   e.preventDefault();
                   onNavigate('about');
                 }}
-                className="px-6 md:px-8 py-3.5 rounded-full border border-white/20 bg-white/5 hover:border-[#C9AA6B]/60 text-[#FAF4EE] font-sans text-xs font-medium tracking-[0.14em] uppercase transition-all duration-300 cursor-pointer no-underline backdrop-blur-sm"
+                className="px-6 md:px-8 py-3.5 rounded-full border border-white/20 bg-white/5 hover:border-[#C9AA6B]/60 text-[#FAF4EE] font-sans text-xs font-medium tracking-[0.14em] uppercase transition-all duration-300 cursor-pointer no-underline backdrop-blur-sm animate-hero-btn-2"
               >
                 Our story
               </a>

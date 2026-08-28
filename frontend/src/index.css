@@ -400,4 +400,107 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-/* Force tailwind scanner update */
+/* Hero Entrance Animations */
+.animate-hero-badge {
+  opacity: 0;
+  animation: heroBadgeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  will-change: transform, opacity, letter-spacing;
+}
+
+.animate-hero-headline-1 {
+  display: inline-block;
+  opacity: 0;
+  animation: heroHeadlineIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  will-change: transform, opacity, filter;
+}
+
+.animate-hero-headline-2 {
+  display: inline-block;
+  opacity: 0;
+  animation: heroHeadlineIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  will-change: transform, opacity, filter;
+}
+
+.animate-hero-subtitle {
+  opacity: 0;
+  animation: heroSubtitleIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+  will-change: transform, opacity;
+}
+
+.animate-hero-btn-1 {
+  opacity: 0;
+  animation: heroBtnIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+  will-change: transform, opacity;
+}
+
+.animate-hero-btn-2 {
+  opacity: 0;
+  animation: heroBtnIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 1.05s forwards;
+  will-change: transform, opacity;
+}
+
+.animate-hero-bg {
+  animation: heroBgZoom 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes heroBadgeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+    letter-spacing: 0.16em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.28em;
+  }
+}
+
+@keyframes heroHeadlineIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroSubtitleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroBtnIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroBgZoom {
+  0% {
+    opacity: 0.75;
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
