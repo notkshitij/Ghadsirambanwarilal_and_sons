@@ -17,6 +17,8 @@ import ProfilePage from './components/ProfilePage';
 import ShopPage from './components/ShopPage';
 import ProductDetailsPage from './components/ProductDetailsPage';
 import SizeGuidePage from './components/SizeGuidePage';
+import PageLoader from './components/PageLoader';
+import SplashScreen from './components/SplashScreen';
 
 
 function useDesktopCart() {
@@ -76,28 +78,47 @@ export default function App() {
     handleNavigate('home');
   };
 
-  const handleCheckout = () => {
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-      alert('Proceeding to checkout! Thank you for choosing Ghadsiram.');
-    } else {
-      sessionStorage.setItem('postLoginRedirect', 'cart');
-      handleNavigate('login');
-    }
-  };
-
   const [showSplash, setShowSplash] = useState(() => {
     return getPageFromPath() === 'home';
   });
-  const [isFadingOut, setIsFadingOut] = useState(false);
   const [currentPage, setCurrentPage] = useState(getPageFromPath);
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(false);
   const isDesktop = useDesktopCart();
   const lenisRef = useRef(null);
+  const loadingTimerRef = useRef(null);
+
+  const triggerPageLoader = (duration = 1200, callback = null) => {
+    setIsPageLoading(true);
+    if (loadingTimerRef.current) {
+      clearTimeout(loadingTimerRef.current);
+    }
+    loadingTimerRef.current = setTimeout(() => {
+      setIsPageLoading(false);
+      if (callback) callback();
+    }, duration);
+  };
+
+  const handleCheckout = () => {
+    setIsCartDrawerOpen(false);
+    triggerPageLoader(1300, () => {
+      if (localStorage.getItem('isLoggedIn') === 'true') {
+        alert('Proceeding to checkout! Thank you for choosing Ghadsiram.');
+      } else {
+        sessionStorage.setItem('postLoginRedirect', 'cart');
+        handleNavigate('login');
+      }
+    });
+  };
 
   // Synchronize state with history back/forward navigation
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPage(getPageFromPath());
+      const targetPage = getPageFromPath();
+      setCurrentPage(targetPage);
+      if (['product', 'about', 'contact'].includes(targetPage)) {
+        triggerPageLoader(1200);
+      }
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -114,6 +135,11 @@ export default function App() {
     }
     window.history.pushState(null, '', path);
     setCurrentPage(page);
+
+    // Only show loader for Checkout, Product details, About Us, and Contact Us
+    if (['product', 'about', 'contact'].includes(page)) {
+      triggerPageLoader(1200);
+    }
 
     // Scroll to top immediately on navigation
     window.scrollTo(0, 0);
@@ -283,6 +309,12 @@ export default function App() {
         <CartDrawer isOpen={isCartDrawerOpen} onClose={() => setIsCartDrawerOpen(false)} onCheckout={handleCheckout} />
 
         <CartToast />
+
+        {/* Global Page Transition Loader with small flow logo */}
+        <PageLoader isVisible={isPageLoading} />
+
+        {/* First-time / initial landing intro animation (rotating & zooming flow logo) */}
+        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </div>
     </ReactLenis>
   );
