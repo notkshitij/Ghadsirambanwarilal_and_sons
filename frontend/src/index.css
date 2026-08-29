@@ -411,14 +411,14 @@ html.lenis, html.lenis body {
   display: inline-block;
   opacity: 0;
   animation: heroHeadlineIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 .animate-hero-headline-2 {
   display: inline-block;
   opacity: 0;
   animation: heroHeadlineIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 .animate-hero-subtitle {
@@ -461,12 +461,10 @@ html.lenis, html.lenis body {
   0% {
     opacity: 0;
     transform: translateY(40px);
-    filter: blur(6px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -474,12 +472,10 @@ html.lenis, html.lenis body {
   0% {
     opacity: 0;
     transform: translateY(24px);
-    filter: blur(4px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -503,4 +499,103 @@ html.lenis, html.lenis body {
     opacity: 1;
     transform: scale(1);
   }
-}
+}
+
+/* Page Loader Animations */
+.animate-flow-pulse {
+  animation: flowPulse 1.4s ease-in-out infinite;
+}
+
+.animate-shimmer-slide {
+  animation: shimmerSlide 1.2s ease-in-out infinite;
+}
+
+@keyframes flowPulse {
+  0%, 100% {
+    transform: scale(0.94);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(201, 170, 107, 0.75));
+  }
+}
+
+@keyframes shimmerSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+/* First-Time Landing Page Intro Animation - Smooth Wheel Spin & Zoom */
+.animate-wheel-container {
+  animation: wheelZoom 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.animate-wheel-spin {
+  animation: smoothWheelSpin 2.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.animate-splash-text {
+  animation: splashTextFade 2.4s cubic-bezier(0.25, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes smoothWheelSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes wheelZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+  22% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  85% {
+    opacity: 0.9;
+    transform: scale(5.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(28);
+  }
+}
+
+@keyframes splashTextFade {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    letter-spacing: 0.2em;
+  }
+  30%, 65% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.35em;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.92);
+  }
+}
+
+
+
