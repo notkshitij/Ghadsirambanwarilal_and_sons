@@ -57,17 +57,18 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
           </h4>
           <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
             {[
-              { label: 'Rings', page: 'shop' },
-              { label: 'Necklaces', page: 'shop' },
-              { label: 'Earrings', page: 'shop' },
-              { label: 'Bracelets', page: 'shop' },
-              { label: 'All Jewelry', page: 'shop' },
+              { label: 'Necklaces & Pendants', page: 'shop' },
+              { label: 'Pounchi & Bracelets', page: 'shop' },
+              { label: 'Polki & Kundan Chokers', page: 'shop' },
+              { label: 'The Collection', page: 'shop' },
+              { label: 'Size Guide', page: 'size-guide' },
+              { label: 'Care Guide', page: 'care-guide' },
             ].map((item) => (
               <li key={item.label}>
                 <a
                   href={`/${item.page}`}
                   onClick={(e) => handleNav(e, item.page)}
-                  className="text-[0.84rem] font-light text-[#D9C8B4] no-underline"
+                  className="text-[0.84rem] font-light text-[#D9C8B4] hover:text-[#C9AA6B] transition-colors no-underline"
                 >
                   {item.label}
                 </a>
@@ -83,17 +84,18 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
           </h4>
           <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
             {[
-              { label: 'About', page: 'about' },
-              { label: 'Contact', page: 'contact' },
-              { label: 'Care Guide', page: 'care-guide' },
-              { label: 'Size Guide', page: 'size-guide' },
-              { label: 'Book Appointment', page: 'appointment' },
+              { label: 'Heritage & Craft', page: 'about' },
+              { label: 'Private Appointment', page: 'appointment' },
+              { label: 'Studio & Contact', page: 'contact' },
+              { label: 'Cookie Policy', page: 'cookies' },
+              { label: 'Privacy Policy', page: 'privacy' },
+              { label: 'Terms of Service', page: 'terms' },
             ].map((item) => (
               <li key={item.label}>
                 <a
                   href={`/${item.page}`}
                   onClick={(e) => handleNav(e, item.page)}
-                  className="text-[0.84rem] font-light text-[#D9C8B4] no-underline"
+                  className="text-[0.84rem] font-light text-[#D9C8B4] hover:text-[#C9AA6B] transition-colors no-underline"
                 >
                   {item.label}
                 </a>
