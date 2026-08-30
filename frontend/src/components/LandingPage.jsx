@@ -152,16 +152,23 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
               </h2>
             </div>
 
-            {/* Products Grid (4 columns - Extra Large Visual Display) */}
+            {/* Products Grid (Curated Bestsellers Showcase) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 lg:gap-8 w-full">
-              {products.map((product) => (
-                <ProductCard 
-                  key={product.id} 
-                  product={product} 
-                  onNavigate={onNavigate} 
-                  badge="Bestseller"
-                />
-              ))}
+              {products
+                .filter(
+                  (product) =>
+                    product.id !== 'aranya-navratna-pendant' &&
+                    product.id !== 'royal-chandrika-necklace' &&
+                    product.id !== 'the-golden-eagle-pendant'
+                )
+                .map((product) => (
+                  <ProductCard 
+                    key={product.id} 
+                    product={product} 
+                    onNavigate={onNavigate} 
+                    badge="Bestseller"
+                  />
+                ))}
             </div>
           </section>
         </ScrollReveal>

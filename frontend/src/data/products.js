@@ -1,20 +1,31 @@
-import image1 from '../assets/Product Image/image4.png';
-import image2 from '../assets/Product Image/image2.png';
-import image3 from '../assets/Product Image/image3.png';
-import image5 from '../assets/Product Image/image5.png';
-import image0 from '../assets/Product Image/image.png';
-
 import diff1 from '../assets/Product Image/diff product/diff_product_1.png';
 import diff2 from '../assets/Product Image/diff product/diff_product_2.png';
 import diff3 from '../assets/Product Image/diff product/diff_product_3.png';
 import diff4 from '../assets/Product Image/diff product/diff_product_4.png';
-import diff5 from '../assets/Product Image/diff product/diff_product_5.png';
 
 import diff2_1 from '../assets/Product Image/diff product 2/diff_product_1.png';
 import diff2_2 from '../assets/Product Image/diff product 2/diff_product_2.png';
 import diff2_3 from '../assets/Product Image/diff product 2/diff_product_3.png';
 import diff2_4 from '../assets/Product Image/diff product 2/diff_product_4.png';
-import diff2_5 from '../assets/Product Image/diff product 2/diff_product_5.png';
+
+import diff3_1 from '../assets/Product Image/diff product 3/diff_product_1.png';
+import diff3_2 from '../assets/Product Image/diff product 3/diff_product_2.png';
+
+import diff4_1 from '../assets/Product Image/diff product 4/diff_product_1.png';
+import diff4_2 from '../assets/Product Image/diff product 4/diff_product_2.png';
+
+import diff5_1 from '../assets/Product Image/diff product 5/diff_product_1.png';
+import diff5_2 from '../assets/Product Image/diff product 5/diff_product_2.png';
+import diff5_3 from '../assets/Product Image/diff product 5/diff_product_3.png';
+
+import diff6_1 from '../assets/Product Image/diff product 6/diff_product_1.png';
+import diff6_2 from '../assets/Product Image/diff product 6/diff_product_2.png';
+import diff6_3 from '../assets/Product Image/diff product 6/diff_product_3.png';
+
+import diff7_1 from '../assets/Product Image/diff product 7/diff_product_1.png';
+import diff7_2 from '../assets/Product Image/diff product 7/diff_product_2.png';
+import diff7_3 from '../assets/Product Image/diff product 7/diff_product_3.png';
+import diff7_4 from '../assets/Product Image/diff product 7/diff_product_4.png';
 
 export const products = [
   {
@@ -23,8 +34,8 @@ export const products = [
     price: 56650,
     originalPrice: 72000,
     stock: 18,
-    image: diff1,
-    images: [diff1, diff2, diff3, diff4, diff5],
+    image: diff3,
+    images: [diff3, diff4, diff1, diff2],
     category: 'Polki & Kundan',
     subcategory: 'Pendants',
     description: 'An exquisite handcrafted peacock motif pendant with delicate pearl tassel, vivid meenakari enamel artistry, fine uncut polki, and rich gemstone accents.',
@@ -41,8 +52,8 @@ export const products = [
     price: 41200,
     originalPrice: 58000,
     stock: 15,
-    image: diff2_1,
-    images: [diff2_1, diff2_2, diff2_3, diff2_4, diff2_5],
+    image: diff2_4,
+    images: [diff2_4, diff2_2, diff2_1, diff2_3],
     category: 'Polki & Kundan',
     subcategory: 'Pendants',
     description: 'A regal handcrafted black meenakari leaf pendant studded with uncut polki, rubies, and strung with ruby beads and a south sea pearl tassel.',
@@ -54,13 +65,49 @@ export const products = [
     }
   },
   {
+    id: 'the-golden-eagle-pendant',
+    name: 'The Golden Eagle',
+    price: 65000,
+    originalPrice: 85000,
+    stock: 14,
+    image: diff6_1,
+    images: [diff6_1, diff6_2, diff6_3],
+    category: 'Polki & Kundan',
+    subcategory: 'Pendants',
+    description: 'A majestic golden eagle motif pendant handcrafted with intricate polki diamond wings, emerald and ruby centerpieces, and strung with emerald bead strings and pearl drops.',
+    specs: {
+      'Gold': '2.5 gram (approx)',
+      'Polki': '3.5 carats',
+      'Colour stones': '35 carats',
+      'Pearls': '25 carats',
+      'Size': '18"'
+    }
+  },
+  {
+    id: 'turquoise-pounchi-bracelet',
+    name: 'Turquoise Pounchi Bracelet',
+    price: 50000,
+    originalPrice: 68000,
+    stock: 10,
+    image: diff7_1,
+    images: [diff7_1, diff7_2, diff7_3, diff7_4],
+    category: 'Polki & Kundan',
+    subcategory: 'Bracelets',
+    description: 'A traditional royal pounchi bracelet handcrafted in authentic Irani Firoza (Turquoise) with floral gold framing, ruby accents, and embossed gold back artistry.',
+    specs: {
+      'Gold': '1.7 gms approx',
+      'Colour stones': '20 carats',
+      'Material': 'Authentic Irani Firoza'
+    }
+  },
+  {
     id: 'royal-chandrika-necklace',
     name: 'Royal Chandrika Necklace',
     price: 250000,
     originalPrice: 320000,
     stock: 12,
-    image: image1,
-    images: [image1, image5],
+    image: diff3_1,
+    images: [diff3_1, diff3_2],
     category: 'Polki & Kundan',
     subcategory: 'Necklaces',
     specs: {
@@ -75,8 +122,8 @@ export const products = [
     price: 65000,
     originalPrice: 95000,
     stock: 53,
-    image: image2,
-    images: [image2, image0],
+    image: diff4_1,
+    images: [diff4_1, diff4_2],
     category: 'Polki & Kundan',
     subcategory: 'Pendants',
     specs: {
@@ -91,7 +138,8 @@ export const products = [
     price: 320000,
     originalPrice: 450000,
     stock: 8,
-    image: image3,
+    image: diff5_1,
+    images: [diff5_1, diff5_2, diff5_3],
     category: 'Polki & Kundan',
     subcategory: 'Chokers',
     specs: {
