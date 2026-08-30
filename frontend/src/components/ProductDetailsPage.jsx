@@ -103,7 +103,7 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
 
             {/* Thumbnails */}
             {allImages.length > 1 && (
-              <div className="grid grid-cols-5 gap-2 md:gap-2.5">
+              <div className="grid grid-cols-4 sm:grid-cols-5 gap-2 md:gap-2.5">
                 {allImages.map((img, idx) => (
                   <button
                     key={idx}
