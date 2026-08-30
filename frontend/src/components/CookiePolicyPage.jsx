@@ -664,7 +664,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                   </div>
                   <div className="p-4 rounded-xl bg-[#0D0A08]/50 border border-[#2E231A]">
                     <h3 className="text-xs font-semibold text-[#C9AA6B] uppercase tracking-wider mb-1">
-                      Studio &amp; Flagship Atelier
+                      Studio &amp; Flagship Store
                     </h3>
                     <p className="text-xs text-[#A69584] m-0">
                       Jaipur, Rajasthan, India
