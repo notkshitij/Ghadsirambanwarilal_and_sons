@@ -159,16 +159,23 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
           <a
             href="/privacy"
             onClick={(e) => handleNav(e, 'privacy')}
-            className="text-[0.72rem] font-light text-[#5A4C3D] no-underline"
+            className="text-[0.72rem] font-light text-[#5A4C3D] hover:text-[#C9AA6B] transition-colors no-underline"
           >
             Privacy
           </a>
           <a
             href="/terms"
             onClick={(e) => handleNav(e, 'terms')}
-            className="text-[0.72rem] font-light text-[#5A4C3D] no-underline"
+            className="text-[0.72rem] font-light text-[#5A4C3D] hover:text-[#C9AA6B] transition-colors no-underline"
           >
             Terms
+          </a>
+          <a
+            href="/cookies"
+            onClick={(e) => handleNav(e, 'cookies')}
+            className="text-[0.72rem] font-light text-[#5A4C3D] hover:text-[#C9AA6B] transition-colors no-underline"
+          >
+            Cookies
           </a>
         </div>
       </div>

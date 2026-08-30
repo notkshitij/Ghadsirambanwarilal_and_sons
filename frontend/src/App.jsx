@@ -17,6 +17,7 @@ import ProfilePage from './components/ProfilePage';
 import ShopPage from './components/ShopPage';
 import ProductDetailsPage from './components/ProductDetailsPage';
 import SizeGuidePage from './components/SizeGuidePage';
+import CookiePolicyPage from './components/CookiePolicyPage';
 import PageLoader from './components/PageLoader';
 import SplashScreen from './components/SplashScreen';
 
@@ -46,6 +47,7 @@ export default function App() {
     if (path === '/appointment') return 'appointment';
     if (path === '/privacy') return 'privacy';
     if (path === '/terms') return 'terms';
+    if (path === '/cookies' || path === '/cookie-policy') return 'cookies';
     if (path === '/contact') return 'contact';
     if (path === '/care-guide') return 'care-guide';
     if (path === '/size-guide') return 'size-guide';
@@ -179,6 +181,7 @@ export default function App() {
       profile: "Client Profile | Ghadsiram's",
       privacy: "Privacy Policy | Ghadsiram's",
       terms: "Terms & Conditions | Ghadsiram's",
+      cookies: "Cookie Policy | Ghadsiram's",
       notFound: "404 Page Not Found | Ghadsiram's",
     };
 
@@ -242,6 +245,13 @@ export default function App() {
           />
         ) : currentPage === 'terms' ? (
           <TermsOfServicePage 
+            onBackToShop={() => handleNavigate('shop')}
+            onBackToHome={() => handleNavigate('home')}
+            onNavigate={handleNavigate}
+            onCartClick={handleCartClick}
+          />
+        ) : currentPage === 'cookies' ? (
+          <CookiePolicyPage 
             onBackToShop={() => handleNavigate('shop')}
             onBackToHome={() => handleNavigate('home')}
             onNavigate={handleNavigate}
