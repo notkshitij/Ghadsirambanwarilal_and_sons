@@ -18,6 +18,7 @@ import ShopPage from './components/ShopPage';
 import ProductDetailsPage from './components/ProductDetailsPage';
 import SizeGuidePage from './components/SizeGuidePage';
 import CookiePolicyPage from './components/CookiePolicyPage';
+import AdminPage from './components/AdminPage';
 import PageLoader from './components/PageLoader';
 import SplashScreen from './components/SplashScreen';
 
@@ -54,6 +55,7 @@ export default function App() {
     if (path === '/login') return 'login';
     if (path === '/about') return 'about';
     if (path === '/profile') return 'profile';
+    if (path === '/adminpage') return 'admin';
     return 'notFound';
   };
 
@@ -182,6 +184,7 @@ export default function App() {
       privacy: "Privacy Policy | Ghadsiram's",
       terms: "Terms & Conditions | Ghadsiram's",
       cookies: "Cookie Policy | Ghadsiram's",
+      admin: "Admin Panel | Ghadsiram's",
       notFound: "404 Page Not Found | Ghadsiram's",
     };
 
@@ -300,6 +303,10 @@ export default function App() {
             onCartClick={handleCartClick}
             onLogout={handleLogout}
           />
+        ) : currentPage === 'admin' ? (
+          <AdminPage 
+            onNavigate={handleNavigate}
+          />
         ) : currentPage === 'notFound' ? (
           <NotFoundPage 
             onBackToShop={() => handleNavigate('shop')}
@@ -312,6 +319,7 @@ export default function App() {
             onOpenCart={handleCartClick} 
             onBookClick={() => handleNavigate('appointment')} 
             onNavigate={handleNavigate}
+            isSplashActive={showSplash}
           />
         )}
 
