@@ -4,7 +4,8 @@ import ProductCard from './ProductCard';
 import { products } from '../data/products';
 import heroBg from '../assets/background.png';
 import heroBgMobile from '../assets/background-mobile.png';
-import bannerImg from '../assets/banner.png';
+import necklaceCategoryImg from '../assets/Product Image/diff product 2/diff_product_4.png';
+import braceletCategoryImg from '../assets/Product Image/diff product 7/diff_product_1.png';
 import Footer from './Footer';
 import ScrollProgressLine from './ScrollProgressLine';
 
@@ -138,7 +139,75 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
       </div>
 
       {/* Main Content Area (Obsidian Gold background) */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center pt-20 pb-4 md:pb-8 w-full box-border bg-[#0D0A08] text-[#FAF4EE]">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center pt-16 pb-4 md:pb-8 w-full box-border bg-[#0D0A08] text-[#FAF4EE]">
+        {/* Shop by Category Section */}
+        <ScrollReveal className="w-full">
+          <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 mb-20 md:mb-28 scroll-mt-24" id="categories">
+            {/* Centered Heading */}
+            <div className="text-center mb-10 sm:mb-14">
+              <p className="font-sans text-[0.68rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-3">
+                Find Your Piece
+              </p>
+              <h2 className="font-cormorant font-light text-5xl md:text-6xl text-[#FAF4EE] m-0">
+                Shop by category
+              </h2>
+            </div>
+
+            {/* 2 Categories Grid: Necklaces & Bracelets (Side-by-side in Mobile & Compact Sizing) */}
+            <div className="grid grid-cols-2 gap-3.5 sm:gap-6 md:gap-8 max-w-[360px] sm:max-w-[720px] mx-auto w-full px-2 sm:px-0">
+              {/* Necklaces Card */}
+              <div
+                onClick={() => onNavigate && onNavigate('shop')}
+                className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border border-[#2A1F16] bg-[#16120F] transition-all duration-500 hover:border-[#C9AA6B]/50 hover:shadow-[0_8px_30px_rgba(201,170,107,0.12)]"
+                style={{ aspectRatio: '3/4' }}
+              >
+                <img
+                  src={necklaceCategoryImg}
+                  alt="Necklaces"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                {/* Dark Vignette Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
+
+                {/* Bottom Bar: Title + Arrow */}
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between z-10">
+                  <h3 className="font-cormorant text-base sm:text-2xl md:text-3xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
+                    Necklaces
+                  </h3>
+                  <span className="font-sans text-xs sm:text-lg text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1.5">
+                    →
+                  </span>
+                </div>
+              </div>
+
+              {/* Bracelets Card */}
+              <div
+                onClick={() => onNavigate && onNavigate('shop')}
+                className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border border-[#2A1F16] bg-[#16120F] transition-all duration-500 hover:border-[#C9AA6B]/50 hover:shadow-[0_8px_30px_rgba(201,170,107,0.12)]"
+                style={{ aspectRatio: '3/4' }}
+              >
+                <img
+                  src={braceletCategoryImg}
+                  alt="Bracelets"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                {/* Dark Vignette Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
+
+                {/* Bottom Bar: Title + Arrow */}
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between z-10">
+                  <h3 className="font-cormorant text-base sm:text-2xl md:text-3xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
+                    Bracelets
+                  </h3>
+                  <span className="font-sans text-xs sm:text-lg text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1.5">
+                    →
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollReveal>
+
         {/* Bestsellers Showcase section */}
         <ScrollReveal className="w-full">
           <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 mb-20 md:mb-24 scroll-mt-24" id="shop">
@@ -171,26 +240,6 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate }) {
                 ))}
             </div>
           </section>
-        </ScrollReveal>
-
-        {/* Editorial Cinematic Jewelry Banner (100% Full-Bleed Edge-to-Edge) */}
-        <ScrollReveal className="w-full mb-20 md:mb-28">
-          <div className="relative w-full h-[190px] sm:h-[250px] md:h-[320px] lg:h-[360px] overflow-hidden bg-[#0D0A08]">
-            <img
-              src={bannerImg}
-              alt="Fine Luxury Jewellery Showcase"
-              className="w-full h-full object-cover object-center block brightness-[0.78] contrast-[1.05]"
-            />
-            {/* Ambient Dark Bottom Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/15 pointer-events-none" />
-
-            {/* Bottom Tagline */}
-            <div className="absolute bottom-4 left-6 sm:bottom-6 sm:left-12 lg:left-20 z-10">
-              <span className="font-sans text-[0.65rem] sm:text-[0.75rem] tracking-[0.28em] text-[#C9AA6B] uppercase font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] select-none">
-                Fine Signature Jewellery
-              </span>
-            </div>
-          </div>
         </ScrollReveal>
 
         <ScrollReveal className="w-full">
