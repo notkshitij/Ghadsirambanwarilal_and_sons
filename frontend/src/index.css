@@ -597,5 +597,101 @@ html.lenis, html.lenis body {
   }
 }
 
+/* Hero Section Entrance Cinematic Animations */
+.animate-hero-bg {
+  animation: heroBgZoom 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+
+.animate-hero-badge {
+  animation: heroBadgeReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  will-change: transform, opacity, letter-spacing;
+}
+
+.animate-hero-headline-1 {
+  display: inline-block;
+  animation: heroLineReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  will-change: transform, opacity;
+}
+
+.animate-hero-headline-2 {
+  display: inline-block;
+  animation: heroLineReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  will-change: transform, opacity;
+}
+
+.animate-hero-subtitle {
+  animation: heroSubtitleReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+  will-change: transform, opacity, filter;
+}
+
+.animate-hero-btn-1 {
+  animation: heroButtonReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+  will-change: transform, opacity;
+}
+
+.animate-hero-btn-2 {
+  animation: heroButtonReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+  will-change: transform, opacity;
+}
+
+@keyframes heroBgZoom {
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes heroBadgeReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+    letter-spacing: 0.14em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.28em;
+  }
+}
+
+@keyframes heroLineReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSubtitleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroButtonReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
 
 
