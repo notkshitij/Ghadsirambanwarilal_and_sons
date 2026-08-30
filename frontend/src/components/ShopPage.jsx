@@ -2,12 +2,13 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ProductCard from './ProductCard';
-import { products } from '../data/products';
+import { useProductsStore } from '../data/products';
 
 // Assign badges to first few products
 const badges = ['Bestseller', 'New', null, null, null];
 
 export default function ShopPage({ onNavigate, onCartClick }) {
+  const { products } = useProductsStore();
   const handleBrandClick = () => {
     if (onNavigate) onNavigate('home');
   };
