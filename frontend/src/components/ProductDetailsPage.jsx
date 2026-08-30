@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { useCart } from '../context/CartContext';
-import { products } from '../data/products';
-
-
+import { useProductsStore } from '../data/products';
 
 export default function ProductDetailsPage({ productId, onNavigate, onCartClick }) {
+  const { products } = useProductsStore();
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
   const [activeImage, setActiveImage] = useState('');
@@ -229,13 +228,13 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
             <div className="w-full h-[1px] bg-[#1E1812]" />
 
             {/* Materials / Specs */}
-            {product.specs && (
+            {(product.materials || product.specs) && (
               <div>
                 <p className="font-sans text-[0.65rem] font-semibold tracking-[0.22em] text-[#C9AA6B] uppercase mb-2">
                   Materials
                 </p>
                 <p className="font-sans text-sm font-light text-[#7A6A58] leading-[1.7] m-0">
-                  {Object.entries(product.specs).map(([k, v]) => `${k}: ${v}`).join(' · ')}
+                  {product.materials || (product.specs ? Object.entries(product.specs).map(([k, v]) => `${k}: ${v}`).join(' · ') : '')}
                 </p>
               </div>
             )}
@@ -246,7 +245,7 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
                 Care
               </p>
               <p className="font-sans text-sm font-light text-[#7A6A58] leading-[1.7] m-0">
-                Store separately in the pouch provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.
+                {product.care || 'Store separately in the pouch provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.'}
               </p>
             </div>
 
