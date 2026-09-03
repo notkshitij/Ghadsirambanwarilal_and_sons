@@ -57,9 +57,6 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
           </h4>
           <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
             {[
-              { label: 'Necklaces & Pendants', page: 'shop' },
-              { label: 'Pounchi & Bracelets', page: 'shop' },
-              { label: 'Polki & Kundan Chokers', page: 'shop' },
               { label: 'The Collection', page: 'shop' },
               { label: 'Size Guide', page: 'size-guide' },
               { label: 'Care Guide', page: 'care-guide' },
@@ -84,7 +81,7 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
           </h4>
           <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
             {[
-              { label: 'Heritage & Craft', page: 'about' },
+              { label: 'About Us', page: 'about' },
               { label: 'Private Appointment', page: 'appointment' },
               { label: 'Studio & Contact', page: 'contact' },
               { label: 'Cookie Policy', page: 'cookies' },
