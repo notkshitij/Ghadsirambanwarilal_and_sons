@@ -6,6 +6,7 @@ import heroBg from '../assets/background.png';
 import heroBgMobile from '../assets/background-mobile.png';
 import necklaceCategoryImg from '../assets/Product Image/diff product 2/diff_product_4.png';
 import braceletCategoryImg from '../assets/Product Image/diff product 7/diff_product_1.png';
+import hairClipsCategoryImg from '../assets/Product Image/diff product 9/diff_product_1.png';
 import Footer from './Footer';
 import ScrollProgressLine from './ScrollProgressLine';
 
@@ -50,6 +51,15 @@ function ScrollReveal({ children, className = "", id }) {
     </div>
   );
 }
+
+// Strictly fixed 5 Bestseller products
+const FIXED_BESTSELLER_IDS = [
+  'mayur-meenakari-polki-pendant',
+  'budroom-hair-clips',
+  'shahi-nakshi-hair-clips',
+  'padma-meenakari-ruby-pendant',
+  'turquoise-pounchi-bracelet',
+];
 
 export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSplashActive = false }) {
   const { products } = useProductsStore();
@@ -175,11 +185,11 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
               </h2>
             </div>
 
-            {/* 2 Categories Grid: Necklaces & Bracelets (Side-by-side in Mobile & Compact Sizing) */}
-            <div className="grid grid-cols-2 gap-3.5 sm:gap-6 md:gap-8 max-w-[360px] sm:max-w-[720px] mx-auto w-full px-2 sm:px-0">
+            {/* 2x2 Matrix on Mobile / 3 Columns on Desktop */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 md:gap-6 max-w-[360px] sm:max-w-[760px] mx-auto w-full px-2 sm:px-0">
               {/* Necklaces Card */}
               <div
-                onClick={() => onNavigate && onNavigate('shop')}
+                onClick={() => onNavigate && onNavigate('category', 'Necklaces')}
                 className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border border-[#2A1F16] bg-[#16120F] transition-all duration-500 hover:border-[#C9AA6B]/50 hover:shadow-[0_8px_30px_rgba(201,170,107,0.12)]"
                 style={{ aspectRatio: '3/4' }}
               >
@@ -192,11 +202,11 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
 
                 {/* Bottom Bar: Title + Arrow */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between z-10">
-                  <h3 className="font-cormorant text-base sm:text-2xl md:text-3xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
+                <div className="absolute bottom-2 left-2.5 right-2.5 sm:bottom-3.5 sm:left-4 sm:right-4 flex items-center justify-between z-10">
+                  <h3 className="font-cormorant text-sm sm:text-xl md:text-2xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
                     Necklaces
                   </h3>
-                  <span className="font-sans text-xs sm:text-lg text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1.5">
+                  <span className="font-sans text-[0.7rem] sm:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
                 </div>
@@ -204,7 +214,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
 
               {/* Bracelets Card */}
               <div
-                onClick={() => onNavigate && onNavigate('shop')}
+                onClick={() => onNavigate && onNavigate('category', 'Bracelets')}
                 className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border border-[#2A1F16] bg-[#16120F] transition-all duration-500 hover:border-[#C9AA6B]/50 hover:shadow-[0_8px_30px_rgba(201,170,107,0.12)]"
                 style={{ aspectRatio: '3/4' }}
               >
@@ -217,11 +227,36 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
 
                 {/* Bottom Bar: Title + Arrow */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between z-10">
-                  <h3 className="font-cormorant text-base sm:text-2xl md:text-3xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
+                <div className="absolute bottom-2 left-2.5 right-2.5 sm:bottom-3.5 sm:left-4 sm:right-4 flex items-center justify-between z-10">
+                  <h3 className="font-cormorant text-sm sm:text-xl md:text-2xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
                     Bracelets
                   </h3>
-                  <span className="font-sans text-xs sm:text-lg text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1.5">
+                  <span className="font-sans text-[0.7rem] sm:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
+              </div>
+
+              {/* Hair Clips Card */}
+              <div
+                onClick={() => onNavigate && onNavigate('category', 'Hair Clips')}
+                className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border border-[#2A1F16] bg-[#16120F] transition-all duration-500 hover:border-[#C9AA6B]/50 hover:shadow-[0_8px_30px_rgba(201,170,107,0.12)]"
+                style={{ aspectRatio: '3/4' }}
+              >
+                <img
+                  src={hairClipsCategoryImg}
+                  alt="Hair Clips"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                {/* Dark Vignette Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
+
+                {/* Bottom Bar: Title + Arrow */}
+                <div className="absolute bottom-2 left-2.5 right-2.5 sm:bottom-3.5 sm:left-4 sm:right-4 flex items-center justify-between z-10">
+                  <h3 className="font-cormorant text-sm sm:text-xl md:text-2xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
+                    Hair Clips
+                  </h3>
+                  <span className="font-sans text-[0.7rem] sm:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
                 </div>
@@ -230,11 +265,11 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
           </section>
         </ScrollReveal>
 
-        {/* Bestsellers Showcase section */}
+        {/* Bestsellers Showcase section (Continuous Horizontal Scrolling Animation) */}
         <ScrollReveal className="w-full">
-          <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 mb-20 md:mb-24 scroll-mt-24" id="shop">
+          <section className="w-full mx-auto mb-20 md:mb-28 scroll-mt-24 overflow-hidden relative" id="shop">
             {/* Centered Heading */}
-            <div className="text-center mb-12 sm:mb-14">
+            <div className="text-center mb-10 sm:mb-12 max-w-[1380px] mx-auto px-4">
               <p className="font-sans text-[0.68rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-3">
                 Most Loved
               </p>
@@ -243,23 +278,58 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
               </h2>
             </div>
 
-            {/* Products Grid (Curated Bestsellers Showcase) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 lg:gap-8 w-full">
-              {products
-                .filter(
-                  (product) =>
-                    product.id !== 'aranya-navratna-pendant' &&
-                    product.id !== 'royal-chandrika-necklace' &&
-                    product.id !== 'the-golden-eagle-pendant'
-                )
+            {/* Desktop / Laptop: Static 5 in 1 Row Grid */}
+            <div className="hidden md:grid grid-cols-5 gap-3.5 md:gap-4 lg:gap-5 max-w-[1380px] mx-auto px-4 sm:px-6 md:px-8 w-full">
+              {FIXED_BESTSELLER_IDS
+                .map((id) => products.find((p) => p.id === id))
+                .filter(Boolean)
                 .map((product) => (
                   <ProductCard 
-                    key={product.id} 
+                    key={`bestseller-desktop-${product.id}`} 
                     product={product} 
                     onNavigate={onNavigate} 
                     badge="Bestseller"
                   />
                 ))}
+            </div>
+
+            {/* Mobile Phones Only: Continuous Horizontal Marquee Carousel */}
+            <div className="block md:hidden relative w-full overflow-hidden group py-2">
+              {/* Left Edge Dark Vignette */}
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0D0A08] to-transparent z-10 pointer-events-none" />
+              {/* Right Edge Dark Vignette */}
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#0D0A08] to-transparent z-10 pointer-events-none" />
+
+              {/* Infinite Moving Row on Mobile */}
+              <div className="animate-marquee-infinite flex gap-3.5 items-stretch">
+                {/* Set 1 */}
+                {FIXED_BESTSELLER_IDS
+                  .map((id) => products.find((p) => p.id === id))
+                  .filter(Boolean)
+                  .map((product, idx) => (
+                    <div key={`bestseller-mob-1-${product.id}-${idx}`} className="w-[190px] shrink-0">
+                      <ProductCard 
+                        product={product} 
+                        onNavigate={onNavigate} 
+                        badge="Bestseller"
+                      />
+                    </div>
+                  ))}
+
+                {/* Set 2 (Seamless Repeat) */}
+                {FIXED_BESTSELLER_IDS
+                  .map((id) => products.find((p) => p.id === id))
+                  .filter(Boolean)
+                  .map((product, idx) => (
+                    <div key={`bestseller-mob-2-${product.id}-${idx}`} className="w-[190px] shrink-0">
+                      <ProductCard 
+                        product={product} 
+                        onNavigate={onNavigate} 
+                        badge="Bestseller"
+                      />
+                    </div>
+                  ))}
+              </div>
             </div>
           </section>
         </ScrollReveal>
@@ -387,51 +457,55 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
       </main>
 
       {/* Brand Hero Closing Section — just above footer */}
-      <section className="w-full bg-[#0D0A08] flex flex-col items-center justify-center pt-6 md:pt-10 pb-20 md:pb-28 px-4 overflow-hidden relative">
+      <ScrollReveal className="w-full">
+        <section className="w-full bg-[#0D0A08] flex flex-col items-center justify-center pt-8 md:pt-14 pb-20 md:pb-28 px-4 overflow-hidden relative">
 
-        {/* Subtitle */}
-        <p className="font-sans text-[0.7rem] md:text-[0.75rem] tracking-[0.3em] text-[#5A4C3D] uppercase mb-5 text-center">
-          ( From Our Hands &nbsp;·&nbsp; To Yours )
-        </p>
+          {/* Subtitle */}
+          <p className="font-sans text-[0.7rem] md:text-[0.75rem] tracking-[0.3em] text-[#C9AA6B]/80 uppercase mb-6 text-center">
+            ( From Our Hands &nbsp;·&nbsp; To Yours )
+          </p>
 
-        {/* Full Brand Name Display */}
-        <div className="flex flex-col items-center justify-center text-center select-none mb-10 max-w-[1200px] w-full px-4">
-          <h2
-            className="font-display font-medium uppercase text-center leading-[1.15] m-0 tracking-[0.12em] md:tracking-[0.22em] text-[#C9AA6B]"
-            style={{
-              fontSize: 'clamp(1.6rem, 4.8vw, 4rem)',
-            }}
-          >
-            Ghadsiram Banwarilal
-          </h2>
-          <div className="flex items-center justify-center gap-4 mt-3 md:mt-4 w-full max-w-[420px]">
-            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#C9AA6B]/50" />
-            <span
-              className="font-display font-normal text-center text-[#FAF4EE] tracking-[0.28em] md:tracking-[0.38em] uppercase"
+          {/* Full Brand Signature Display */}
+          <div className="flex flex-col items-center justify-center text-center select-none mb-10 max-w-[1200px] w-full px-4">
+            <h2
+              className="font-signature font-normal text-center leading-[1.15] m-0 text-[#C9AA6B] tracking-normal drop-shadow-[0_4px_30px_rgba(201,170,107,0.35)] transition-all duration-700 hover:scale-[1.02]"
               style={{
-                fontSize: 'clamp(0.85rem, 1.8vw, 1.3rem)',
+                fontSize: 'clamp(2.8rem, 7.5vw, 6.2rem)',
+                fontFamily: "'Alex Brush', 'Allura', 'Great Vibes', cursive",
               }}
             >
-              &amp; Sons
-            </span>
-            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#C9AA6B]/50" />
+              Ghadsiram Banwarilal
+            </h2>
+            <div className="flex items-center justify-center gap-4 mt-1 md:mt-2 w-full max-w-[420px]">
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#C9AA6B]/60 to-[#C9AA6B]" />
+              <span
+                className="font-signature font-normal text-center text-[#FAF4EE] tracking-wide"
+                style={{
+                  fontSize: 'clamp(2rem, 4.5vw, 3.4rem)',
+                  fontFamily: "'Alex Brush', 'Allura', 'Great Vibes', cursive",
+                }}
+              >
+                &amp; Sons
+              </span>
+              <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#C9AA6B]/60 to-[#C9AA6B]" />
+            </div>
           </div>
-        </div>
 
-        {/* Shop Button */}
-        <a
-          href="/shop"
-          onClick={(e) => { e.preventDefault(); onNavigate('shop'); }}
-          className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-sans text-xs md:text-sm font-semibold tracking-wide no-underline shadow-lg hover:brightness-105 transition-all cursor-pointer"
-          style={{ background: '#C9AA6B', color: '#0D0A08' }}
-        >
-          <span>Shop the collection</span>
-          <span className="text-base leading-none">→</span>
-        </a>
+          {/* Shop Button */}
+          <a
+            href="/shop"
+            onClick={(e) => { e.preventDefault(); onNavigate('shop'); }}
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-sans text-xs md:text-sm font-semibold tracking-wide no-underline shadow-lg hover:brightness-105 hover:scale-105 transition-all cursor-pointer"
+            style={{ background: '#C9AA6B', color: '#0D0A08' }}
+          >
+            <span>Shop the collection</span>
+            <span className="text-base leading-none">→</span>
+          </a>
 
-        {/* Darker bottom divider line */}
-        <div className="w-full h-[2px] bg-[#2E231A] mt-16" />
-      </section>
+          {/* Darker bottom divider line */}
+          <div className="w-full h-[2px] bg-[#2E231A] mt-16" />
+        </section>
+      </ScrollReveal>
 
       {/* Styled Footer */}
       <Footer onBrandClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} onNavigate={onNavigate} noBorder={true} />

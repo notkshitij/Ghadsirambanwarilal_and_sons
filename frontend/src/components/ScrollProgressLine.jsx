@@ -1,43 +1,59 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function ScrollProgressLine({ segmentCount = 4 }) {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentProgress, setCurrentProgress] = useState(0);
+  const targetProgressRef = useRef(0);
+  const currentProgressRef = useRef(0);
+  const reqIdRef = useRef(null);
 
   useEffect(() => {
-    let ticking = false;
+    const computeTargetProgress = () => {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
+      const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+      const clientHeight = window.innerHeight || document.documentElement.clientHeight;
+      const totalScroll = scrollHeight - clientHeight;
 
-    const updateProgress = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll <= 0) {
-        setScrollProgress(0);
+        targetProgressRef.current = 0;
       } else {
-        const currentScroll = window.scrollY || document.documentElement.scrollTop;
-        const progress = Math.min(Math.max(currentScroll / totalScroll, 0), 1);
-        setScrollProgress(progress);
-      }
-      ticking = false;
-    };
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateProgress);
-        ticking = true;
+        targetProgressRef.current = Math.min(Math.max(scrollY / totalScroll, 0), 1);
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll, { passive: true });
-    updateProgress();
+    // Smooth 60fps / 120fps GPU Lerp Loop
+    const tick = () => {
+      const diff = targetProgressRef.current - currentProgressRef.current;
+      if (Math.abs(diff) > 0.0001) {
+        currentProgressRef.current += diff * 0.12;
+        setCurrentProgress(currentProgressRef.current);
+      } else if (currentProgressRef.current !== targetProgressRef.current) {
+        currentProgressRef.current = targetProgressRef.current;
+        setCurrentProgress(targetProgressRef.current);
+      }
+      reqIdRef.current = requestAnimationFrame(tick);
+    };
+
+    computeTargetProgress();
+    currentProgressRef.current = targetProgressRef.current;
+    setCurrentProgress(targetProgressRef.current);
+
+    reqIdRef.current = requestAnimationFrame(tick);
+
+    window.addEventListener('scroll', computeTargetProgress, { passive: true });
+    window.addEventListener('resize', computeTargetProgress, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
+      if (reqIdRef.current) {
+        cancelAnimationFrame(reqIdRef.current);
+      }
+      window.removeEventListener('scroll', computeTargetProgress);
+      window.removeEventListener('resize', computeTargetProgress);
     };
   }, []);
 
   return (
     <div 
-      className="fixed bottom-4 md:bottom-5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-[650px] z-40 pointer-events-none select-none flex items-center gap-2.5 md:gap-3.5"
+      className="fixed bottom-4 md:bottom-5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-[620px] z-40 pointer-events-none select-none flex items-center gap-2 md:gap-3"
       aria-hidden="true"
     >
       {Array.from({ length: segmentCount }).map((_, idx) => {
@@ -45,20 +61,27 @@ export default function ScrollProgressLine({ segmentCount = 4 }) {
         const segEnd = (idx + 1) / segmentCount;
         
         let fill = 0;
-        if (scrollProgress >= segEnd) {
+        if (currentProgress >= segEnd) {
           fill = 1;
-        } else if (scrollProgress > segStart) {
-          fill = (scrollProgress - segStart) / (segEnd - segStart);
+        } else if (currentProgress > segStart) {
+          fill = (currentProgress - segStart) / (segEnd - segStart);
         }
+
+        const isCurrentActive = currentProgress > segStart && currentProgress < segEnd;
 
         return (
           <div 
             key={idx} 
-            className="flex-1 h-[2px] md:h-[2.5px] bg-[#221C17]/90 rounded-full overflow-hidden relative shadow-[0_2px_6px_rgba(0,0,0,0.8)] border border-[#C9AA6B]/15"
+            className="flex-1 h-[2px] md:h-[2.5px] bg-[#1C1611]/90 rounded-full overflow-hidden relative border border-[#C9AA6B]/15 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
           >
+            {/* GPU Accelerated Smooth ScaleX Fill */}
             <div 
-              className="h-full bg-gradient-to-r from-[#C9AA6B] via-[#E5C989] to-[#C9AA6B] rounded-full transition-[width] duration-500 ease-out shadow-[0_0_8px_rgba(201,170,107,0.7)]"
-              style={{ width: `${fill * 100}%` }}
+              className={`h-full w-full bg-gradient-to-r from-[#C9AA6B] via-[#EADBBA] to-[#C9AA6B] rounded-full origin-left will-change-transform ${
+                isCurrentActive ? 'shadow-[0_0_10px_rgba(201,170,107,0.8)]' : ''
+              }`}
+              style={{ 
+                transform: `scaleX(${fill})`,
+              }}
             />
           </div>
         );

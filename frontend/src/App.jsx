@@ -42,7 +42,7 @@ export default function App() {
   const getPageFromPath = () => {
     const path = window.location.pathname;
     if (path === '/' || path === '') return 'home';
-    if (path === '/shop') return 'shop';
+    if (path === '/shop' || path.startsWith('/category/')) return 'shop';
     if (path.startsWith('/product/')) return 'product';
     if (path === '/cart') return 'cart';
     if (path === '/appointment') return 'appointment';
@@ -58,6 +58,19 @@ export default function App() {
     if (path === '/adminpage') return 'admin';
     return 'notFound';
   };
+
+  const getCategoryFromPath = () => {
+    const path = window.location.pathname;
+    if (path.startsWith('/category/')) {
+      const slug = path.replace('/category/', '').toLowerCase();
+      if (slug === 'necklaces' || slug === 'necklace') return 'Necklaces';
+      if (slug === 'bracelets' || slug === 'bracelet') return 'Bracelets';
+      if (slug === 'hair-clips' || slug === 'hairclips' || slug === 'hair_clips') return 'Hair Clips';
+    }
+    return 'All';
+  };
+
+  const [selectedCategory, setSelectedCategory] = useState(getCategoryFromPath);
 
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return localStorage.getItem('isLoggedIn') === 'true';
@@ -120,6 +133,7 @@ export default function App() {
     const handlePopState = () => {
       const targetPage = getPageFromPath();
       setCurrentPage(targetPage);
+      setSelectedCategory(getCategoryFromPath());
       if (['product', 'about', 'contact'].includes(targetPage)) {
         triggerPageLoader(1200);
       }
@@ -128,12 +142,32 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const handleNavigate = (page, productId = null) => {
+  const handleNavigate = (page, param = null) => {
     let path;
     if (page === 'home') {
       path = '/';
-    } else if (page === 'product' && productId) {
-      path = `/product/${productId}`;
+      setSelectedCategory('All');
+    } else if (page === 'product' && param) {
+      path = `/product/${param}`;
+    } else if (page === 'category' && param) {
+      if (param === 'All') {
+        path = '/shop';
+        setSelectedCategory('All');
+      } else {
+        const slug = param.toLowerCase().replace(/\s+/g, '-');
+        path = `/category/${slug}`;
+        setSelectedCategory(param);
+      }
+      page = 'shop';
+    } else if (page === 'shop') {
+      if (param && param !== 'All') {
+        const slug = param.toLowerCase().replace(/\s+/g, '-');
+        path = `/category/${slug}`;
+        setSelectedCategory(param);
+      } else {
+        path = '/shop';
+        setSelectedCategory('All');
+      }
     } else {
       path = `/${page}`;
     }
@@ -170,12 +204,16 @@ export default function App() {
 
   // Dynamically update document title based on current page
   useEffect(() => {
+    const shopTitle = selectedCategory && selectedCategory !== 'All' 
+      ? `${selectedCategory} | Ghadsiram's` 
+      : "The Collection | Ghadsiram's";
+
     const titles = {
       home: "Ghadsiram's | Fine Signature Jewellery Jaipur",
-      shop: "The Collection | Ghadsiram's",
+      shop: shopTitle,
       cart: "Shopping Bag | Ghadsiram's",
       contact: "Studio & Contact | Ghadsiram's",
-      about: "Heritage & Craft | Ghadsiram's",
+      about: "About Us | Ghadsiram's",
       appointment: "Private Appointment | Ghadsiram's",
       'care-guide': "Jewellery Care Guide | Ghadsiram's",
       'size-guide': "Size Guide | Ghadsiram's",
@@ -191,7 +229,7 @@ export default function App() {
     if (currentPage !== 'product') {
       document.title = titles[currentPage] || "Ghadsiram's | Fine Signature Jewellery";
     }
-  }, [currentPage]);
+  }, [currentPage, selectedCategory]);
 
   useEffect(() => {
     if (!isDesktop) {
@@ -225,6 +263,8 @@ export default function App() {
           <ShopPage 
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
+            initialCategory={selectedCategory}
+            onSelectCategory={(cat) => handleNavigate(cat === 'All' ? 'shop' : 'category', cat)}
           />
         ) : currentPage === 'product' ? (
           <ProductDetailsPage 
