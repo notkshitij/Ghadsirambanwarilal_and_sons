@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Great+Vibes&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -19,6 +19,7 @@
   --font-cormorant: "Cormorant Garamond", serif;
   --font-sans: "Outfit", sans-serif;
   --font-script: "Great Vibes", cursive;
+  --font-signature: "Alex Brush", "Allura", "Great Vibes", cursive;
 
   /* Custom staggered animations */
   --animate-logo-fade-in: logo-fade-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -690,6 +691,51 @@ html.lenis, html.lenis body {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+.font-signature {
+  font-family: 'Alex Brush', 'Allura', 'Great Vibes', cursive;
+}
+
+@keyframes signature-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.92);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 0.85;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-signature-reveal {
+  animation: signature-reveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
 }
 
 
