@@ -29,20 +29,35 @@ import diff7_2 from '../assets/Product Image/diff product 7/diff_product_2.png';
 import diff7_3 from '../assets/Product Image/diff product 7/diff_product_3.png';
 import diff7_4 from '../assets/Product Image/diff product 7/diff_product_4.png';
 
+import diff8_1 from '../assets/Product Image/diff product 8/diff_product_1.png';
+import diff8_2 from '../assets/Product Image/diff product 8/diff_product_2.png';
+import diff8_3 from '../assets/Product Image/diff product 8/diff_product_3.png';
+import diff8_4 from '../assets/Product Image/diff product 8/diff_product_4.png';
+
+import diff9_1 from '../assets/Product Image/diff product 9/diff_product_1.png';
+import diff9_2 from '../assets/Product Image/diff product 9/diff_product_2.png';
+import diff9_3 from '../assets/Product Image/diff product 9/diff_product_3.png';
+
+import diff10_1 from '../assets/Product Image/diff product 10/diff_product_1.png';
+import diff10_2 from '../assets/Product Image/diff product 10/diff_product_2.png';
+import diff10_3 from '../assets/Product Image/diff product 10/diff_product_3.png';
+import diff10_4 from '../assets/Product Image/diff product 10/diff_product_4.png';
+import diff10_5 from '../assets/Product Image/diff product 10/diff_product_5.png';
+
 export const INITIAL_PRODUCTS = [
   {
     id: 'mayur-meenakari-polki-pendant',
-    name: 'Mayur Meenakari Polki & Pearl Pendant',
-    price: 56650,
-    originalPrice: 72000,
+    name: 'Mayur pendant',
+    price: 75000,
+    originalPrice: 95000,
     stock: 18,
     image: diff3,
     images: [diff3, diff4, diff1, diff2],
     category: 'Polki & Kundan',
     subcategory: 'Necklaces',
-    description: 'An exquisite handcrafted peacock motif pendant with delicate pearl tassel, vivid meenakari enamel artistry, fine uncut polki, and rich gemstone accents.',
-    materials: 'Handcrafted in 24K gold finish with uncut polki diamonds, vivid meenakari enamel, and cultured pearls.',
-    care: 'Store separately in the suede pouch provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
+    description: 'An exquisite handcrafted peacock motif pendant with delicate pearl tassel, fine uncut polki, and rich gemstone accents.',
+    materials: 'Handcrafted in 24K gold finish with uncut polki diamonds and cultured pearls.',
+    care: 'Store separately in jewellery box with bubble paper provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
     specs: {
       'Gold': '1.5gm (approx)',
       'Colour stones': '30 carats',
@@ -51,16 +66,58 @@ export const INITIAL_PRODUCTS = [
     }
   },
   {
+    id: 'budroom-hair-clips',
+    name: 'Budroom hair clips',
+    price: 50000,
+    originalPrice: 65000,
+    stock: 12,
+    image: diff8_1,
+    images: [diff8_1, diff8_2, diff8_3, diff8_4],
+    category: 'Polki & Kundan',
+    subcategory: 'Hair Clips',
+    description: 'An opulent handcrafted pair of Budroom hair clips encrusted with brilliant uncut polki diamonds, vivid ruby and emerald colour stones, and delicate pearl tassels.',
+    materials: 'Handcrafted in fine gold finish with uncut polki diamonds, rich colour stones, and cultured seed pearls.',
+    care: 'Store separately in jewellery box with bubble paper provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
+    specs: {
+      'Gold': '1 - 1.5 grams approx',
+      'Polki': '3.5 carats',
+      'Colour stones': '2 carats',
+      'Pearls': '10 carats',
+      'Unit': 'Pair'
+    }
+  },
+  {
+    id: 'shahi-nakshi-hair-clips',
+    name: 'Shahi nakshi hair clips',
+    price: 45000,
+    originalPrice: 60000,
+    stock: 10,
+    image: diff9_1,
+    images: [diff9_1, diff9_2, diff9_3],
+    category: 'Polki & Kundan',
+    subcategory: 'Hair Clips',
+    description: 'Regal crescent moon handcrafted Shahi nakshi hair clips adorned with fine uncut polki, vibrant multi-gemstone teardrops, and cascading seed pearls.',
+    materials: 'Handcrafted in fine gold finish with uncut polki diamonds, vivid multi-color stones, and cultured seed pearls.',
+    care: 'Store separately in jewellery box with bubble paper provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
+    specs: {
+      'Gold': '1.5 grams approx',
+      'Polki': '0.20 carats',
+      'Colour stones': '3 carats',
+      'Pearls': '15 carats',
+      'Unit': 'Pair'
+    }
+  },
+  {
     id: 'padma-meenakari-ruby-pendant',
-    name: 'Padma Meenakari Ruby & Pearl Pendant',
-    price: 41200,
-    originalPrice: 58000,
+    name: 'Padma Ruby & Pearl Pendant',
+    price: 55000,
+    originalPrice: 72000,
     stock: 15,
     image: diff2_4,
     images: [diff2_4, diff2_2, diff2_1, diff2_3],
     category: 'Polki & Kundan',
     subcategory: 'Necklaces',
-    description: 'A regal handcrafted black meenakari leaf pendant studded with uncut polki, rubies, and strung with ruby beads and a south sea pearl tassel.',
+    description: 'A regal handcrafted black leaf pendant studded with uncut polki, rubies, and strung with ruby beads and a south sea pearl tassel.',
     materials: 'Crafted in fine gold finish with uncut polki diamonds, natural rubies, and south sea pearl tassel.',
     care: 'Store separately in the pouch provided. Avoid contact with perfume, moisture, and water.',
     specs: {
@@ -101,6 +158,7 @@ export const INITIAL_PRODUCTS = [
     images: [diff7_1, diff7_2, diff7_3, diff7_4],
     category: 'Polki & Kundan',
     subcategory: 'Bracelets',
+    sizes: ['2.6'],
     description: 'A traditional royal pounchi bracelet handcrafted in authentic Irani Firoza (Turquoise) with floral gold framing, ruby accents, and embossed gold back artistry.',
     materials: 'Authentic Irani Firoza (Turquoise) with 22K gold framing, ruby centers, and gold floral embossed reverse.',
     care: 'Protect from hard surfaces, perfumes, and direct water exposure. Store in velvet jewelry case.',
@@ -108,7 +166,7 @@ export const INITIAL_PRODUCTS = [
       'Gold': '1.7 gms approx',
       'Colour stones': '20 carats',
       'Material': 'Authentic Irani Firoza',
-      'Size': 'Free Size (Adjustable)'
+      'Size': '2.6'
     }
   },
   {
@@ -158,26 +216,48 @@ export const INITIAL_PRODUCTS = [
     category: 'Polki & Kundan',
     subcategory: 'Necklaces',
     materials: 'Heritage navratna gemstones set with jadau polki craftsmanship in rich gold framing.',
-    care: 'Avoid moisture, perfumes, and chemical cleaners. Store in original box.',
+    care: 'Store separately in jewellery box with bubble paper provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
     specs: {
       'Gold': '14-15 gram (approx)',
       'Polki': '8 carats',
       'Stones': '65 carats'
     }
   },
+  {
+    id: 'indrani-mango-detachable-necklace',
+    name: 'Indrani mango ditachable necklace',
+    price: 420000,
+    originalPrice: 540000,
+    stock: 5,
+    image: diff10_1,
+    images: [diff10_1, diff10_3, diff10_4, diff10_5, diff10_2],
+    category: 'Polki & Kundan',
+    subcategory: 'Necklaces',
+    description: 'An opulent royal bridal mango motif multi-way detachable necklace handcrafted in rich yellow gold with brilliant uncut polki diamonds, lustrous south sea pearls, and ornate traditional nakshi engraved backside.',
+    materials: 'Handcrafted in fine gold finish with uncut polki diamonds, cultured south sea pearls, and silk dori.',
+    care: 'Store separately in jewellery box with bubble paper provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
+    specs: {
+      'Gold': '14 grams approx',
+      'Polki': '36 carats',
+      'Pearls': '60 carats'
+    }
+  },
 ];
 
-export const INITIAL_CATEGORIES = ['Necklaces', 'Bracelets'];
+export const INITIAL_CATEGORIES = ['Necklaces', 'Bracelets', 'Hair Clips'];
 
 // Image asset map for default product fallback
 const DEFAULT_IMAGE_MAP = {
   'mayur-meenakari-polki-pendant': { image: diff3, images: [diff3, diff4, diff1, diff2] },
+  'budroom-hair-clips': { image: diff8_1, images: [diff8_1, diff8_2, diff8_3, diff8_4] },
+  'shahi-nakshi-hair-clips': { image: diff9_1, images: [diff9_1, diff9_2, diff9_3] },
   'padma-meenakari-ruby-pendant': { image: diff2_4, images: [diff2_4, diff2_2, diff2_1, diff2_3] },
   'the-golden-eagle-pendant': { image: diff6_1, images: [diff6_1, diff6_2, diff6_3] },
   'turquoise-pounchi-bracelet': { image: diff7_1, images: [diff7_1, diff7_2, diff7_3, diff7_4] },
   'royal-chandrika-necklace': { image: diff3_1, images: [diff3_1, diff3_2] },
   'aranya-navratna-pendant': { image: diff4_1, images: [diff4_1, diff4_2] },
   'navaratna-splendor-choker': { image: diff5_1, images: [diff5_1, diff5_2, diff5_3] },
+  'indrani-mango-detachable-necklace': { image: diff10_1, images: [diff10_1, diff10_3, diff10_4, diff10_5, diff10_2] },
 };
 
 export const getStoredProducts = () => {
@@ -187,13 +267,46 @@ export const getStoredProducts = () => {
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed) || parsed.length === 0) return INITIAL_PRODUCTS;
 
-    // Rehydrate default product images if needed
-    return parsed.map((p) => {
-      if (DEFAULT_IMAGE_MAP[p.id] && (!p.image || typeof p.image === 'object')) {
+    // Check if new default items need to be merged into stored products
+    let list = [...parsed];
+    const budroomInInit = INITIAL_PRODUCTS.find((p) => p.id === 'budroom-hair-clips');
+    if (budroomInInit && !list.some((p) => p.id === 'budroom-hair-clips')) {
+      list.splice(1, 0, budroomInInit);
+    }
+    const shahiInInit = INITIAL_PRODUCTS.find((p) => p.id === 'shahi-nakshi-hair-clips');
+    if (shahiInInit && !list.some((p) => p.id === 'shahi-nakshi-hair-clips')) {
+      list.splice(2, 0, shahiInInit);
+    }
+    const indraniInInit = INITIAL_PRODUCTS.find((p) => p.id === 'indrani-mango-detachable-necklace');
+    if (indraniInInit && !list.some((p) => p.id === 'indrani-mango-detachable-necklace')) {
+      list.push(indraniInInit);
+    }
+
+    // Rehydrate default product images, prices, names, and sizes if needed
+    return list.map((p) => {
+      const initMatch = INITIAL_PRODUCTS.find((init) => init.id === p.id);
+      if (initMatch) {
         return {
           ...p,
-          image: p.image || DEFAULT_IMAGE_MAP[p.id].image,
-          images: p.images && p.images.length > 0 ? p.images : DEFAULT_IMAGE_MAP[p.id].images,
+          name: p.id === 'mayur-meenakari-polki-pendant' && (p.name === 'Mayur' || p.name?.toLowerCase().includes('meenakari') || !p.name)
+            ? initMatch.name 
+            : (p.name?.toLowerCase().includes('meenakari') || !p.name ? initMatch.name : p.name),
+          description: p.description?.toLowerCase().includes('meenakari') ? initMatch.description : p.description,
+          materials: p.materials?.toLowerCase().includes('meenakari') ? initMatch.materials : p.materials,
+          price: (p.id === 'mayur-meenakari-polki-pendant' && (p.price === 56650 || !p.price)) ||
+                 (p.id === 'padma-meenakari-ruby-pendant' && (p.price === 41200 || !p.price))
+                 ? initMatch.price : (p.price || initMatch.price),
+          originalPrice: (p.id === 'mayur-meenakari-polki-pendant' && (p.originalPrice === 72000 || !p.originalPrice)) ||
+                         (p.id === 'padma-meenakari-ruby-pendant' && (p.originalPrice === 58000 || !p.originalPrice))
+                         ? initMatch.originalPrice : (p.originalPrice || initMatch.originalPrice),
+          image: p.image || initMatch.image,
+          images: p.images && p.images.length > 0 ? p.images : initMatch.images,
+          sizes: p.sizes || initMatch.sizes,
+          care: p.care?.includes('suede pouch') ? initMatch.care : (p.care || initMatch.care),
+          specs: {
+            ...p.specs,
+            ...(p.id === 'turquoise-pounchi-bracelet' ? { Size: '2.6' } : {})
+          }
         };
       }
       return p;
