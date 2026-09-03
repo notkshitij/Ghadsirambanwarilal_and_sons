@@ -36,15 +36,21 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
     }
   };
 
+  const getSizesForProduct = (prod) => {
+    if (!prod) return [];
+    if (Array.isArray(prod.sizes) && prod.sizes.length > 0) return prod.sizes;
+    return getSizesForType(getProductType(prod));
+  };
+
   const productType = getProductType(product);
-  const sizes = getSizesForType(productType);
+  const sizes = getSizesForProduct(product);
 
   useEffect(() => {
     if (product) {
       document.title = `${product.name} | Ghadsiram's`;
       setActiveImage(product.image);
       setQty(1);
-      const szs = getSizesForType(getProductType(product));
+      const szs = getSizesForProduct(product);
       setSelectedSize(szs[0] || '');
     } else {
       document.title = "Product Not Found | Ghadsiram's";
@@ -227,17 +233,6 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
             {/* Divider */}
             <div className="w-full h-[1px] bg-[#1E1812]" />
 
-            {/* Materials / Specs */}
-            {(product.materials || product.specs) && (
-              <div>
-                <p className="font-sans text-[0.65rem] font-semibold tracking-[0.22em] text-[#C9AA6B] uppercase mb-2">
-                  Materials
-                </p>
-                <p className="font-sans text-sm font-light text-[#7A6A58] leading-[1.7] m-0">
-                  {product.materials || (product.specs ? Object.entries(product.specs).map(([k, v]) => `${k}: ${v}`).join(' · ') : '')}
-                </p>
-              </div>
-            )}
 
             {/* Care */}
             <div>
@@ -245,7 +240,7 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
                 Care
               </p>
               <p className="font-sans text-sm font-light text-[#7A6A58] leading-[1.7] m-0">
-                {product.care || 'Store separately in the pouch provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.'}
+                {product.care || 'Store separately in jewellery box with bubble paper provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.'}
               </p>
             </div>
 

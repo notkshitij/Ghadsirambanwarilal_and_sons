@@ -100,8 +100,8 @@ export default function AdminPage({ onNavigate }) {
     setFormData({
       ...initialFormState,
       subcategory: categories[0] || 'Necklaces',
-      materials: 'Handcrafted in 24K gold finish with uncut polki diamonds, vivid meenakari enamel, and cultured pearls.',
-      care: 'Store separately in the suede pouch provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
+      materials: 'Handcrafted in 24K gold finish with uncut polki diamonds and cultured pearls.',
+      care: 'Store separately in jewellery box with bubble paper provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
       image: defaultImg,
       images: [defaultImg],
     });
@@ -254,6 +254,7 @@ export default function AdminPage({ onNavigate }) {
       care: formData.care || '',
       image: finalImages[0],
       images: finalImages,
+      sizes: cleanSpecs['Size'] ? [cleanSpecs['Size']] : undefined,
       specs: cleanSpecs,
     };
 
@@ -701,7 +702,7 @@ export default function AdminPage({ onNavigate }) {
                         rows="2"
                         value={formData.materials}
                         onChange={(e) => setFormData({ ...formData, materials: e.target.value })}
-                        placeholder="e.g. Handcrafted in 24K gold finish with uncut polki diamonds, vivid meenakari enamel, and cultured pearls."
+                        placeholder="e.g. Handcrafted in 24K gold finish with uncut polki diamonds and cultured pearls."
                         className="w-full px-4 py-2.5 rounded-xl bg-[#0D0A08] border border-[#2E231A] text-xs text-[#FAF4EE] outline-none focus:border-[#C9AA6B]"
                       />
                     </div>
