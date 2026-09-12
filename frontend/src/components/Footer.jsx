@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { supabase } from '../lib/supabaseClient';
 
 export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
+  const [statusMessage, setStatusMessage] = useState('');
+  const statusTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (statusTimerRef.current) {
+        clearTimeout(statusTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleBrandClick = () => {
     if (onBrandClick) {
@@ -18,9 +31,50 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
     if (onNavigate) onNavigate(page);
   };
 
-  const handleEmailSubmit = (e) => {
+  const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    setEmail('');
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus('');
+    setStatusMessage('');
+
+    if (statusTimerRef.current) {
+      clearTimeout(statusTimerRef.current);
+    }
+
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscribers')
+        .insert([{ email: trimmedEmail }]);
+
+      if (error) {
+        // Handle Postgres unique constraint error (already subscribed)
+        if (error.code === '23505' || error.message?.toLowerCase().includes('unique') || error.message?.toLowerCase().includes('duplicate')) {
+          setSubmitStatus('success');
+          setStatusMessage("You're already on the list!");
+          setEmail('');
+        } else {
+          setSubmitStatus('error');
+          setStatusMessage('Something went wrong, please try again.');
+        }
+      } else {
+        setSubmitStatus('success');
+        setStatusMessage("You're on the list! ✓");
+        setEmail('');
+      }
+    } catch (err) {
+      console.error('Newsletter subscription error:', err);
+      setSubmitStatus('error');
+      setStatusMessage('Something went wrong, please try again.');
+    } finally {
+      setIsSubmitting(false);
+      statusTimerRef.current = setTimeout(() => {
+        setSubmitStatus('');
+        setStatusMessage('');
+      }, 4000);
+    }
   };
 
   return (
@@ -110,22 +164,34 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
             <input
               type="email"
               value={email}
+              disabled={isSubmitting}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email address"
-              className="flex-1 bg-transparent border-none outline-none text-[0.82rem] text-[#D9C8B4] placeholder-[#5A4C3D] px-3 py-2 font-light min-w-0"
+              className="flex-1 bg-transparent border-none outline-none text-[0.82rem] text-[#D9C8B4] placeholder-[#5A4C3D] px-3 py-2 font-light min-w-0 disabled:opacity-50"
               required
             />
             <button
               type="submit"
-              className="px-5 py-2 text-[0.78rem] font-semibold tracking-[0.14em] uppercase rounded-full cursor-pointer border-none shrink-0"
+              disabled={isSubmitting}
+              className="px-5 py-2 text-[0.78rem] font-semibold tracking-[0.14em] uppercase rounded-full cursor-pointer border-none shrink-0 transition-opacity disabled:opacity-60 flex items-center justify-center min-w-[64px]"
               style={{ background: '#C9AA6B', color: '#0D0A08' }}
             >
-              Join
+              {isSubmitting ? '...' : 'Join'}
             </button>
           </form>
-          <p className="text-[0.75rem] font-light text-[#5A4C3D] m-0 leading-[1.6]">
-            Subscribe for new arrivals and exclusive offers.
-          </p>
+          {submitStatus ? (
+            <p
+              className={`text-[0.75rem] font-light m-0 leading-[1.6] transition-colors ${
+                submitStatus === 'success' ? 'text-[#C9AA6B]' : 'text-red-400'
+              }`}
+            >
+              {statusMessage}
+            </p>
+          ) : (
+            <p className="text-[0.75rem] font-light text-[#5A4C3D] m-0 leading-[1.6]">
+              Subscribe for new arrivals and exclusive offers.
+            </p>
+          )}
 
           {/* Social Links */}
           <div className="flex items-center gap-4 mt-2">
