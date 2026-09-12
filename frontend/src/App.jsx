@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ReactLenis } from 'lenis/react';
 import 'lenis/dist/lenis.css';
+import { supabase } from './lib/supabaseClient';
 import LandingPage from './components/LandingPage';
 import CartPage from './components/CartPage';
 import CartToast from './components/CartToast';
@@ -21,7 +22,7 @@ import CookiePolicyPage from './components/CookiePolicyPage';
 import AdminPage from './components/AdminPage';
 import PageLoader from './components/PageLoader';
 import SplashScreen from './components/SplashScreen';
-
+import CompleteProfilePage from './components/CompleteProfilePage';
 
 function useDesktopCart() {
   const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 768);
@@ -55,7 +56,7 @@ export default function App() {
     if (path === '/login') return 'login';
     if (path === '/about') return 'about';
     if (path === '/profile') return 'profile';
-    if (path === '/adminpage') return 'admin';
+    if (path === '/sons') return 'admin';
     return 'notFound';
   };
 
@@ -71,26 +72,88 @@ export default function App() {
   };
 
   const [selectedCategory, setSelectedCategory] = useState(getCategoryFromPath);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isProfileComplete, setIsProfileComplete] = useState(null);
+  const [isAuthReady, setIsAuthReady] = useState(false);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return localStorage.getItem('isLoggedIn') === 'true';
-  });
+  const checkProfileCompleteness = async (userId) => {
+    if (!userId) return false;
+    try {
+      const [profileRes, addressesRes] = await Promise.all([
+        supabase.from('profiles').select('phone').eq('id', userId).maybeSingle(),
+        supabase.from('addresses').select('id').eq('user_id', userId).limit(1),
+      ]);
+
+      const hasPhone = Boolean(profileRes.data?.phone && profileRes.data.phone.trim().length > 0);
+      const hasAddress = Boolean(addressesRes.data && addressesRes.data.length > 0);
+
+      return hasPhone && hasAddress;
+    } catch (err) {
+      console.error('Error verifying profile completeness:', err);
+      return false;
+    }
+  };
+
+  const evaluateSession = async (session) => {
+    if (session?.user) {
+      setIsLoggedIn(true);
+      localStorage.setItem('isLoggedIn', 'true');
+      const complete = await checkProfileCompleteness(session.user.id);
+      setIsProfileComplete(complete);
+    } else {
+      setIsLoggedIn(false);
+      localStorage.removeItem('isLoggedIn');
+      setIsProfileComplete(null);
+    }
+    setIsAuthReady(true);
+    window.dispatchEvent(new CustomEvent('auth-change'));
+  };
 
   useEffect(() => {
+    // Initial session check
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      evaluateSession(session);
+    });
+
+    // Subscribe to auth state changes (login, logout, OAuth redirect)
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      evaluateSession(session);
+    });
+
     const checkLogin = () => {
       setIsLoggedIn(localStorage.getItem('isLoggedIn') === 'true');
     };
-    checkLogin();
+
     window.addEventListener('storage', checkLogin);
     window.addEventListener('auth-change', checkLogin);
+
     return () => {
+      subscription?.unsubscribe();
       window.removeEventListener('storage', checkLogin);
       window.removeEventListener('auth-change', checkLogin);
     };
   }, []);
 
-  const handleLogout = () => {
+  const handleProfileCompleted = async () => {
+    setIsProfileComplete(true);
+    const redirectTarget = sessionStorage.getItem('postLoginRedirect');
+    if (redirectTarget) {
+      sessionStorage.removeItem('postLoginRedirect');
+      handleNavigate(redirectTarget);
+    } else if (currentPage === 'login' || currentPage === 'home') {
+      handleNavigate('shop');
+    } else {
+      handleNavigate(currentPage);
+    }
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     localStorage.removeItem('isLoggedIn');
+    setIsLoggedIn(false);
+    setIsProfileComplete(null);
     window.dispatchEvent(new CustomEvent('auth-change'));
     handleNavigate('home');
   };
@@ -116,126 +179,73 @@ export default function App() {
     }, duration);
   };
 
-  const handleCheckout = () => {
-    setIsCartDrawerOpen(false);
-    triggerPageLoader(1300, () => {
-      if (localStorage.getItem('isLoggedIn') === 'true') {
-        alert('Proceeding to checkout! Thank you for choosing Ghadsiram.');
-      } else {
-        sessionStorage.setItem('postLoginRedirect', 'cart');
-        handleNavigate('login');
-      }
-    });
-  };
-
-  // Synchronize state with history back/forward navigation
   useEffect(() => {
     const handlePopState = () => {
-      const targetPage = getPageFromPath();
-      setCurrentPage(targetPage);
+      const page = getPageFromPath();
+      setCurrentPage(page);
       setSelectedCategory(getCategoryFromPath());
-      if (['product', 'about', 'contact'].includes(targetPage)) {
-        triggerPageLoader(1200);
+      if (page !== 'home') {
+        setShowSplash(false);
       }
+      window.scrollTo(0, 0);
     };
+
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const handleNavigate = (page, param = null) => {
-    let path;
-    if (page === 'home') {
-      path = '/';
-      setSelectedCategory('All');
-    } else if (page === 'product' && param) {
-      path = `/product/${param}`;
-    } else if (page === 'category' && param) {
-      if (param === 'All') {
-        path = '/shop';
-        setSelectedCategory('All');
-      } else {
-        const slug = param.toLowerCase().replace(/\s+/g, '-');
+  const handleNavigate = (page, category = 'All') => {
+    if (page === currentPage && category === selectedCategory) return;
+
+    triggerPageLoader(1000, () => {
+      let path = '/';
+      if (page === 'shop') path = '/shop';
+      else if (page === 'category') {
+        const slug = category.toLowerCase().replace(/\s+/g, '-');
         path = `/category/${slug}`;
-        setSelectedCategory(param);
       }
-      page = 'shop';
-    } else if (page === 'shop') {
-      if (param && param !== 'All') {
-        const slug = param.toLowerCase().replace(/\s+/g, '-');
-        path = `/category/${slug}`;
-        setSelectedCategory(param);
+      else if (page === 'cart') path = '/cart';
+      else if (page === 'appointment') path = '/appointment';
+      else if (page === 'privacy') path = '/privacy';
+      else if (page === 'terms') path = '/terms';
+      else if (page === 'cookies') path = '/cookie-policy';
+      else if (page === 'contact') path = '/contact';
+      else if (page === 'care-guide') path = '/care-guide';
+      else if (page === 'size-guide') path = '/size-guide';
+      else if (page === 'login') path = '/login';
+      else if (page === 'about') path = '/about';
+      else if (page === 'profile') path = '/profile';
+      else if (page === 'admin') path = '/sons';
+
+      window.history.pushState(null, '', path);
+      if (page === 'category') {
+        setCurrentPage('shop');
+        setSelectedCategory(category);
       } else {
-        path = '/shop';
-        setSelectedCategory('All');
+        setCurrentPage(page);
+        if (page === 'shop') {
+          setSelectedCategory(category);
+        }
       }
-    } else {
-      path = `/${page}`;
-    }
-    window.history.pushState(null, '', path);
-    setCurrentPage(page);
-
-    // Only show loader for Checkout, Product details, About Us, and Contact Us
-    if (['product', 'about', 'contact'].includes(page)) {
-      triggerPageLoader(1200);
-    }
-
-    // Scroll to top immediately on navigation
-    window.scrollTo(0, 0);
-    lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
-
-    setTimeout(() => {
+      setShowSplash(false);
       window.scrollTo(0, 0);
-      lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
-    }, 50);
+    });
   };
 
-  useEffect(() => {
-    // Scroll past header/hero smoothly when routing triggers on history pop state
-    window.scrollTo(0, 0);
-    lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
-
-    const timer = setTimeout(() => {
-      window.scrollTo(0, 0);
-      lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
-    }, 50);
-
-    return () => clearTimeout(timer);
-  }, [currentPage]);
-
-  // Dynamically update document title based on current page
-  useEffect(() => {
-    const shopTitle = selectedCategory && selectedCategory !== 'All' 
-      ? `${selectedCategory} | Ghadsiram's` 
-      : "The Collection | Ghadsiram's";
-
-    const titles = {
-      home: "Ghadsiram's | Fine Signature Jewellery Jaipur",
-      shop: shopTitle,
-      cart: "Shopping Bag | Ghadsiram's",
-      contact: "Studio & Contact | Ghadsiram's",
-      about: "About Us | Ghadsiram's",
-      appointment: "Private Appointment | Ghadsiram's",
-      'care-guide': "Jewellery Care Guide | Ghadsiram's",
-      'size-guide': "Size Guide | Ghadsiram's",
-      login: "Sign In & Account | Ghadsiram's",
-      profile: "Client Profile | Ghadsiram's",
-      privacy: "Privacy Policy | Ghadsiram's",
-      terms: "Terms & Conditions | Ghadsiram's",
-      cookies: "Cookie Policy | Ghadsiram's",
-      admin: "Admin Panel | Ghadsiram's",
-      notFound: "404 Page Not Found | Ghadsiram's",
-    };
-
-    if (currentPage !== 'product') {
-      document.title = titles[currentPage] || "Ghadsiram's | Fine Signature Jewellery";
+  const handleCheckout = () => {
+    setIsCartDrawerOpen(false);
+    
+    // If not logged in, redirect to login first and remember target
+    if (!isLoggedIn) {
+      sessionStorage.setItem('postLoginRedirect', 'cart');
+      handleNavigate('login');
+      return;
     }
-  }, [currentPage, selectedCategory]);
 
-  useEffect(() => {
-    if (!isDesktop) {
-      setIsCartDrawerOpen(false);
+    if (currentPage !== 'cart') {
+      handleNavigate('cart');
     }
-  }, [isDesktop]);
+  };
 
   const handleCartClick = () => {
     if (isDesktop) {
@@ -249,8 +259,20 @@ export default function App() {
   return (
     <ReactLenis root ref={lenisRef} options={{ lerp: 0.1, duration: 1.2, smoothWheel: true }}>
       <div className="w-full h-full min-h-screen relative">
-        {/* Page Switcher */}
-        {currentPage === 'cart' ? (
+        {/* Profile Completion Gate & Page Switcher */}
+        {!isAuthReady ? (
+          <div className="min-h-screen bg-[#0D0A08] flex flex-col items-center justify-center gap-4">
+            <div className="w-10 h-10 border-2 border-[#D4AF37] border-t-transparent rounded-full animate-spin" />
+            <p className="font-cormorant italic text-sm text-[#D4AF37] tracking-wider">
+              Entering the House of Ghadsiram...
+            </p>
+          </div>
+        ) : isLoggedIn && !isProfileComplete && currentPage !== 'admin' ? (
+          <CompleteProfilePage 
+            onComplete={handleProfileCompleted}
+            onLogout={handleLogout}
+          />
+        ) : currentPage === 'cart' ? (
           <CartPage 
             onContinueShopping={() => handleNavigate('shop')} 
             onBackToHome={() => handleNavigate('home')}
@@ -275,7 +297,7 @@ export default function App() {
         ) : currentPage === 'appointment' ? (
           <AppointmentPage 
             onBackToShop={() => handleNavigate('shop')} 
-            onBackToHome={() => handleNavigate('home')}
+            onBackToHome={() => handleNavigate('home')} 
             onNavigate={handleNavigate}
             onCartClick={handleCartClick}
           />
