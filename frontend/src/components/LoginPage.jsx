@@ -1,34 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { supabase } from '../lib/supabaseClient';
 
 export default function LoginPage({ onBackToShop, onBackToHome, onNavigate, onCartClick }) {
-  const [success, setSuccess] = useState(false);
-
-  const handleGoogleLogin = () => {
-    localStorage.setItem('isLoggedIn', 'true');
-    window.dispatchEvent(new CustomEvent('auth-change'));
-    setSuccess(true);
-
-    const redirectTarget = sessionStorage.getItem('postLoginRedirect');
-    sessionStorage.removeItem('postLoginRedirect');
-
-    setTimeout(() => {
-      if (redirectTarget) {
-        if (onNavigate) {
-          onNavigate(redirectTarget);
-        } else {
-          window.history.pushState(null, '', `/${redirectTarget}`);
-          window.dispatchEvent(new PopStateEvent('popstate'));
-        }
-      } else {
-        if (onNavigate) {
-          onNavigate('shop');
-        } else {
-          onBackToShop();
-        }
-      }
-    }, 1500);
+  const handleGoogleLogin = async () => {
+    const redirectTarget = sessionStorage.getItem('postLoginRedirect') || 'shop';
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/${redirectTarget}`,
+      },
+    });
+    if (error) {
+      console.error('Google login error:', error.message);
+    }
   };
 
   const handleBrandClick = () => {
@@ -96,13 +82,6 @@ export default function LoginPage({ onBackToShop, onBackToHome, onNavigate, onCa
           </h2>
 
           <div className="w-full flex flex-col gap-6 items-center">
-            
-            {success && (
-              <div className="w-full bg-[#1C1714] border-l-2 border-emerald-500 text-emerald-400 text-xs px-4 py-3 font-sans text-center">
-                Success! Accessing your collection...
-              </div>
-            )}
-
             {/* Premium Gold Loop Divider above the button */}
             <div className="flex justify-center w-full opacity-65">
               <svg viewBox="0 0 100 20" className="w-14 h-4 fill-none stroke-[#c89b3c]" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
