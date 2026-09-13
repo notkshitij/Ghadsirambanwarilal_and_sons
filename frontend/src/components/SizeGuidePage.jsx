@@ -114,6 +114,26 @@ export default function SizeGuidePage({ onBackToShop, onBackToHome, onNavigate, 
         </div>
       </main>
 
+      {/* Ornamental Divider */}
+      <div className="w-full flex items-center gap-0 px-0">
+        <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#2E231A] to-[#3A2A1E]" />
+        <span className="text-[#C9AA6B] text-xs px-4 select-none opacity-80">◆</span>
+        <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#2E231A] to-[#3A2A1E]" />
+      </div>
+
+      {/* CTA — Find the one you keep */}
+      <section className="w-full bg-[#0D0A08] py-20 md:py-28 px-4 flex flex-col items-center justify-center text-center">
+        <h2 className="font-cormorant font-normal text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#FAF4EE] m-0 mb-8 leading-[1.05]">
+          Find the one<br />you keep.
+        </h2>
+        <button
+          onClick={handleShopClick}
+          className="bg-[#C9AA6B] hover:bg-[#D4B879] text-[#14100C] font-sans text-[0.72rem] md:text-xs font-semibold tracking-[0.22em] uppercase px-8 py-3.5 rounded transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 border-none cursor-pointer"
+        >
+          Shop The Collection
+        </button>
+      </section>
+
       <Footer onBrandClick={handleBrandClick} onNavigate={onNavigate} />
     </div>
   );

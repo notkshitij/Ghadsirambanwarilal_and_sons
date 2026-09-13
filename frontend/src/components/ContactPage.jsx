@@ -258,8 +258,15 @@ export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, on
         </div>
       </main>
 
+      {/* Ornamental Divider */}
+      <div className="w-full flex items-center gap-0 px-0">
+        <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#2E231A] to-[#3A2A1E]" />
+        <span className="text-[#C9AA6B] text-xs px-4 select-none opacity-80">◆</span>
+        <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#2E231A] to-[#3A2A1E]" />
+      </div>
+
       {/* Call To Action Banner — Find the one you keep */}
-      <section className="w-full bg-[#0D0A08] py-20 md:py-28 px-4 flex flex-col items-center justify-center text-center border-t border-[#1C1612]">
+      <section className="w-full bg-[#0D0A08] py-20 md:py-28 px-4 flex flex-col items-center justify-center text-center">
         <h2 className="font-cormorant font-normal text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#FAF4EE] m-0 mb-8 leading-[1.05]">
           Find the one<br />
           you keep.
