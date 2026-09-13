@@ -179,7 +179,7 @@ export const INITIAL_PRODUCTS = [
     images: [diff3_1, diff3_2],
     category: 'Polki & Kundan',
     subcategory: 'Necklaces',
-    materials: 'Solid gold craftsmanship with certified uncut polki diamonds and south sea pearls.',
+    materials: 'Fine craftsmanship with certified uncut polki diamonds and south sea pearls.',
     care: 'Store flat in velvet case. Do not bend or expose to harsh chemicals.',
     specs: {
       'Gold': '5-6 gram (approx)',

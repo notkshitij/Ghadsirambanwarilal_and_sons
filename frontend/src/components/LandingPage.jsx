@@ -170,6 +170,67 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
         </div>
       </div>
 
+      {/* House Editorial — full-width left-aligned, directly below hero */}
+      <div className="w-full bg-[#0D0A08] px-6 md:px-10 lg:px-16 pt-16 md:pt-24 pb-10 md:pb-14">
+
+        {/* Label — top left */}
+        <p className="font-sans text-[0.65rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-6 md:mb-8">
+          ( The House of Ghadsiram )
+        </p>
+
+        {/* Giant left-aligned headline */}
+        <h2
+          className="font-cormorant font-normal text-[#FAF4EE] m-0 leading-[1.05] w-full"
+          style={{ fontSize: 'clamp(3rem, 8.5vw, 7.5rem)' }}
+        >
+          Made by <span className="italic text-[#C9AA6B]">hand</span>, kept<br />
+          for a <span className="italic text-[#C9AA6B]">lifetime.</span>
+        </h2>
+
+        {/* Divider + Subtitle — side by side */}
+        <div className="flex items-start gap-5 mt-8 md:mt-10">
+          <div className="w-20 md:w-28 h-[1px] bg-[#3A2E24] shrink-0 mt-[0.55em]" />
+          <p className="font-sans text-xs md:text-sm font-light text-[#8A7968] leading-[1.85] m-0 max-w-[440px]">
+            Fine jewelry, crafted by hand and kept close — pieces made to be worn every day and handed on.
+          </p>
+        </div>
+      </div>
+
+      {/* Trust Badges Strip */}
+      <div className="w-full bg-[#0D0A08] px-6 md:px-10 lg:px-16 pb-14 md:pb-16">
+        <div className="max-w-[1240px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 w-full">
+
+          {/* Badge 1 */}
+          <div className="flex flex-col gap-2 bg-[#0F0C0A] border border-[#2A1F16] border-l-[3px] border-l-[#C9AA6B] rounded-xl px-5 py-5 hover:border-l-[#C9AA6B] transition-all duration-300 hover:shadow-[0_4px_20px_rgba(201,170,107,0.08)]">
+            <span className="text-[#C9AA6B] text-lg mb-1">✦</span>
+            <h3 className="font-sans font-semibold text-sm md:text-[0.92rem] text-[#FAF4EE] m-0 leading-snug">Certified Jewellery</h3>
+            <p className="font-sans text-[0.72rem] font-light text-[#6B5E52] m-0 leading-relaxed">Authenticity you can trust</p>
+          </div>
+
+          {/* Badge 2 */}
+          <div className="flex flex-col gap-2 bg-[#0F0C0A] border border-[#2A1F16] border-l-[3px] border-l-[#C9AA6B] rounded-xl px-5 py-5 hover:border-l-[#C9AA6B] transition-all duration-300 hover:shadow-[0_4px_20px_rgba(201,170,107,0.08)]">
+            <span className="text-[#C9AA6B] text-lg mb-1">⬡</span>
+            <h3 className="font-sans font-semibold text-sm md:text-[0.92rem] text-[#FAF4EE] m-0 leading-snug">Free Insured Shipping</h3>
+            <p className="font-sans text-[0.72rem] font-light text-[#6B5E52] m-0 leading-relaxed">Secure delivery, no extra cost</p>
+          </div>
+
+          {/* Badge 3 */}
+          <div className="flex flex-col gap-2 bg-[#0F0C0A] border border-[#2A1F16] border-l-[3px] border-l-[#C9AA6B] rounded-xl px-5 py-5 hover:border-l-[#C9AA6B] transition-all duration-300 hover:shadow-[0_4px_20px_rgba(201,170,107,0.08)]">
+            <span className="text-[#C9AA6B] text-lg mb-1">◈</span>
+            <h3 className="font-sans font-semibold text-sm md:text-[0.92rem] text-[#FAF4EE] m-0 leading-snug">Worldwide Shipping</h3>
+            <p className="font-sans text-[0.72rem] font-light text-[#6B5E52] m-0 leading-relaxed">Jewels delivered globally</p>
+          </div>
+
+          {/* Badge 4 */}
+          <div className="flex flex-col gap-2 bg-[#0F0C0A] border border-[#2A1F16] border-l-[3px] border-l-[#C9AA6B] rounded-xl px-5 py-5 hover:border-l-[#C9AA6B] transition-all duration-300 hover:shadow-[0_4px_20px_rgba(201,170,107,0.08)]">
+            <span className="text-[#C9AA6B] text-lg mb-1">◉</span>
+            <h3 className="font-sans font-semibold text-sm md:text-[0.92rem] text-[#FAF4EE] m-0 leading-snug">100,000+ Units Sold</h3>
+            <p className="font-sans text-[0.72rem] font-light text-[#6B5E52] m-0 leading-relaxed">Trusted by thousands</p>
+          </div>
+
+        </div>
+      </div>
+
       {/* Main Content Area (Obsidian Gold background) */}
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center pt-16 pb-4 md:pb-8 w-full box-border bg-[#0D0A08] text-[#FAF4EE]">
         {/* Shop by Category Section */}
@@ -334,68 +395,6 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
           </section>
         </ScrollReveal>
 
-        <ScrollReveal className="w-full">
-          <section className="w-full max-w-[1240px] mx-auto px-6 md:px-12 mb-16 md:mb-24 scroll-mt-24" id="collections">
-            {/* Centered Editorial Header */}
-            <div className="text-center mb-14 md:mb-16">
-              <p className="font-sans text-[0.68rem] font-semibold tracking-[0.3em] text-[#C9AA6B] uppercase mb-4 text-center">
-                ( The House of Ghadsiram )
-              </p>
-              
-              <h2 className="font-cormorant font-normal text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#FAF4EE] m-0 text-center leading-[1.1] max-w-[900px] mx-auto mb-4">
-                Made by <span className="italic text-[#C9AA6B]">hand</span>, kept<br className="hidden sm:inline" />
-                for a <span className="italic text-[#C9AA6B]">lifetime.</span>
-              </h2>
-
-              <p className="font-sans text-sm font-light text-[#A69280] leading-[1.8] m-0 max-w-[650px] mx-auto text-center">
-                Fine jewelry, cast in solid gold and kept close — pieces made to be worn every day and handed on.
-              </p>
-            </div>
-
-            {/* 4 Clean Minimal Value Columns with Top Border Divider */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 w-full">
-              {/* Col 1: Certified Jewellery */}
-              <div className="flex flex-col pt-6 border-t border-[#2A1F16]">
-                <h3 className="font-serif font-bold text-xl md:text-[1.35rem] text-[#FAF4EE] m-0 mb-2 leading-tight">
-                  Certified Jewellery
-                </h3>
-                <p className="font-sans text-xs md:text-sm font-light text-[#8C7A6B] m-0 leading-relaxed">
-                  Authenticity you can trust
-                </p>
-              </div>
-
-              {/* Col 2: Free Insured Shipping */}
-              <div className="flex flex-col pt-6 border-t border-[#2A1F16]">
-                <h3 className="font-serif font-bold text-xl md:text-[1.35rem] text-[#FAF4EE] m-0 mb-2 leading-tight">
-                  Free Insured Shipping
-                </h3>
-                <p className="font-sans text-xs md:text-sm font-light text-[#8C7A6B] m-0 leading-relaxed">
-                  Secure delivery, no extra cost
-                </p>
-              </div>
-
-              {/* Col 3: Worldwide Shipping */}
-              <div className="flex flex-col pt-6 border-t border-[#2A1F16]">
-                <h3 className="font-serif font-bold text-xl md:text-[1.35rem] text-[#FAF4EE] m-0 mb-2 leading-tight">
-                  Worldwide Shipping
-                </h3>
-                <p className="font-sans text-xs md:text-sm font-light text-[#8C7A6B] m-0 leading-relaxed">
-                  Jewels delivered globally
-                </p>
-              </div>
-
-              {/* Col 4: 100000+ Units Sold */}
-              <div className="flex flex-col pt-6 border-t border-[#2A1F16]">
-                <h3 className="font-serif font-bold text-xl md:text-[1.35rem] text-[#FAF4EE] m-0 mb-2 leading-tight">
-                  100000+ Units Sold
-                </h3>
-                <p className="font-sans text-xs md:text-sm font-light text-[#8C7A6B] m-0 leading-relaxed">
-                  Trusted by thousands
-                </p>
-              </div>
-            </div>
-          </section>
-        </ScrollReveal>
 
         {/* The Making Section */}
         <ScrollReveal>

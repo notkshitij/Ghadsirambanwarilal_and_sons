@@ -130,7 +130,7 @@ export default function Navbar({
           <a
             href="/shop"
             onClick={handleShop}
-            className="font-sans text-[0.82rem] font-light tracking-[0.14em] uppercase text-[#EADCC9] no-underline cursor-pointer select-none"
+            className="font-sans text-[0.78rem] font-bold tracking-[0.14em] uppercase text-white no-underline cursor-pointer select-none"
           >
             Shop
           </a>
@@ -139,7 +139,7 @@ export default function Navbar({
           <button
             type="button"
             onClick={() => handleNavClick('about')}
-            className="font-sans text-[0.82rem] font-light tracking-[0.14em] uppercase text-[#EADCC9] bg-transparent border-none p-0 cursor-pointer select-none"
+            className="font-sans text-[0.78rem] font-bold tracking-[0.14em] uppercase text-white bg-transparent border-none p-0 cursor-pointer select-none"
           >
             About
           </button>
@@ -147,7 +147,7 @@ export default function Navbar({
           <button
             type="button"
             onClick={() => handleNavClick('contact')}
-            className="font-sans text-[0.82rem] font-light tracking-[0.14em] uppercase text-[#EADCC9] bg-transparent border-none p-0 cursor-pointer select-none"
+            className="font-sans text-[0.78rem] font-bold tracking-[0.14em] uppercase text-white bg-transparent border-none p-0 cursor-pointer select-none"
           >
             Contact
           </button>
