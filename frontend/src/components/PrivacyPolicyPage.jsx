@@ -55,61 +55,61 @@ export default function PrivacyPolicyPage({ onBackToShop, onBackToHome, onNaviga
         </div>
 
         {/* Numbered Sections */}
-        <div className="flex flex-col gap-12 text-sm md:text-[0.92rem] font-light text-neutral-700">
+        <div className="flex flex-col gap-12 text-sm md:text-[0.92rem] font-light text-[#C2B4A3]">
           
           {/* Section 1 */}
           <section className="flex flex-col gap-4">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               1. Information We Collect
             </h2>
-            <p className="text-neutral-600 m-0">We collect the following types of information when you interact with our Service:</p>
+            <p className="text-[#A09080] m-0">We collect the following types of information when you interact with our Service:</p>
             
             <div className="flex flex-col gap-6 mt-2 pl-2">
               <div>
-                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-neutral-800 m-0 mb-1">1.1 Personal Data</h3>
-                <p className="text-neutral-600 m-0 mb-2">This includes:</p>
+                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-[#E8D9C5] m-0 mb-1">1.1 Personal Data</h3>
+                <p className="text-[#A09080] m-0 mb-2">This includes:</p>
                 <ul className="list-none p-0 m-0 flex flex-col gap-2 pl-4">
-                  <li className="relative pl-4 text-neutral-600">
+                  <li className="relative pl-4 text-[#A09080]">
                     <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                    <strong className="font-normal text-neutral-800">Account Information:</strong> Name, email address, delivery address, telephone number, membership account information, preferences, and searches provided when you sign up.
+                    <strong className="font-normal text-[#E8D9C5]">Account Information:</strong> Name, email address, delivery address, telephone number, membership account information, preferences, and searches provided when you sign up.
                   </li>
-                  <li className="relative pl-4 text-neutral-600">
+                  <li className="relative pl-4 text-[#A09080]">
                     <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                    <strong className="font-normal text-neutral-800">Payment Information:</strong> Billing address, transaction history, and payment details securely processed by card issuers.
+                    <strong className="font-normal text-[#E8D9C5]">Payment Information:</strong> Billing address, transaction history, and payment details securely processed by card issuers.
                   </li>
-                  <li className="relative pl-4 text-neutral-600">
+                  <li className="relative pl-4 text-[#A09080]">
                     <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                    <strong className="font-normal text-neutral-800">Communication Data:</strong> Reviews, comment lists, preferences, and queries sent via contact forms.
+                    <strong className="font-normal text-[#E8D9C5]">Communication Data:</strong> Reviews, comment lists, preferences, and queries sent via contact forms.
                   </li>
                 </ul>
               </div>
 
               <div className="mt-2">
-                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-neutral-800 m-0 mb-1">1.2 Usage Data</h3>
-                <p className="text-neutral-600 m-0 mb-2">Automatically collected data includes:</p>
+                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-[#E8D9C5] m-0 mb-1">1.2 Usage Data</h3>
+                <p className="text-[#A09080] m-0 mb-2">Automatically collected data includes:</p>
                 <ul className="list-none p-0 m-0 flex flex-col gap-2 pl-4">
-                  <li className="relative pl-4 text-neutral-600">
+                  <li className="relative pl-4 text-[#A09080]">
                     <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                    <strong className="font-normal text-neutral-800">Device Information:</strong> IP address, computer system details, operating system, and device identifiers.
+                    <strong className="font-normal text-[#E8D9C5]">Device Information:</strong> IP address, computer system details, operating system, and device identifiers.
                   </li>
-                  <li className="relative pl-4 text-neutral-600">
+                  <li className="relative pl-4 text-[#A09080]">
                     <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                    <strong className="font-normal text-neutral-800">Log Information:</strong> Pages viewed, session duration, and referral sources.
+                    <strong className="font-normal text-[#E8D9C5]">Log Information:</strong> Pages viewed, session duration, and referral sources.
                   </li>
-                  <li className="relative pl-4 text-neutral-600">
+                  <li className="relative pl-4 text-[#A09080]">
                     <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                    <strong className="font-normal text-neutral-800">Cookies and Tracking:</strong> Data collected via cookies and similar technologies for analytics and personalization.
+                    <strong className="font-normal text-[#E8D9C5]">Cookies and Tracking:</strong> Data collected via cookies and similar technologies for analytics and personalization.
                   </li>
                 </ul>
               </div>
 
               <div className="mt-2">
-                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-neutral-800 m-0 mb-1">1.3 Third-Party Data</h3>
-                <p className="text-neutral-600 m-0 mb-2">We may receive additional information from partners:</p>
+                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-[#E8D9C5] m-0 mb-1">1.3 Third-Party Data</h3>
+                <p className="text-[#A09080] m-0 mb-2">We may receive additional information from partners:</p>
                 <ul className="list-none p-0 m-0 flex flex-col gap-2 pl-4">
-                  <li className="relative pl-4 text-neutral-600">
+                  <li className="relative pl-4 text-[#A09080]">
                     <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                    <strong className="font-normal text-neutral-800">Partner Integrations:</strong> User IDs and information from payment processors, social media platforms, and advertising networks used to interface with our Service.
+                    <strong className="font-normal text-[#E8D9C5]">Partner Integrations:</strong> User IDs and information from payment processors, social media platforms, and advertising networks used to interface with our Service.
                   </li>
                 </ul>
               </div>
@@ -118,59 +118,59 @@ export default function PrivacyPolicyPage({ onBackToShop, onBackToHome, onNaviga
 
           {/* Section 2 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               2. Consent for Personal Information
             </h2>
             <div className="flex flex-col gap-2 pl-2">
-              <p className="m-0 text-neutral-600">
-                <strong className="font-normal text-neutral-800">2.1 Consent Request:</strong> Before submitting your Personal Information, you will be prompted to give explicit consent to its collection and usage by Ghadsirambanwarilal and sons.
+              <p className="m-0 text-[#A09080]">
+                <strong className="font-normal text-[#E8D9C5]">2.1 Consent Request:</strong> Before submitting your Personal Information, you will be prompted to give explicit consent to its collection and usage by Ghadsirambanwarilal and sons.
               </p>
-              <p className="m-0 text-neutral-600">
-                <strong className="font-normal text-neutral-800">2.2 Consent Withdrawal:</strong> You can withdraw your consent at any time. Withdrawal does not affect any actions taken prior to request. If you withdraw consent, you may not be able to subscribe to services or maintain a membership.
+              <p className="m-0 text-[#A09080]">
+                <strong className="font-normal text-[#E8D9C5]">2.2 Consent Withdrawal:</strong> You can withdraw your consent at any time. Withdrawal does not affect any actions taken prior to request. If you withdraw consent, you may not be able to subscribe to services or maintain a membership.
               </p>
             </div>
           </section>
 
           {/* Section 3 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               3. Permissible Age
             </h2>
             <div className="flex flex-col gap-2 pl-2">
-              <p className="m-0 text-neutral-600">
-                <strong className="font-normal text-neutral-800">3.1 Underage Limitation:</strong> The Services are not intended for anyone under 18 ("Permissible Age"). We do not knowingly market to or collect data from anyone below this age.
+              <p className="m-0 text-[#A09080]">
+                <strong className="font-normal text-[#E8D9C5]">3.1 Underage Limitation:</strong> The Services are not intended for anyone under 18 ("Permissible Age"). We do not knowingly market to or collect data from anyone below this age.
               </p>
-              <p className="m-0 text-neutral-600">
-                <strong className="font-normal text-neutral-800">3.2 Account Deletion:</strong> If we learn that personal details of anyone under the Permissible Age were collected, we will delete the account and related data immediately. If you have concerns, contact us at <a href="mailto:ghadsirambanwarilalandsons@gmail.com" className="text-[#c89b3c] hover:underline">ghadsirambanwarilalandsons@gmail.com</a>.
+              <p className="m-0 text-[#A09080]">
+                <strong className="font-normal text-[#E8D9C5]">3.2 Account Deletion:</strong> If we learn that personal details of anyone under the Permissible Age were collected, we will delete the account and related data immediately. If you have concerns, contact us at <a href="mailto:ghadsirambanwarilalandsons@gmail.com" className="text-[#c89b3c] hover:underline">ghadsirambanwarilalandsons@gmail.com</a>.
               </p>
             </div>
           </section>
 
           {/* Section 4 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               4. How We Use the Information
             </h2>
-            <p className="text-neutral-600 m-0">We use the collected information for a variety of purposes, including:</p>
+            <p className="text-[#A09080] m-0">We use the collected information for a variety of purposes, including:</p>
             
             <ul className="list-none p-0 m-0 flex flex-col gap-2 pl-6">
-              <li className="relative pl-4 text-neutral-600">
+              <li className="relative pl-4 text-[#A09080]">
                 <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
                 To process, fulfill, and respond to your orders, queries, and transactions.
               </li>
-              <li className="relative pl-4 text-neutral-600">
+              <li className="relative pl-4 text-[#A09080]">
                 <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
                 To communicate news, special offers, and terms updates (you can opt-out at any time via the unsubscribe button or by emailing us).
               </li>
-              <li className="relative pl-4 text-neutral-600">
+              <li className="relative pl-4 text-[#A09080]">
                 <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
                 To enhance functionality, monitor traffic, and troubleshoot technical issues to improve your shopping experience.
               </li>
-              <li className="relative pl-4 text-neutral-600">
+              <li className="relative pl-4 text-[#A09080]">
                 <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
                 To comply with vital legal processes, summons, or official court orders, as required by law.
               </li>
-              <li className="relative pl-4 text-neutral-600">
+              <li className="relative pl-4 text-[#A09080]">
                 <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
                 To display relevant, personalized advertisements and promotions.
               </li>
@@ -179,62 +179,62 @@ export default function PrivacyPolicyPage({ onBackToShop, onBackToHome, onNaviga
 
           {/* Section 5 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               5. Sharing Your Personal Information
             </h2>
-            <p className="text-neutral-600 m-0">We will never sell or share your data with outside firms for marketing purposes. We share information only in the following contexts:</p>
+            <p className="text-[#A09080] m-0">We will never sell or share your data with outside firms for marketing purposes. We share information only in the following contexts:</p>
             
             <ul className="list-none p-0 m-0 flex flex-col gap-2 pl-6">
-              <li className="relative pl-4 text-neutral-600">
+              <li className="relative pl-4 text-[#A09080]">
                 <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                <strong className="font-normal text-neutral-800">Operational Partners:</strong> Couriers and secure payment gateways that require details to fulfill your order.
+                <strong className="font-normal text-[#E8D9C5]">Operational Partners:</strong> Couriers and secure payment gateways that require details to fulfill your order.
               </li>
-              <li className="relative pl-4 text-neutral-600">
+              <li className="relative pl-4 text-[#A09080]">
                 <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                <strong className="font-normal text-neutral-800">Affiliated Entities:</strong> Subsidiaries, group entities, or successor buyers during mergers or restructuring.
+                <strong className="font-normal text-[#E8D9C5]">Affiliated Entities:</strong> Subsidiaries, group entities, or successor buyers during mergers or restructuring.
               </li>
-              <li className="relative pl-4 text-neutral-600">
+              <li className="relative pl-4 text-[#A09080]">
                 <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
-                <strong className="font-normal text-neutral-800">Legal Safeguards:</strong> Sharing data when necessary to protect safety, prevent credit risk, or combat fraud.
+                <strong className="font-normal text-[#E8D9C5]">Legal Safeguards:</strong> Sharing data when necessary to protect safety, prevent credit risk, or combat fraud.
               </li>
             </ul>
           </section>
 
           {/* Section 6 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               6. Accessing &amp; Correcting Personal Information
             </h2>
-            <p className="text-neutral-600 m-0 pl-2">
+            <p className="text-[#A09080] m-0 pl-2">
               We take steps to keep your details accurate. You may request the deletion of your Personal Information at any time. Note that some copies may temporarily remain cached or archived for operational records.
             </p>
           </section>
 
           {/* Section 7 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               7. How Long We Keep Your Information
             </h2>
-            <p className="text-neutral-600 m-0 pl-2">
+            <p className="text-[#A09080] m-0 pl-2">
               We retain details only as long as necessary to resolve queries or fulfill order processing. We will delete your information on request.
             </p>
           </section>
 
           {/* Section 8 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               8. Cookies Policy
             </h2>
             <div className="flex flex-col gap-4 pl-2">
               <div>
-                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-neutral-800 m-0 mb-1">8.1 What are Cookies?</h3>
-                <p className="text-neutral-600 m-0">
+                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-[#E8D9C5] m-0 mb-1">8.1 What are Cookies?</h3>
+                <p className="text-[#A09080] m-0">
                   Cookies are small files placed on your hard disk for record-keeping. They help customize our site for you (e.g. keeping items in your shopping basket) and help monitor advert conversion rates.
                 </p>
               </div>
               <div>
-                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-neutral-800 m-0 mb-1">8.2 How to Disable Cookies?</h3>
-                <p className="text-neutral-600 m-0">
+                <h3 className="font-sans text-sm md:text-[0.92rem] font-semibold text-[#E8D9C5] m-0 mb-1">8.2 How to Disable Cookies?</h3>
+                <p className="text-[#A09080] m-0">
                   You can disable cookies in your browser settings. However, doing so may impact your shopping user experience and restrict access to certain interactive parts of the website.
                 </p>
               </div>
@@ -243,38 +243,58 @@ export default function PrivacyPolicyPage({ onBackToShop, onBackToHome, onNaviga
 
           {/* Section 9 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               9. External Links
             </h2>
-            <p className="text-neutral-600 m-0 pl-2">
+            <p className="text-[#A09080] m-0 pl-2">
               Our website may contain links to external sites. Once you leave our domain, our Privacy Policy no longer applies, and you are subject to the host site's terms.
             </p>
           </section>
 
           {/* Section 10 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               10. Fraudulent Transactions
             </h2>
-            <p className="text-neutral-600 m-0 pl-2">
+            <p className="text-[#A09080] m-0 pl-2">
               Ghadsirambanwarilal and sons reserves the right to recover cost of goods, collections fees, and initiate legal proceedings against persons using the website fraudulently.
             </p>
           </section>
 
           {/* Section 11 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0">
               11. Changes of Privacy Policy
             </h2>
-            <p className="text-neutral-600 m-0 pl-2">
+            <p className="text-[#A09080] m-0 pl-2">
               We reserve the right to modify this policy at our discretion. Continued use of our Service after updates is deemed acceptance of the revisions.
             </p>
-            <p className="text-neutral-600 m-0 pl-2 mt-2">
+            <p className="text-[#A09080] m-0 pl-2 mt-2">
               If you have any questions about this Privacy Policy, please contact us at <a href="mailto:ghadsirambanwarilalandsons@gmail.com" className="text-[#c89b3c] hover:underline font-normal">ghadsirambanwarilalandsons@gmail.com</a>.
             </p>
           </section>
         </div>
       </main>
+
+      {/* Ornamental Divider */}
+      <div className="w-full flex items-center gap-0 px-0">
+        <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#2E231A] to-[#3A2A1E]" />
+        <span className="text-[#C9AA6B] text-xs px-4 select-none opacity-80">◆</span>
+        <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#2E231A] to-[#3A2A1E]" />
+      </div>
+
+      {/* CTA — Find the one you keep */}
+      <section className="w-full bg-[#0D0A08] py-20 md:py-28 px-4 flex flex-col items-center justify-center text-center">
+        <h2 className="font-cormorant font-normal text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#FAF4EE] m-0 mb-8 leading-[1.05]">
+          Find the one<br />you keep.
+        </h2>
+        <button
+          onClick={handleShopClick}
+          className="bg-[#C9AA6B] hover:bg-[#D4B879] text-[#14100C] font-sans text-[0.72rem] md:text-xs font-semibold tracking-[0.22em] uppercase px-8 py-3.5 rounded transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 border-none cursor-pointer"
+        >
+          Shop The Collection
+        </button>
+      </section>
 
       <Footer onBrandClick={handleBrandClick} onNavigate={onNavigate} />
     </div>

@@ -98,3 +98,4 @@ Hosted on Vercel. `vercel.json` rewrites all routes to `index.html` (required fo
 - `2026-09-12` — Added Contact Messages inquiry table & metric counter to /sons admin portal.
 - `2026-09-12` — Updated Studio & Flagship Store address in Cookie Policy to match studio headquarters address.
 - `2026-09-12` — Corrected Cookie & Storage Policy claims to accurately reflect localStorage and Supabase usage without fabricated tracking cookies.
+- `2026-09-13` — Updated About Us page with 100+ years legacy, Taranagar roots, 5th generation heritage, and Thappa jewellery expertise.

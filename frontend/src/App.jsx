@@ -194,6 +194,24 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  const PAGE_TITLES = {
+    home: "Ghadsiram's | Fine Signature Jewellery",
+    shop: "Shop | Ghadsiram's",
+    cart: "Cart | Ghadsiram's",
+    appointment: "Book Appointment | Ghadsiram's",
+    privacy: "Privacy Policy | Ghadsiram's",
+    terms: "Terms of Service | Ghadsiram's",
+    cookies: "Cookie Policy | Ghadsiram's",
+    contact: "Contact Us | Ghadsiram's",
+    'care-guide': "Care Guide | Ghadsiram's",
+    'size-guide': "Size Guide | Ghadsiram's",
+    login: "Sign In | Ghadsiram's",
+    about: "About Us | Ghadsiram's",
+    profile: "My Profile | Ghadsiram's",
+    admin: "Admin | Ghadsiram's",
+    notFound: "Page Not Found | Ghadsiram's",
+  };
+
   const handleNavigate = (page, category = 'All') => {
     if (page === currentPage && category === selectedCategory) return;
 
@@ -216,6 +234,13 @@ export default function App() {
       else if (page === 'about') path = '/about';
       else if (page === 'profile') path = '/profile';
       else if (page === 'admin') path = '/sons';
+
+      // Update browser tab title
+      if (page === 'category') {
+        document.title = `${category} | Ghadsiram's`;
+      } else {
+        document.title = PAGE_TITLES[page] || "Ghadsiram's | Fine Signature Jewellery";
+      }
 
       window.history.pushState(null, '', path);
       if (page === 'category') {

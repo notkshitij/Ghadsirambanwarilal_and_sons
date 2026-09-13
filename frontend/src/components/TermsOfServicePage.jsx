@@ -58,13 +58,13 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
         </div>
 
         {/* Sections */}
-        <div className="flex flex-col gap-12 text-sm md:text-[0.92rem] font-light text-neutral-700">
+        <div className="flex flex-col gap-12 text-sm md:text-[0.92rem] font-light text-[#C2B4A3]">
           {/* Section 1 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               ELIGIBILITY CRITERIA
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 Any use/purchase/contract from/with this Website is not intended for users under the age of 18, unless permitted under applicable local laws ("Permissible Age"). Accordingly, by using our Website or agreeing to these Terms and Conditions, you warrant and represent to us that you are of the Permissible Age. We do not knowingly provide any service of the Website from users or solicit information from anyone below the Permissible Age. If we become aware that any person below the Permissible Age is using the Website, we will restrict the access of the Website to such user as soon as possible. If you believe that any person under the Permissible Age is using the Website or we might have any information of a user under the Permissible Age, please contact us at <a href="mailto:ghadsirambanwarilalandsons@gmail.com" className="text-[#c89b3c] hover:underline font-normal">ghadsirambanwarilalandsons@gmail.com</a>.
               </p>
@@ -76,20 +76,20 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 2 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               COMMUNICATIONS
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               When you use the Website or send emails or other data, information or communication to us, you agree and understand that you are communicating with us through electronic records and you consent to receive communications via electronic records from us periodically, and as and when required. We may communicate with you by email or by such other mode of communication, electronic or otherwise.
             </p>
           </section>
 
           {/* Section 3 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               PRICING AND PAYMENT
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 Prices throughout the Website are quoted in one of the following currencies: Indian Rupees (INR), US Dollars (USD), Great Britain Pound (GBP), or Euro (EURO). Payment can only be accepted in quoted currency. Prices exclude all indirect taxes including VAT (Value Added Tax)/GST (Goods and Services Tax).
               </p>
@@ -104,30 +104,30 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 4 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               PRICING POLICY FOR ONLINE MERCHANDISE
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               We are committed to offering shopping convenience, exceptional service and an exciting product selection at competitive prices. Stores of Ghadsirambanwarilal and Sons operate independently. Accordingly, the products and prices offered at each may differ. The Website may offer products which are not offered in stores. A silver bangle may be priced differently in the stores than on the Website. Similarly, promotional offers (such as coupons and additional discounts) offered at one may not be used at the others.
             </p>
           </section>
 
           {/* Section 5 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               ONLINE PAYMENT
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               All payments on the Website are securely processed through our payment gateway partner. We accept most major credit and debit cards including Visa, MasterCard and American Express via PayPal and PayU. We may accept bank transfers upon special request at our sole discretion. You can contact our customer care for the same. We endeavour to ensure confirmation of ordered item(s), availability and shipping before processing your order transaction. You will be advised by email if we are unable to complete your order.
             </p>
           </section>
 
           {/* Section 6 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               ORDER OF PRODUCTS
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 All products and information displayed on the Website constitute an invitation to offer. Your order for purchase constitutes your offer, which shall be subject to the Terms and Conditions as listed herein. We reserve the right to accept or reject your offer in part or in full. Our acceptance of your order will take place upon dispatch of the product(s) ordered. Dispatch of all the product(s) ordered, may or may not happen at the same time, in such a scenario that portion of the order which has been dispatched will be deemed to have been accepted by us and the balance would continue to be on offer to us and we reserve the right to accept or reject such balance order.
               </p>
@@ -145,10 +145,10 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 7 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               MADE-TO-ORDER: TERMS &amp; CONDITIONS
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 A made-to-order item will be specially manufactured on order and shipped within six weeks of placing the order.
               </p>
@@ -158,12 +158,12 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
               <p>
                 You have to pay 100% of the product value at the time of placing a made-to-order request.
               </p>
-              <p className="font-normal text-neutral-700">
+              <p className="font-normal text-[#C2B4A3]">
                 The shipping amount of a made-to-order item will depend on the value of the product, as given below:
               </p>
               <div className="pl-2 flex flex-col gap-3">
                 <div>
-                  <p className="font-semibold m-0 mb-1 text-neutral-800 text-sm">Domestic shipment:</p>
+                  <p className="font-semibold m-0 mb-1 text-[#E8D9C5] text-sm">Domestic shipment:</p>
                   <ul className="list-none p-0 m-0 flex flex-col gap-1 pl-4">
                     <li className="relative pl-4">
                       <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
@@ -180,7 +180,7 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
                   </ul>
                 </div>
                 <div>
-                  <p className="font-semibold m-0 mb-1 text-neutral-800 text-sm">International shipment:</p>
+                  <p className="font-semibold m-0 mb-1 text-[#E8D9C5] text-sm">International shipment:</p>
                   <ul className="list-none p-0 m-0 flex flex-col gap-1 pl-4">
                     <li className="relative pl-4">
                       <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
@@ -202,20 +202,20 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 8 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               DELIVERY SCHEDULE
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               The delivery of your order will be made as per the shipping information of Ghadsirambanwarilal and Sons available on ghadsirambanwarilalandsons.com. Alternatively, you could go to your "Order Status" section and determine the status of your order using your respective tracking number.
             </p>
           </section>
 
           {/* Section 9 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               YOUR OBLIGATIONS
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <ul className="list-none p-0 m-0 flex flex-col gap-2 pl-4">
                 <li className="relative pl-4">
                   <span className="absolute left-0 text-[#c89b3c] font-normal">&bull;</span>
@@ -251,20 +251,20 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 10 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               RESTRICTIONS
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               GHADSIRAMBANWARILAL AND SONS reserves the right, at our sole discretion, to limit the quantity/value of the items purchased by you and such restrictions may be applicable to orders placed by the same account, the same credit/debit card, and also to orders that use the same billing and/or shipping address. We will provide notification to the customer should such limits be applied. GHADSIRAMBANWARILAL AND SONS reserves the right, at our sole discretion, to prohibit sales to any one as it may deem fit.
             </p>
           </section>
 
           {/* Section 11 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               SITE SECURITY
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>You are prohibited from violating or attempting to violate the security of this Website, including, without limitation:</p>
               <ul className="list-none p-0 m-0 flex flex-col gap-2 pl-4">
                 <li className="relative pl-4">
@@ -293,10 +293,10 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 12 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               CANCELLATION BY GHADSIRAMBANWARILAL AND SONS
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 There may be certain orders that we are unable to accept and must cancel. We reserve the right, at our sole discretion, to refuse or cancel any order for any reason. Some situations that may result in your order being cancelled include limitations on quantities available for purchase, inaccuracies or errors in product or pricing information, or problems identified by our credit and fraud avoidance department. We may also require additional information or verification/s before accepting any order. We will inform you if the entire order or any portion of your order is cancelled or if additional information is required to accept your order. If your order is cancelled after your credit/debit card has been charged, the said amount will be reverted to your card account.
               </p>
@@ -308,20 +308,20 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 13 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               CANCELLATION AND CHANGES BY CUSTOMERS
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               Cancellations, replacements and returns shall be governed by the Return and Exchange policy available on ghadsirambanwarilalandsons.com. It is agreed by you that you will not dispute the decision made by GHADSIRAMBANWARILAL AND SONS and accept the GHADSIRAMBANWARILAL AND SONS decision regarding cancellation, modification or replacement of the order.
             </p>
           </section>
 
           {/* Section 14 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               SALE AND PROMOTION
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>All offers for sale on the Website shall be subject to the following conditions:</p>
               <ul className="list-none p-0 m-0 flex flex-col gap-2 pl-4">
                 <li className="relative pl-4">
@@ -350,30 +350,30 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 15 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               SIZING
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               Dimensions displayed on the Website are noted in centimetres. While we try to ensure that all measurements on our Website are accurate, errors may occur as each piece is unique. Ring sizing is sometimes a challenge to get perfectly right. A very thick band will feel much tighter than a thin band of the exact same size. When sizing a ring, we make every effort to ensure a perfect fit on the first try. Please choose your ring size carefully.
             </p>
           </section>
 
           {/* Section 16 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               PRIVACY
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               Protection of your privacy is fundamental to us. We understand clearly that you and your personal information is one of the Company’s most important assets. We store and process your personal information including any sensitive financial information collected (as defined under the Information Technology Act, 2000), if any, on computers that may be protected by physical as well as reasonable technological security measures and procedures in accordance with Information Technology Act 2000 and Rules thereunder. Our current privacy policy is available on ghadsirambanwarilalandsons.com. If you object to your personal information being used in this way, you must not use the Website.
             </p>
           </section>
 
           {/* Section 17 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               DISCLAIMER
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 Ghadsirambanwarilal and Sons, together with our licensors, owns the copyright to all the contents of this Website, including images. All trademarks and other intellectual property are owned by or licensed to us (unless otherwise specified). You shall not copy, reproduce, distribute, republish, download, display, post or transmit any part of the Website without written consent from us (except as stated below).
               </p>
@@ -388,10 +388,10 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 18 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               EXTERNAL MATERIAL
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 You shall not use the Website in any way that will damage it or interrupt its provision. You shall not use the Website to transmit or post any computer viruses.
               </p>
@@ -403,40 +403,40 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 19 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               LINKS
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               The Website may contain links to other websites; these external websites are not under our control. We cannot be held responsible for such Websites and cannot make any guarantees about them. We provide these links because we think they might interest you, but we do not monitor or endorse these websites. By accessing the links, you may leave this Website and be directed to an external website, or to a website maintained by an entity other than Ghadsirambanwarilal and Sons. If you decide to visit any such site, you do so at your own risk and it is your responsibility to take all protective measures to guard against viruses or any other destructive elements. Ghadsirambanwarilal and Sons makes no warranty or representation regarding, and does not endorse, any linked websites or the information appearing thereon or any of the products or services described thereon. Links do not imply that Ghadsirambanwarilal and Sons or this Website sponsors, endorses, is affiliated or associated with them. You hereby expressly acknowledge and agree that the linked sites are not under the control of Ghadsirambanwarilal and Sons and Ghadsirambanwarilal and Sons is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Ghadsirambanwarilal and Sons is not responsible for webcasting or any other form of transmission received from any linked site. Ghadsirambanwarilal and Sons is providing these links to you only as a convenience, and the inclusion of any link shall not be construed to imply endorsement by Ghadsirambanwarilal and Sons in any manner of the Website.
             </p>
           </section>
 
           {/* Section 20 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               LIABILITY
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               We take no responsibility for any loss or damage suffered as a result of our ‘order online’ service, or goods supplied using it, except as required by law, even if we could have foreseen the loss, or the possibility of it was brought to our attention. All purchases from the Website are at your own risk and while making order on the Website, you should apply prudence. Ghadsirambanwarilal and Sons gives no representation or warranty for your purchase order. However, in some special circumstances, Ghadsirambanwarilal and Sons at its discretion will consider its liability for your order up to a maximum limit of purchase price of the order.
             </p>
           </section>
 
           {/* Section 21 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               CHANGES TO THE SITE DISCLAIMER
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               We reserve the right to change the Site Disclaimer from time to time. If this happens, we will notify you by posting the updated Site Disclaimer on the Website. If you do not wish to be governed by the revised Website disclaimer, you must not use the Website. This Website disclaimer is governed by the law of India, and you and we agree to use the Jaipur jurisdiction if there is any dispute between us. If any part of this Site Disclaimer is found to be invalid by law, the rest of them remain valid and enforceable.
             </p>
           </section>
 
           {/* Section 22 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               COPYRIGHT &amp; TRADEMARK
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 GHADSIRAMBANWARILAL AND SONS, together with its licensors, reserves all intellectual property rights in all text, programs, products, processes, technology, content, photographs, designs and other materials, which appear on this Website. Access to this Website does not authorize anyone to use any name, logo or mark in any manner. All materials, including images, text, illustrations, designs, icons, photographs, programs, music clips or downloads, video clips, written and other materials that are part of this Website (collectively, the 'Contents') are intended solely for personal, non-commercial use. You may download or copy the Contents and other downloadable materials displayed on the Website for your personal use only. No right, title or interest in any downloaded materials or software is transferred to you as a result of any such downloading or copying. You will not reproduce (except as noted above), publish, transmit, distribute, display, modify, create derivative works from, sell or participate in any sale of or exploit in any way, in whole or in part, any of the Contents of the Website or any related software. All software used on this Website is the property of the Website or its suppliers and they are protected by Indian and international copyright laws.
               </p>
@@ -448,10 +448,10 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 23 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               PROFANITY POLICY
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 Ghadsirambanwarilal and Sons prohibits the use of language that is racist, hateful, sexual or obscene in nature in a public space. This policy extends to your submissions, postings and all other areas of the Website that another user may view. Please report any violations of this policy for review to the grievance officer mentioned in these terms and conditions.
               </p>
@@ -463,50 +463,50 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 24 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               TERMINATION
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               These Terms and Conditions are effective until and unless terminated by you at any time by informing us in writing at <a href="mailto:ghadsirambanwarilalandsons@gmail.com" className="text-[#c89b3c] hover:underline font-normal">ghadsirambanwarilalandsons@gmail.com</a> that you no longer wish to be associated with this Website, provided that you discontinue any further use of this Website. We may terminate these Terms and Conditions at any time and may do so immediately without notice, and accordingly deny you access to the Website. Such termination will be without any liability to the Website. Upon any termination of these Terms and Conditions by either you or Ghadsirambanwarilal and Sons, you must promptly destroy all materials downloaded or otherwise obtained from this Website, as well as all copies of such materials, whether made under these Terms and Conditions or otherwise. Our right to any Comments shall survive any termination of these Terms and Conditions. Any such termination of these Terms and Conditions shall not cancel your obligation to pay for the product already ordered from the Website or affect any liability against you that may have arisen under the User Agreement.
             </p>
           </section>
 
           {/* Section 25 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               GOVERNING LAW AND JURISDICTION
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               These Terms and Conditions shall be construed in accordance with the applicable laws of India. The Courts at Jaipur, Rajasthan shall alone have exclusive jurisdiction in any proceedings arising out of this agreement.
             </p>
           </section>
 
           {/* Section 26 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               MODIFICATION OF TERMS AND CONDITIONS OF SERVICE
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               Ghadsirambanwarilal and Sons reserves the right at any time to modify the Terms and Conditions without any prior notification to you. Subsequent to any such modification of the Terms and Conditions, we will inform you of the modifications in the Terms and Conditions through email at the email address provided by you while registering on the Website. You can access the latest version of the Terms and Conditions at any given time on the Website. You should regularly review the Terms and Conditions on the Website. In the event the modified Terms and Conditions are not acceptable to you, you undertake to discontinue using the service. However, if you continue to use the service you shall be deemed to have agreed and accepted to the modified Terms and Conditions and you undertake to abide by the modified Terms and Conditions.
             </p>
           </section>
 
           {/* Section 27 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               ARBITRATION
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               If any dispute arises between you and the Company during your use of the Website or thereafter, in connection with the validity, interpretation, implementation or alleged breach of any provision of these Terms and Conditions, and the privacy policy or the documents they incorporate by reference, the dispute shall be referred to a sole Arbitrator who shall be an independent and neutral third party identified by the Company. The place of arbitration shall be Jaipur. The Arbitration &amp; Conciliation Act, 1996, shall govern the arbitration proceedings. The arbitration proceedings shall be in the English language.
             </p>
           </section>
 
           {/* Section 28 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               GENERAL
             </h2>
-            <div className="flex flex-col gap-3 text-neutral-600">
+            <div className="flex flex-col gap-3 text-[#A09080]">
               <p>
                 None of the provisions of these Terms and Conditions shall be deemed to constitute a partnership or agency between you and the Company and you shall have no authority to bind the Company in any manner whatsoever. Except as explicitly stated otherwise, any notices shall be given by postal mail to Ghadsirambanwarilal and Sons Corporate Office or to the email address you provide to us during the registration process (in your case). Notice shall be deemed given 24 hours after email is sent, unless the sending party is notified that the email address is invalid. Alternatively, we may give you notice by certified mail, postage prepaid and return receipt requested, to the address provided to us during the registration process. In such case, notice shall be deemed given 3 days after the date of mailing. If any clause of this Agreement shall be deemed invalid, void or for any reason unenforceable, such clause shall be deemed severable and shall not affect the validity and enforceability of the remaining clauses of the Terms and Conditions. These Terms and Conditions set forth the entire understanding and agreement between you and us with respect to the subject matter hereof.
               </p>
@@ -521,31 +521,31 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
 
           {/* Section 29 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               INDEMNITY
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               You shall indemnify and hold harmless Ghadsirambanwarilal and Sons, its owner, licensee, affiliates, subsidiaries, group companies (as applicable) and their respective officers, directors, agents, and employees, from any claim or demand, or actions including reasonable attorneys’ fees, made by any third party or penalty imposed due to or arising out of your breach of these Terms and Conditions, privacy policy and other policies, or your violation of any law, rules or regulations or the rights (including infringement of intellectual property rights) of a third party.
             </p>
           </section>
 
           {/* Section 30 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               LIMITATION OF DAMAGES
             </h2>
-            <p className="text-neutral-600 m-0">
+            <p className="text-[#A09080] m-0">
               In no event shall Ghadsirambanwarilal and Sons or any of its subsidiaries or affiliates be liable to any entity for any direct, indirect, special, consequential or other damages (including, without limitation, any lost profits, business interruption, loss of information or programs or other data on your information handling system) that are related to the use of, or the inability to use, the content, materials, and functions of this Website or any linked Website, even if Ghadsirambanwarilal and Sons is expressly advised of the possibility of such damages.
             </p>
           </section>
 
           {/* Section 31 */}
           <section className="flex flex-col gap-3">
-            <h2 className="font-sans text-base md:text-lg font-medium text-neutral-900 tracking-wide m-0 uppercase">
+            <h2 className="font-sans text-base md:text-lg font-medium text-[#FAF4EE] tracking-wide m-0 uppercase">
               CONTACT INFORMATION
             </h2>
-            <div className="text-neutral-600 m-0 pl-2 flex flex-col gap-1">
-              <p className="m-0 font-semibold text-neutral-800">Ghadsirambanwarilal and Sons</p>
+            <div className="text-[#A09080] m-0 pl-2 flex flex-col gap-1">
+              <p className="m-0 font-semibold text-[#E8D9C5]">Ghadsirambanwarilal and Sons</p>
               <p className="m-0">Email: <a href="mailto:ghadsirambanwarilalandsons@gmail.com" className="text-[#c89b3c] hover:underline font-normal">ghadsirambanwarilalandsons@gmail.com</a></p>
               <p className="m-0">Helpline: (+91) 9521466069</p>
               <p className="m-0 text-xs text-neutral-500 mt-1">Helpline numbers are only available between 10.00 am to 6.00 pm (IST), Monday to Saturday and are not available on Sundays and Indian national/public holidays.</p>
@@ -553,6 +553,26 @@ export default function TermsOfServicePage({ onBackToShop, onBackToHome, onNavig
           </section>
         </div>
       </main>
+
+      {/* Ornamental Divider */}
+      <div className="w-full flex items-center gap-0 px-0">
+        <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#2E231A] to-[#3A2A1E]" />
+        <span className="text-[#C9AA6B] text-xs px-4 select-none opacity-80">◆</span>
+        <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#2E231A] to-[#3A2A1E]" />
+      </div>
+
+      {/* CTA — Find the one you keep */}
+      <section className="w-full bg-[#0D0A08] py-20 md:py-28 px-4 flex flex-col items-center justify-center text-center">
+        <h2 className="font-cormorant font-normal text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#FAF4EE] m-0 mb-8 leading-[1.05]">
+          Find the one<br />you keep.
+        </h2>
+        <button
+          onClick={handleShopClick}
+          className="bg-[#C9AA6B] hover:bg-[#D4B879] text-[#14100C] font-sans text-[0.72rem] md:text-xs font-semibold tracking-[0.22em] uppercase px-8 py-3.5 rounded transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 border-none cursor-pointer"
+        >
+          Shop The Collection
+        </button>
+      </section>
 
       <Footer onBrandClick={handleBrandClick} onNavigate={onNavigate} />
     </div>
