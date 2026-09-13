@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { useCart } from '../context/CartContext';
@@ -10,6 +10,37 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
   const [qty, setQty] = useState(1);
   const [activeImage, setActiveImage] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
+  const [isMainImgHovered, setIsMainImgHovered] = useState(false);
+  const mainImgRef = useRef(null);
+
+  const handleMainImgMouseMove = (e) => {
+    if (!mainImgRef.current) return;
+    const rect = mainImgRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Update glow coordinates
+    mainImgRef.current.style.setProperty('--mouse-x', `${x}px`);
+    mainImgRef.current.style.setProperty('--mouse-y', `${y}px`);
+
+    // Calculate 3D tilt
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -5; // Max 5 deg tilt for larger image
+    const rotateY = ((x - centerX) / centerX) * 5;
+
+    mainImgRef.current.style.setProperty('--rotate-x', `${rotateX}deg`);
+    mainImgRef.current.style.setProperty('--rotate-y', `${rotateY}deg`);
+  };
+
+  const handleMainImgMouseLeave = () => {
+    setIsMainImgHovered(false);
+    if (mainImgRef.current) {
+      // Reset rotation on leave smoothly
+      mainImgRef.current.style.setProperty('--rotate-x', `0deg`);
+      mainImgRef.current.style.setProperty('--rotate-y', `0deg`);
+    }
+  };
 
   const [showSizeGuide, setShowSizeGuide] = useState(false);
 
@@ -98,11 +129,34 @@ export default function ProductDetailsPage({ productId, onNavigate, onCartClick 
           {/* LEFT: Image + Thumbnails */}
           <div className="flex flex-col gap-3">
             {/* Main Image */}
-            <div className="relative w-full overflow-hidden rounded-2xl bg-[#16120F]" style={{ aspectRatio: '3/4' }}>
+            <div
+              ref={mainImgRef}
+              onMouseMove={handleMainImgMouseMove}
+              onMouseEnter={() => setIsMainImgHovered(true)}
+              onMouseLeave={handleMainImgMouseLeave}
+              className="relative w-full overflow-hidden rounded-2xl bg-[#16120F] border border-[#2A1F16]"
+              style={{ 
+                aspectRatio: '3/4',
+                perspective: '1000px',
+                transform: isMainImgHovered ? 'rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)) scale3d(1.01, 1.01, 1.01)' : 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+                transition: isMainImgHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
+                transformStyle: 'preserve-3d'
+              }}
+            >
               <img
                 src={activeImage || product.image}
                 alt={product.name}
                 className="w-full h-full object-cover"
+              />
+
+              {/* Cursor Glow / Spotlight Effect */}
+              <div
+                className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300 ease-out"
+                style={{
+                  opacity: isMainImgHovered ? 1 : 0,
+                  background: 'radial-gradient(180px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 238, 205, 0.38) 0%, rgba(201, 170, 107, 0.20) 32%, rgba(201, 170, 107, 0.06) 60%, transparent 80%)',
+                  mixBlendMode: 'screen',
+                }}
               />
             </div>
 

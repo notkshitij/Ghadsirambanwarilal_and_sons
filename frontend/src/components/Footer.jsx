@@ -31,6 +31,11 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
     if (onNavigate) onNavigate(page);
   };
 
+  const handleCategory = (e, category) => {
+    e.preventDefault();
+    if (onNavigate) onNavigate('category', category);
+  };
+
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     const trimmedEmail = email.trim();
@@ -111,14 +116,15 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
           </h4>
           <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
             {[
-              { label: 'The Collection', page: 'shop' },
-              { label: 'Size Guide', page: 'size-guide' },
-              { label: 'Care Guide', page: 'care-guide' },
+              { label: 'All Jewellery', page: 'shop' },
+              { label: 'Necklaces', category: 'Necklaces' },
+              { label: 'Bracelets', category: 'Bracelets' },
+              { label: 'Hair Clips', category: 'Hair Clips' },
             ].map((item) => (
               <li key={item.label}>
                 <a
-                  href={`/${item.page}`}
-                  onClick={(e) => handleNav(e, item.page)}
+                  href={item.category ? `/category/${item.category.toLowerCase().replace(' ', '-')}` : `/${item.page}`}
+                  onClick={(e) => item.category ? handleCategory(e, item.category) : handleNav(e, item.page)}
                   className="text-[0.84rem] font-light text-[#D9C8B4] hover:text-[#C9AA6B] transition-colors no-underline"
                 >
                   {item.label}
@@ -138,9 +144,8 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
               { label: 'About Us', page: 'about' },
               { label: 'Private Appointment', page: 'appointment' },
               { label: 'Studio & Contact', page: 'contact' },
-              { label: 'Cookie Policy', page: 'cookies' },
-              { label: 'Privacy Policy', page: 'privacy' },
-              { label: 'Terms of Service', page: 'terms' },
+              { label: 'Size Guide', page: 'size-guide' },
+              { label: 'Care Guide', page: 'care-guide' },
             ].map((item) => (
               <li key={item.label}>
                 <a

@@ -174,13 +174,13 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
       <div className="w-full bg-[#0D0A08] px-6 md:px-10 lg:px-16 pt-16 md:pt-24 pb-10 md:pb-14">
 
         {/* Label — top left */}
-        <p className="font-sans text-[0.65rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-6 md:mb-8">
+        <p className="font-sans text-[0.65rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-6 md:mb-8 ml-8 md:ml-24 lg:ml-32">
           ( The House of Ghadsiram )
         </p>
 
         {/* Giant left-aligned headline */}
         <h2
-          className="font-cormorant font-normal text-[#FAF4EE] m-0 leading-[1.05] w-full"
+          className="font-cormorant font-normal text-[#FAF4EE] m-0 leading-[1.05] w-full ml-8 md:ml-24 lg:ml-32"
           style={{ fontSize: 'clamp(3rem, 8.5vw, 7.5rem)' }}
         >
           Made by <span className="italic text-[#C9AA6B]">hand</span>, kept<br />
@@ -188,7 +188,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
         </h2>
 
         {/* Divider + Subtitle — side by side */}
-        <div className="flex items-start gap-5 mt-8 md:mt-10">
+        <div className="flex items-start gap-5 mt-8 md:mt-10 ml-8 md:ml-24 lg:ml-32">
           <div className="w-20 md:w-28 h-[1px] bg-[#3A2E24] shrink-0 mt-[0.55em]" />
           <p className="font-sans text-xs md:text-sm font-light text-[#8A7968] leading-[1.85] m-0 max-w-[440px]">
             Fine jewelry, crafted by hand and kept close — pieces made to be worn every day and handed on.
@@ -247,7 +247,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
             </div>
 
             {/* 2x2 Matrix on Mobile / 3 Columns on Desktop */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 md:gap-6 max-w-[360px] sm:max-w-[760px] mx-auto w-full px-2 sm:px-0">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-[380px] sm:max-w-[800px] md:max-w-[860px] lg:max-w-[940px] mx-auto w-full px-4 sm:px-0">
               {/* Necklaces Card */}
               <div
                 onClick={() => onNavigate && onNavigate('category', 'Necklaces')}
@@ -263,11 +263,11 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
 
                 {/* Bottom Bar: Title + Arrow */}
-                <div className="absolute bottom-2 left-2.5 right-2.5 sm:bottom-3.5 sm:left-4 sm:right-4 flex items-center justify-between z-10">
-                  <h3 className="font-cormorant text-sm sm:text-xl md:text-2xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-5 sm:right-5 flex items-center justify-between z-10">
+                  <h3 className="font-cormorant text-base sm:text-lg md:text-xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
                     Necklaces
                   </h3>
-                  <span className="font-sans text-[0.7rem] sm:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
+                  <span className="font-sans text-[0.7rem] sm:text-sm md:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
                 </div>
@@ -288,11 +288,11 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
 
                 {/* Bottom Bar: Title + Arrow */}
-                <div className="absolute bottom-2 left-2.5 right-2.5 sm:bottom-3.5 sm:left-4 sm:right-4 flex items-center justify-between z-10">
-                  <h3 className="font-cormorant text-sm sm:text-xl md:text-2xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-5 sm:right-5 flex items-center justify-between z-10">
+                  <h3 className="font-cormorant text-base sm:text-lg md:text-xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
                     Bracelets
                   </h3>
-                  <span className="font-sans text-[0.7rem] sm:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
+                  <span className="font-sans text-[0.7rem] sm:text-sm md:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
                 </div>
@@ -313,11 +313,11 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
 
                 {/* Bottom Bar: Title + Arrow */}
-                <div className="absolute bottom-2 left-2.5 right-2.5 sm:bottom-3.5 sm:left-4 sm:right-4 flex items-center justify-between z-10">
-                  <h3 className="font-cormorant text-sm sm:text-xl md:text-2xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-5 sm:right-5 flex items-center justify-between z-10">
+                  <h3 className="font-cormorant text-base sm:text-lg md:text-xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
                     Hair Clips
                   </h3>
-                  <span className="font-sans text-[0.7rem] sm:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
+                  <span className="font-sans text-[0.7rem] sm:text-sm md:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
                 </div>
@@ -339,8 +339,8 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
               </h2>
             </div>
 
-            {/* Desktop / Laptop: Static 5 in 1 Row Grid */}
-            <div className="hidden md:grid grid-cols-5 gap-3.5 md:gap-4 lg:gap-5 max-w-[1380px] mx-auto px-4 sm:px-6 md:px-8 w-full">
+            {/* Desktop / Laptop: 4 Columns Grid (4 top, 1 bottom) */}
+            <div className="hidden md:grid grid-cols-4 gap-4 md:gap-5 lg:gap-6 max-w-[960px] lg:max-w-[1240px] mx-auto px-4 sm:px-6 md:px-0 w-full">
               {FIXED_BESTSELLER_IDS
                 .map((id) => products.find((p) => p.id === id))
                 .filter(Boolean)
@@ -398,10 +398,10 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
 
         {/* The Making Section */}
         <ScrollReveal>
-          <section className="w-full max-w-[840px] mx-auto pt-10 md:pt-16 mb-24 md:mb-36 px-4 sm:px-6">
+          <section className="w-full max-w-[860px] mx-auto pt-10 md:pt-16 mb-24 md:mb-36 px-4 sm:px-6">
             {/* Centered Heading */}
-            <div className="text-center mb-10 sm:mb-12">
-              <p className="font-sans text-[0.68rem] font-semibold tracking-[0.3em] text-[#C9AA6B] uppercase mb-3 text-center">
+            <div className="text-center mb-10 sm:mb-14">
+              <p className="font-sans text-[0.65rem] font-semibold tracking-[0.3em] text-[#C9AA6B] uppercase mb-4 text-center">
                 The Making
               </p>
               <h2 className="font-cormorant font-normal text-4xl sm:text-5xl md:text-6xl text-[#FAF4EE] m-0 text-center leading-tight">
@@ -410,7 +410,7 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
             </div>
 
             {/* Step Cards Stack */}
-            <div className="flex flex-col gap-4 w-full">
+            <div className="flex flex-col gap-5 w-full">
               {[
                 {
                   num: '01',
@@ -435,16 +435,16 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
               ].map((step) => (
                 <div
                   key={step.num}
-                  className="bg-[#14100D] border border-[#2A1F16] rounded-2xl p-6 sm:p-7 flex items-center gap-6 sm:gap-8 transition-all duration-300 hover:border-[#C9AA6B]/35 group"
+                  className="bg-[#120E0B] border border-[#2A1F16] rounded-2xl p-7 sm:p-9 flex items-center gap-7 sm:gap-10 transition-all duration-300 hover:border-[#C9AA6B]/40 group"
                 >
-                  <span className="font-cormorant italic font-normal text-3xl sm:text-4xl text-[#C9AA6B] shrink-0 select-none w-10 sm:w-12">
+                  <span className="font-cormorant font-normal text-4xl sm:text-[2.75rem] text-[#C9AA6B] shrink-0 select-none w-14 sm:w-16 text-center">
                     {step.num}
                   </span>
                   <div className="flex flex-col text-left">
-                    <h4 className="font-cormorant font-bold text-xl sm:text-2xl text-[#FAF4EE] m-0 mb-1 leading-tight group-hover:text-[#FAF4EE] transition-colors">
+                    <h4 className="font-cormorant font-bold text-2xl sm:text-[1.7rem] text-[#FAF4EE] m-0 mb-1.5 leading-tight transition-colors">
                       {step.title}
                     </h4>
-                    <p className="font-sans text-xs sm:text-[0.84rem] font-light text-[#8C7A6B] m-0 leading-relaxed">
+                    <p className="font-sans text-[0.8rem] sm:text-[0.9rem] font-light text-[#8A7968] m-0 leading-[1.6]">
                       {step.desc}
                     </p>
                   </div>
