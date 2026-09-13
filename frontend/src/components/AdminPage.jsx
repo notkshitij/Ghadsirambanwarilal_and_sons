@@ -15,6 +15,8 @@ export default function AdminPage({ onNavigate }) {
   const [totalUsersCount, setTotalUsersCount] = useState(0);
   const [subscribersCount, setSubscribersCount] = useState(0);
   const [subscribersList, setSubscribersList] = useState([]);
+  const [contactMessages, setContactMessages] = useState([]);
+  const [contactMessagesCount, setContactMessagesCount] = useState(0);
   const [isFetchingStats, setIsFetchingStats] = useState(false);
   const [copyFeedback, setCopyFeedback] = useState('');
 
@@ -62,12 +64,16 @@ export default function AdminPage({ onNavigate }) {
   const fetchDashboardStats = async () => {
     setIsFetchingStats(true);
     try {
-      const [usersRes, subsRes] = await Promise.all([
+      const [usersRes, subsRes, contactsRes] = await Promise.all([
         supabase.from('profiles').select('*', { count: 'exact', head: true }),
         supabase
           .from('newsletter_subscribers')
           .select('email, subscribed_at', { count: 'exact' })
           .order('subscribed_at', { ascending: false }),
+        supabase
+          .from('contact_messages')
+          .select('*', { count: 'exact' })
+          .order('created_at', { ascending: false }),
       ]);
 
       if (usersRes.count !== null && usersRes.count !== undefined) {
@@ -78,6 +84,12 @@ export default function AdminPage({ onNavigate }) {
       }
       if (subsRes.data) {
         setSubscribersList(subsRes.data);
+      }
+      if (contactsRes.count !== null && contactsRes.count !== undefined) {
+        setContactMessagesCount(contactsRes.count);
+      }
+      if (contactsRes.data) {
+        setContactMessages(contactsRes.data);
       }
     } catch (err) {
       console.error('Error fetching admin statistics:', err);
@@ -151,13 +163,13 @@ export default function AdminPage({ onNavigate }) {
             </div>
 
             <p className="font-sans text-[0.68rem] font-semibold tracking-[0.28em] text-[#C9AA6B] uppercase mb-1">
-              Admin Portal
+              Admin Login
             </p>
             <h1 className="font-cormorant text-2xl sm:text-3xl text-[#FAF4EE] m-0 font-light tracking-wide">
               Ghadsiram Banwarilal
             </h1>
             <p className="text-xs text-[#8A7968] font-light mt-1">
-              Enter admin password to access control panel
+              Enter your password to continue
             </p>
           </div>
 
@@ -230,7 +242,7 @@ export default function AdminPage({ onNavigate }) {
                 Ghadsiram Banwarilal &amp; Sons
               </span>
               <span className="hidden sm:inline-block ml-3 px-2 py-0.5 rounded-full bg-[#C9AA6B]/15 border border-[#C9AA6B]/30 text-[#C9AA6B] text-[0.65rem] font-semibold uppercase tracking-wider">
-                Admin Console
+                Admin
               </span>
             </div>
           </div>
@@ -260,10 +272,10 @@ export default function AdminPage({ onNavigate }) {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
             <div>
               <span className="font-sans text-[0.7rem] font-semibold tracking-[0.24em] text-[#C9AA6B] uppercase">
-                Executive Overview
+                Overview
               </span>
               <h1 className="font-display font-light text-3xl sm:text-4xl text-[#FAF4EE] uppercase tracking-wide m-0 mt-1">
-                Patron &amp; Subscriber Insights
+                Users &amp; Subscribers
               </h1>
             </div>
 
@@ -307,10 +319,10 @@ export default function AdminPage({ onNavigate }) {
                 </div>
 
                 <span className="font-sans text-[0.72rem] font-semibold tracking-[0.2em] text-[#A69280] uppercase block mb-1">
-                  Patron Base
+                  Total Users
                 </span>
                 <h3 className="font-display font-light text-2xl text-[#FAF4EE] uppercase m-0 mb-6">
-                  Total Registered Users
+                  Registered Users
                 </h3>
 
                 <div className="my-4">
@@ -322,7 +334,7 @@ export default function AdminPage({ onNavigate }) {
 
               <div className="pt-6 border-t border-[#2E231A]/60">
                 <p className="text-xs text-[#8A7968] font-light leading-relaxed m-0">
-                  Total client profiles registered through Google Authenticated membership.
+                  Total number of customers who signed up using Google login.
                 </p>
               </div>
             </div>
@@ -335,7 +347,7 @@ export default function AdminPage({ onNavigate }) {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-sans text-[0.72rem] font-semibold tracking-[0.2em] text-[#A69280] uppercase">
-                        The List
+                        Subscribers
                       </span>
                       <span className="px-2 py-0.5 rounded-full bg-[#C9AA6B]/20 text-[#F4E3A1] text-[0.65rem] font-semibold">
                         {subscribersCount} Total
@@ -413,8 +425,97 @@ export default function AdminPage({ onNavigate }) {
               </div>
 
               <div className="pt-4 mt-4 border-t border-[#2E231A]/40 flex justify-between items-center text-xs text-[#8A7968]">
-                <span>Latest subscribers shown first</span>
+                <span>Newest subscribers appear first</span>
                 <span>{subscribersList.length} records</span>
+              </div>
+            </div>
+
+            {/* Card 3: Contact Messages */}
+            <div className="lg:col-span-3 rounded-3xl bg-[#140F0C] border border-[#2E231A] p-7 sm:p-8 shadow-2xl flex flex-col justify-between">
+              <div>
+                {/* Header with Title and Count */}
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-[#2E231A]/60 pb-6">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-sans text-[0.72rem] font-semibold tracking-[0.2em] text-[#A69280] uppercase">
+                        Messages
+                      </span>
+                      <span className="px-2 py-0.5 rounded-full bg-[#C9AA6B]/20 text-[#F4E3A1] text-[0.65rem] font-semibold">
+                        {contactMessagesCount} Total
+                      </span>
+                    </div>
+                    <h3 className="font-display font-light text-2xl text-[#FAF4EE] uppercase m-0">
+                      Contact Messages
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Messages List Table */}
+                <div className="overflow-hidden rounded-2xl border border-[#2E231A] bg-[#0D0A08]">
+                  <div className="max-h-[420px] overflow-x-auto overflow-y-auto">
+                    <table className="w-full text-left text-xs border-collapse">
+                      <thead className="sticky top-0 z-10 bg-[#191410] border-b border-[#2E231A]">
+                        <tr className="text-[#C9AA6B] uppercase tracking-wider text-[0.68rem]">
+                          <th className="py-3 px-4 font-semibold whitespace-nowrap">Name</th>
+                          <th className="py-3 px-4 font-semibold whitespace-nowrap">Email</th>
+                          <th className="py-3 px-4 font-semibold whitespace-nowrap">Subject</th>
+                          <th className="py-3 px-4 font-semibold">Message</th>
+                          <th className="py-3 px-4 font-semibold text-right whitespace-nowrap">Date</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[#2E231A]/60 text-[#D9C8B4]">
+                        {contactMessages.length === 0 ? (
+                          <tr>
+                            <td colSpan="5" className="py-12 text-center text-[#7A6A58] font-light">
+                              {isFetchingStats
+                                ? 'Fetching contact messages...'
+                                : 'No contact messages found.'}
+                            </td>
+                          </tr>
+                        ) : (
+                          contactMessages.map((msg, idx) => (
+                            <tr
+                              key={msg.id || idx}
+                              className="hover:bg-white/[0.02] transition-colors"
+                            >
+                              <td className="py-3 px-4 font-medium text-[#FAF4EE] whitespace-nowrap">
+                                {msg.name || '—'}
+                              </td>
+                              <td className="py-3 px-4 font-light text-[#D9C8B4] whitespace-nowrap">
+                                <a
+                                  href={`mailto:${msg.email}`}
+                                  className="text-[#D9C8B4] hover:text-[#C9AA6B] transition-colors underline decoration-[#2E231A] underline-offset-2"
+                                >
+                                  {msg.email || '—'}
+                                </a>
+                              </td>
+                              <td
+                                className="py-3 px-4 text-[#FAF4EE] font-light max-w-[200px] truncate"
+                                title={msg.subject || ''}
+                              >
+                                {msg.subject || '—'}
+                              </td>
+                              <td
+                                className="py-3 px-4 text-[#A69280] font-light max-w-[240px] truncate"
+                                title={msg.message || ''}
+                              >
+                                {msg.message || '—'}
+                              </td>
+                              <td className="py-3 px-4 text-right text-[0.72rem] text-[#8A7968] font-light whitespace-nowrap">
+                                {formatDate(msg.created_at)}
+                              </td>
+                            </tr>
+                          ))
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-[#2E231A]/40 flex justify-between items-center text-xs text-[#8A7968]">
+                <span>Newest messages appear first</span>
+                <span>{contactMessages.length} records</span>
               </div>
             </div>
           </div>
@@ -423,7 +524,7 @@ export default function AdminPage({ onNavigate }) {
 
       {/* Footer */}
       <footer className="border-t border-[#2E231A] py-4 px-6 text-center text-xs text-[#5A4C3D] font-light">
-        Ghadsiram Banwarilal &amp; Sons © 2026 • Executive Portal
+        Ghadsiram Banwarilal &amp; Sons © 2026 • Admin Panel
       </footer>
     </div>
   );

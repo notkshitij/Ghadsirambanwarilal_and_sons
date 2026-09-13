@@ -40,6 +40,7 @@ No router library — routing is handled manually in `App.jsx` via `window.locat
 | `/login`           | Login                 |
 | `/profile`         | Profile               |
 | `/about`           | About Us              |
+| `/contact`         | Contact               |
 | `/care-guide`      | Care Guide            |
 | `/size-guide`      | Size Guide            |
 | `/privacy`         | Privacy Policy        |
@@ -93,3 +94,7 @@ Hosted on Vercel. `vercel.json` rewrites all routes to `index.html` (required fo
 > Har naya change yahan ek line me add karo (date ke saath), taaki project ka history track ho sake.
 
 - `2026-09-12` — Initial README created; complete profile onboarding gate, /sons admin dashboard, and newsletter subscription integration added.
+- `2026-09-12` — Integrated Contact form with Supabase `contact_messages` table with loading/error handling.
+- `2026-09-12` — Added Contact Messages inquiry table & metric counter to /sons admin portal.
+- `2026-09-12` — Updated Studio & Flagship Store address in Cookie Policy to match studio headquarters address.
+- `2026-09-12` — Corrected Cookie & Storage Policy claims to accurately reflect localStorage and Supabase usage without fabricated tracking cookies.

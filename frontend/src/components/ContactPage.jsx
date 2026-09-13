@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { supabase } from '../lib/supabaseClient';
 
 export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, onCartClick }) {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, on
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [errors, setErrors] = useState({});
 
   const handleBrandClick = () => {
@@ -26,6 +29,7 @@ export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, on
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
+    if (submitError) setSubmitError('');
   };
 
   const validateForm = () => {
@@ -37,12 +41,40 @@ export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, on
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
-    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const { error } = await supabase.from('contact_messages').insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+      ]);
+
+      if (error) {
+        console.error('Error submitting contact message:', error);
+        setSubmitError('Something went wrong, please try again.');
+      } else {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }
+    } catch (err) {
+      console.error('Unexpected error submitting contact message:', err);
+      setSubmitError('Something went wrong, please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass = (field) =>
@@ -66,6 +98,15 @@ export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, on
             <p className="font-cormorant text-2xl font-light text-emerald-400 mb-1">Message Sent!</p>
             <p className="font-sans text-xs font-light text-[#D9C8B4]">
               Thank you — a real person from our studio will get back to you soon.
+            </p>
+          </div>
+        )}
+
+        {submitError && (
+          <div className="bg-[#16120F] border border-red-500/30 rounded-lg p-5 text-center mb-10">
+            <p className="font-cormorant text-2xl font-light text-red-400 mb-1">Unable to Send</p>
+            <p className="font-sans text-xs font-light text-[#D9C8B4]">
+              {submitError}
             </p>
           </div>
         )}
@@ -205,10 +246,11 @@ export default function ContactPage({ onBackToShop, onBackToHome, onNavigate, on
               {/* Submit */}
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-lg font-sans text-xs font-semibold tracking-[0.2em] uppercase border-none cursor-pointer mt-1"
+                disabled={isSubmitting}
+                className="w-full py-3.5 rounded-lg font-sans text-xs font-semibold tracking-[0.2em] uppercase border-none cursor-pointer mt-1 disabled:opacity-60 disabled:cursor-not-allowed transition-opacity"
                 style={{ background: '#C9AA6B', color: '#0D0A08' }}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>

@@ -142,10 +142,10 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
               </span>
             </div>
             <h1 className="font-sans font-light text-3xl sm:text-4xl md:text-5xl tracking-tight text-[#FAF4EE] m-0">
-              Cookie Policy
+              Cookie &amp; Storage Policy
             </h1>
             <p className="text-xs sm:text-sm font-light text-[#8A7968] mt-3">
-              Last Updated: <span className="text-[#C2B4A3]">August 29, 2026</span> • Effective Date: <span className="text-[#C2B4A3]">January 1, 2026</span>
+              Last Updated: <span className="text-[#C2B4A3]">September 12, 2026</span> • Effective Date: <span className="text-[#C2B4A3]">January 1, 2026</span>
             </p>
           </div>
 
@@ -173,10 +173,10 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
               <div>
                 <h2 className="text-lg md:text-xl font-normal text-[#FAF4EE] m-0 tracking-wide">
-                  Your Privacy Choices &amp; Cookie Preferences
+                  Your Privacy Choices &amp; Data Storage
                 </h2>
                 <p className="text-xs md:text-sm text-[#C2B4A3] font-light mt-1.5 max-w-[620px]">
-                  Control which cookies Ghadsiram Banwarilal &amp; Sons is permitted to store on your device. You can modify these settings anytime.
+                  Ghadsiram Banwarilal &amp; Sons uses browser localStorage for essential shopping cart and login functionality. We do not use third-party advertising or analytics cookies.
                 </p>
               </div>
               
@@ -194,7 +194,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                   onClick={handleRejectNonEssential}
                   className="px-5 py-2.5 rounded-full border border-[#3A2E24] bg-transparent hover:bg-white/5 text-[#FAF4EE] text-xs font-medium tracking-wider uppercase transition-all duration-200 cursor-pointer"
                 >
-                  Reject Non-Essential
+                  Essential Only
                 </button>
               </div>
             </div>
@@ -210,7 +210,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                     <span className="text-[0.65rem] px-2 py-0.5 rounded-full bg-[#C9AA6B]/20 text-[#C9AA6B] font-semibold">Always Active</span>
                   </div>
                   <p className="text-[0.75rem] text-[#A69584] font-light leading-snug">
-                    Required for cart persistence, login security, checkout processing, and CSRF protection.
+                    Required for cart persistence (`ghadsiram_cart`), authentication state, and customer security.
                   </p>
                 </div>
               </div>
@@ -231,49 +231,33 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                     </label>
                   </div>
                   <p className="text-[0.75rem] text-[#A69584] font-light leading-snug">
-                    Remembers your currency selection, size guides, and personalized jewellery preferences.
+                    Saves your privacy choices and custom interface preferences locally on your device.
                   </p>
                 </div>
               </div>
 
               {/* Analytics */}
-              <div className="p-4 rounded-xl bg-[#0D0A08]/60 border border-[#261E17] flex flex-col justify-between">
+              <div className="p-4 rounded-xl bg-[#0D0A08]/60 border border-[#261E17] flex flex-col justify-between opacity-80">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-semibold text-[#FAF4EE] tracking-wide uppercase">Analytics</span>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={preferences.analytics}
-                        onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })}
-                        className="sr-only peer"
-                      />
-                      <div className="w-8 h-4.5 bg-[#2E231A] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:bg-[#C9AA6B]"></div>
-                    </label>
+                    <span className="text-[0.65rem] px-2 py-0.5 rounded-full bg-white/10 text-[#8A7968] font-semibold">Not In Use</span>
                   </div>
-                  <p className="text-[0.75rem] text-[#A69584] font-light leading-snug">
-                    Allows us to measure traffic, popular jewellery designs, page performance, and site speed.
+                  <p className="text-[0.75rem] text-[#8A7968] font-light leading-snug">
+                    Currently inactive. No Google Analytics or third-party telemetry scripts are installed on this site.
                   </p>
                 </div>
               </div>
 
               {/* Marketing */}
-              <div className="p-4 rounded-xl bg-[#0D0A08]/60 border border-[#261E17] flex flex-col justify-between">
+              <div className="p-4 rounded-xl bg-[#0D0A08]/60 border border-[#261E17] flex flex-col justify-between opacity-80">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-semibold text-[#FAF4EE] tracking-wide uppercase">Marketing</span>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={preferences.marketing}
-                        onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
-                        className="sr-only peer"
-                      />
-                      <div className="w-8 h-4.5 bg-[#2E231A] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:bg-[#C9AA6B]"></div>
-                    </label>
+                    <span className="text-[0.65rem] px-2 py-0.5 rounded-full bg-white/10 text-[#8A7968] font-semibold">Not In Use</span>
                   </div>
-                  <p className="text-[0.75rem] text-[#A69584] font-light leading-snug">
-                    Helps deliver relevant jewellery showcase announcements and exclusive heritage offers.
+                  <p className="text-[0.75rem] text-[#8A7968] font-light leading-snug">
+                    Currently inactive. No advertising pixels, tracking cookies, or retargeting networks are active.
                   </p>
                 </div>
               </div>
@@ -301,7 +285,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
               <div className="flex items-center gap-3">
                 <span className="text-xs font-semibold text-[#C9AA6B] tracking-widest uppercase">01</span>
                 <h2 className="text-base md:text-lg font-medium text-[#FAF4EE] group-hover:text-[#C9AA6B] transition-colors m-0">
-                  Introduction &amp; What Are Cookies
+                  Introduction &amp; Local Storage Usage
                 </h2>
               </div>
               <span className={`text-[#C9AA6B] transform transition-transform duration-300 ${expandedSection === 'intro' ? 'rotate-180' : ''}`}>
@@ -312,24 +296,24 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
             {expandedSection === 'intro' && (
               <div className="px-6 md:px-8 pb-8 pt-2 text-sm text-[#C2B4A3] flex flex-col gap-4 border-t border-[#2E231A]/60 font-light">
                 <p>
-                  At <strong>Ghadsiram Banwarilal &amp; Sons</strong> ("we," "us," or "our"), crafting fine signature gold, diamond, and silver jewellery has been our heritage for generations. As with our handmade creations, our digital storefront strives to provide a seamless, secure, and personalized experience.
+                  At <strong>Ghadsiram Banwarilal &amp; Sons</strong> ("we," "us," or "our"), crafting fine jewellery has been our heritage for generations. In our digital storefront, we prioritize transparency, security, and customer privacy.
                 </p>
                 <p>
-                  This Cookie Policy explains what cookies and similar tracking technologies (such as web beacons, pixels, and local storage) are, why we use them, and how you have complete control over their deployment while exploring <a href="https://www.ghadsirambanwarilalandsons.com" className="text-[#C9AA6B] hover:underline no-underline font-normal">www.ghadsirambanwarilalandsons.com</a>.
+                  Our application does <strong>not</strong> use traditional browser tracking cookies. Instead, we use modern client-side browser <code>localStorage</code> to deliver a fast, private, and reliable shopping experience when you explore our boutique.
                 </p>
                 <div className="p-4 rounded-xl bg-[#0D0A08]/50 border border-[#2E231A]">
                   <h3 className="text-xs font-semibold text-[#FAF4EE] uppercase tracking-wider mb-1.5">
-                    What is a Cookie?
+                    What is Local Storage?
                   </h3>
                   <p className="text-xs leading-relaxed text-[#A69584] m-0">
-                    A cookie is a small text file containing a string of characters that is placed on your browser or device when you visit a website. Cookies allow the website to recognize your browser, remember your preferences (such as your shopping bag or currency), and deliver a faster, more secure browsing journey.
+                    Local storage is a secure browser feature that allows a website to store small pieces of data locally on your device (such as your shopping cart items or login status). Unlike third-party tracking cookies, this data stays in your browser, is not transmitted across third-party advertisers, and remains under your direct control.
                   </p>
                 </div>
               </div>
             )}
           </section>
 
-          {/* Section 2: Types of Cookies We Use (.expandable-section) */}
+          {/* Section 2: Types of Storage We Use (.expandable-section) */}
           <section className="expandable-section border border-[#2E231A] rounded-2xl bg-[#16120F]/60 overflow-hidden transition-all duration-300">
             <button
               type="button"
@@ -339,7 +323,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
               <div className="flex items-center gap-3">
                 <span className="text-xs font-semibold text-[#C9AA6B] tracking-widest uppercase">02</span>
                 <h2 className="text-base md:text-lg font-medium text-[#FAF4EE] group-hover:text-[#C9AA6B] transition-colors m-0">
-                  Types of Cookies We Use
+                  Storage Categories &amp; Status
                 </h2>
               </div>
               <span className={`text-[#C9AA6B] transform transition-transform duration-300 ${expandedSection === 'types' ? 'rotate-180' : ''}`}>
@@ -350,7 +334,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
             {expandedSection === 'types' && (
               <div className="px-6 md:px-8 pb-8 pt-2 text-sm text-[#C2B4A3] flex flex-col gap-6 border-t border-[#2E231A]/60 font-light">
                 <p>
-                  We categorize the cookies operating across our platform into four fundamental classifications:
+                  Here is an accurate overview of data storage categories and their active status on our storefront:
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -359,24 +343,11 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                     <div className="flex items-center gap-2.5 mb-2">
                       <span className="w-2 h-2 rounded-full bg-[#C9AA6B]" />
                       <h3 className="text-sm font-semibold text-[#FAF4EE] uppercase tracking-wider m-0">
-                        1. Essential Cookies (Strictly Necessary)
+                        1. Essential Local Storage (Active)
                       </h3>
                     </div>
                     <p className="text-xs text-[#A69584] leading-relaxed m-0">
-                      These cookies are indispensable for our boutique website to function securely and reliably. They maintain your shopping cart across page navigation, secure your account authentication, process payments through encrypted gateways, and safeguard against fraudulent activities.
-                    </p>
-                  </div>
-
-                  {/* Performance */}
-                  <div className="p-5 rounded-xl bg-[#0D0A08]/50 border border-[#2E231A]">
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <span className="w-2 h-2 rounded-full bg-[#A67C1E]" />
-                      <h3 className="text-sm font-semibold text-[#FAF4EE] uppercase tracking-wider m-0">
-                        2. Performance &amp; Analytics Cookies
-                      </h3>
-                    </div>
-                    <p className="text-xs text-[#A69584] leading-relaxed m-0">
-                      These cookies collect aggregate, anonymous statistics about how connoisseurs navigate our boutique—such as which jewellery collections are most revered, average session times, and error occurrences. This helps us optimize site performance and loading speeds.
+                      Indispensable for boutique functionality. Maintains your shopping cart (<code>ghadsiram_cart</code>) across navigation and securely retains Supabase authentication tokens so you stay signed in seamlessly.
                     </p>
                   </div>
 
@@ -385,24 +356,37 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                     <div className="flex items-center gap-2.5 mb-2">
                       <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
                       <h3 className="text-sm font-semibold text-[#FAF4EE] uppercase tracking-wider m-0">
-                        3. Functional &amp; Preference Cookies
+                        2. Functional Preferences (Active)
                       </h3>
                     </div>
                     <p className="text-xs text-[#A69584] leading-relaxed m-0">
-                      Functional cookies enable enhanced customization. They remember choices you make (such as preferred currency, recently viewed jewellery items, ring/bangle size selections, and appointment booking drafts) so you do not have to re-enter them on return visits.
+                      Stores your custom cookie/privacy preferences (<code>cookie_preferences</code>) so you do not have to reconfigure consent banners on return visits.
+                    </p>
+                  </div>
+
+                  {/* Performance */}
+                  <div className="p-5 rounded-xl bg-[#0D0A08]/50 border border-[#2E231A]/50 opacity-75">
+                    <div className="flex items-center gap-2.5 mb-2">
+                      <span className="w-2 h-2 rounded-full bg-[#7A6A58]" />
+                      <h3 className="text-sm font-semibold text-[#FAF4EE] uppercase tracking-wider m-0">
+                        3. Analytics &amp; Telemetry (Not In Use)
+                      </h3>
+                    </div>
+                    <p className="text-xs text-[#7A6A58] leading-relaxed m-0">
+                      Not currently active. We do not embed Google Analytics, heatmaps, or third-party behavioral trackers. Reserved for future privacy-friendly analytics if introduced.
                     </p>
                   </div>
 
                   {/* Marketing */}
-                  <div className="p-5 rounded-xl bg-[#0D0A08]/50 border border-[#2E231A]">
+                  <div className="p-5 rounded-xl bg-[#0D0A08]/50 border border-[#2E231A]/50 opacity-75">
                     <div className="flex items-center gap-2.5 mb-2">
-                      <span className="w-2 h-2 rounded-full bg-[#C89B3C]" />
+                      <span className="w-2 h-2 rounded-full bg-[#7A6A58]" />
                       <h3 className="text-sm font-semibold text-[#FAF4EE] uppercase tracking-wider m-0">
-                        4. Marketing &amp; Retargeting Cookies
+                        4. Marketing &amp; Retargeting (Not In Use)
                       </h3>
                     </div>
-                    <p className="text-xs text-[#A69584] leading-relaxed m-0">
-                      Used to deliver bespoke advertisements and showcase curated collections tailored to your aesthetic interests across third-party networks (such as Instagram or Google). They also limit ad frequency and help measure campaign efficacy.
+                    <p className="text-xs text-[#7A6A58] leading-relaxed m-0">
+                      Not currently active. We do not use third-party advertising pixels, Meta/Pinterest trackers, or commercial retargeting cookies.
                     </p>
                   </div>
                 </div>
@@ -410,7 +394,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
             )}
           </section>
 
-          {/* Section 3: Detailed Cookie Inventory Table (.expandable-section & .cookies-table) */}
+          {/* Section 3: Detailed Local Storage Inventory Table (.expandable-section & .cookies-table) */}
           <section className="expandable-section border border-[#2E231A] rounded-2xl bg-[#16120F]/60 overflow-hidden transition-all duration-300">
             <button
               type="button"
@@ -420,7 +404,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
               <div className="flex items-center gap-3">
                 <span className="text-xs font-semibold text-[#C9AA6B] tracking-widest uppercase">03</span>
                 <h2 className="text-base md:text-lg font-medium text-[#FAF4EE] group-hover:text-[#C9AA6B] transition-colors m-0">
-                  Cookie Details &amp; Inventory Table
+                  Data Storage Inventory Table
                 </h2>
               </div>
               <span className={`text-[#C9AA6B] transform transition-transform duration-300 ${expandedSection === 'table' ? 'rotate-180' : ''}`}>
@@ -431,7 +415,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
             {expandedSection === 'table' && (
               <div className="px-6 md:px-8 pb-8 pt-2 text-sm text-[#C2B4A3] flex flex-col gap-4 border-t border-[#2E231A]/60 font-light">
                 <p>
-                  The following table details the primary cookies utilized across our e-commerce platform:
+                  The following table details the actual client-side storage keys utilized across our e-commerce platform:
                 </p>
 
                 {/* Table Container (.cookies-table) */}
@@ -439,7 +423,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                   <table className="cookies-table w-full text-left text-xs border-collapse">
                     <thead>
                       <tr className="border-b border-[#2E231A] bg-[#16120F] text-[#FAF4EE]">
-                        <th className="py-3.5 px-4 font-semibold uppercase tracking-wider text-[0.7rem] text-[#C9AA6B]">Cookie Name</th>
+                        <th className="py-3.5 px-4 font-semibold uppercase tracking-wider text-[0.7rem] text-[#C9AA6B]">Storage Key</th>
                         <th className="py-3.5 px-4 font-semibold uppercase tracking-wider text-[0.7rem] text-[#C9AA6B]">Category / Type</th>
                         <th className="py-3.5 px-4 font-semibold uppercase tracking-wider text-[0.7rem] text-[#C9AA6B]">Purpose &amp; Description</th>
                         <th className="py-3.5 px-4 font-semibold uppercase tracking-wider text-[0.7rem] text-[#C9AA6B]">Duration</th>
@@ -447,46 +431,28 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                     </thead>
                     <tbody className="divide-y divide-[#2E231A]/60 text-[#D9C8B4]">
                       <tr className="hover:bg-white/[0.02] transition-colors">
-                        <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">_ghad_cart_bag</td>
-                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#C9AA6B]/15 text-[#C9AA6B] text-[0.65rem] font-semibold uppercase">Essential</span></td>
-                        <td className="py-3 px-4">Retains selected jewellery pieces, sizes, and quantities in the shopping bag.</td>
-                        <td className="py-3 px-4 text-[#A69584]">30 Days</td>
+                        <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">ghadsiram_cart</td>
+                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#C9AA6B]/15 text-[#C9AA6B] text-[0.65rem] font-semibold uppercase">Essential (Local Storage)</span></td>
+                        <td className="py-3 px-4">Retains selected jewelry pieces, sizes, and quantities in your shopping bag.</td>
+                        <td className="py-3 px-4 text-[#A69584]">Persistent (until cleared)</td>
                       </tr>
                       <tr className="hover:bg-white/[0.02] transition-colors">
-                        <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">isLoggedIn / auth_token</td>
-                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#C9AA6B]/15 text-[#C9AA6B] text-[0.65rem] font-semibold uppercase">Essential</span></td>
-                        <td className="py-3 px-4">Authenticates client session and protects private account details.</td>
-                        <td className="py-3 px-4 text-[#A69584]">Session / 14 Days</td>
+                        <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">isLoggedIn</td>
+                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#C9AA6B]/15 text-[#C9AA6B] text-[0.65rem] font-semibold uppercase">Essential (Local Storage)</span></td>
+                        <td className="py-3 px-4">Stores client authentication login status locally for smooth page transitions.</td>
+                        <td className="py-3 px-4 text-[#A69584]">Persistent (cleared on logout)</td>
                       </tr>
                       <tr className="hover:bg-white/[0.02] transition-colors">
                         <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">cookie_preferences</td>
-                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#C9AA6B]/15 text-[#C9AA6B] text-[0.65rem] font-semibold uppercase">Essential</span></td>
-                        <td className="py-3 px-4">Stores your consent choices and opt-in/opt-out status.</td>
-                        <td className="py-3 px-4 text-[#A69584]">1 Year</td>
+                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#C9AA6B]/15 text-[#C9AA6B] text-[0.65rem] font-semibold uppercase">Essential (Local Storage)</span></td>
+                        <td className="py-3 px-4">Stores your privacy choices and custom consent selections made on this page.</td>
+                        <td className="py-3 px-4 text-[#A69584]">Persistent</td>
                       </tr>
                       <tr className="hover:bg-white/[0.02] transition-colors">
-                        <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">_rzp_checkout_id</td>
-                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#C9AA6B]/15 text-[#C9AA6B] text-[0.65rem] font-semibold uppercase">Essential</span></td>
-                        <td className="py-3 px-4">Secure payment gateway token provided by Razorpay to verify transactions safely.</td>
-                        <td className="py-3 px-4 text-[#A69584]">Session</td>
-                      </tr>
-                      <tr className="hover:bg-white/[0.02] transition-colors">
-                        <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">_ga / _gid</td>
-                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#D4AF37]/15 text-[#D4AF37] text-[0.65rem] font-semibold uppercase">Analytics</span></td>
-                        <td className="py-3 px-4">Google Analytics tokens to compute anonymous visitor metrics and bounce rates.</td>
-                        <td className="py-3 px-4 text-[#A69584]">2 Years / 24 Hours</td>
-                      </tr>
-                      <tr className="hover:bg-white/[0.02] transition-colors">
-                        <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">user_currency_pref</td>
-                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#A67C1E]/15 text-[#A67C1E] text-[0.65rem] font-semibold uppercase">Functional</span></td>
-                        <td className="py-3 px-4">Stores preferred currency display (INR, USD, EUR, GBP) for jewellery prices.</td>
-                        <td className="py-3 px-4 text-[#A69584]">6 Months</td>
-                      </tr>
-                      <tr className="hover:bg-white/[0.02] transition-colors">
-                        <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">_fbp / _pin_unauth</td>
-                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#C89B3C]/15 text-[#C89B3C] text-[0.65rem] font-semibold uppercase">Marketing</span></td>
-                        <td className="py-3 px-4">Meta and Pinterest conversion pixels to deliver curated collection advertisements.</td>
-                        <td className="py-3 px-4 text-[#A69584]">90 Days</td>
+                        <td className="py-3 px-4 font-mono text-[#FAF4EE] font-medium">sb-*-auth-token</td>
+                        <td className="py-3 px-4"><span className="px-2 py-0.5 rounded bg-[#C9AA6B]/15 text-[#C9AA6B] text-[0.65rem] font-semibold uppercase">Essential (Local Storage)</span></td>
+                        <td className="py-3 px-4">Supabase Auth session token securely stored to maintain verified account login.</td>
+                        <td className="py-3 px-4 text-[#A69584]">Session / Supabase Managed</td>
                       </tr>
                     </tbody>
                   </table>
@@ -495,7 +461,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
             )}
           </section>
 
-          {/* Section 4: Third-Party Cookies (.expandable-section) */}
+          {/* Section 4: Third-Party Services (.expandable-section) */}
           <section className="expandable-section border border-[#2E231A] rounded-2xl bg-[#16120F]/60 overflow-hidden transition-all duration-300">
             <button
               type="button"
@@ -505,7 +471,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
               <div className="flex items-center gap-3">
                 <span className="text-xs font-semibold text-[#C9AA6B] tracking-widest uppercase">04</span>
                 <h2 className="text-base md:text-lg font-medium text-[#FAF4EE] group-hover:text-[#C9AA6B] transition-colors m-0">
-                  Third-Party Cookies &amp; Partners
+                  Third-Party Services &amp; Infrastructure
                 </h2>
               </div>
               <span className={`text-[#C9AA6B] transform transition-transform duration-300 ${expandedSection === 'thirdParty' ? 'rotate-180' : ''}`}>
@@ -516,21 +482,21 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
             {expandedSection === 'thirdParty' && (
               <div className="px-6 md:px-8 pb-8 pt-2 text-sm text-[#C2B4A3] flex flex-col gap-5 border-t border-[#2E231A]/60 font-light">
                 <p>
-                  Certain services on our platform are powered by trusted third-party partners who may set their own cookies on your browser:
+                  We strive to keep our technology stack minimal, private, and focused solely on delivering jewellery craftsmanship:
                 </p>
 
                 <ul className="list-none p-0 m-0 flex flex-col gap-3.5 pl-2">
                   <li className="relative pl-5 text-xs sm:text-sm text-[#D9C8B4]">
                     <span className="absolute left-0 text-[#C9AA6B] font-bold">◆</span>
-                    <strong className="text-[#FAF4EE] font-normal">Payment Gateways (Razorpay / Stripe / UPI):</strong> Essential for PCI-DSS compliant checkout, tokenizing payment credentials securely without storing sensitive card details on our servers.
+                    <strong className="text-[#FAF4EE] font-normal">Supabase Backend &amp; Auth:</strong> Used for secure cloud database operations, Google OAuth customer login, and profile storage. Supabase manages authenticated sessions on the client device without commercial ad tracking.
                   </li>
                   <li className="relative pl-5 text-xs sm:text-sm text-[#D9C8B4]">
                     <span className="absolute left-0 text-[#C9AA6B] font-bold">◆</span>
-                    <strong className="text-[#FAF4EE] font-normal">Google Analytics 4 &amp; Fonts:</strong> Provides aggregated performance telemetry and serves elegant typography (such as <em>Cormorant Garamond</em> and <em>Playfair Display</em>).
+                    <strong className="text-[#FAF4EE] font-normal">No Analytics or Ad Trackers:</strong> We do not load Google Analytics, Meta Pixel, Pinterest tags, or any third-party marketing beacons on this website.
                   </li>
                   <li className="relative pl-5 text-xs sm:text-sm text-[#D9C8B4]">
                     <span className="absolute left-0 text-[#C9AA6B] font-bold">◆</span>
-                    <strong className="text-[#FAF4EE] font-normal">Social Media Integrations:</strong> Enables sharing jewellery items and viewing our verified Instagram gallery directly on our website.
+                    <strong className="text-[#FAF4EE] font-normal">Typography &amp; Static Assets:</strong> Fonts and assets are packaged within the application bundle without third-party tracking cookies.
                   </li>
                 </ul>
               </div>
@@ -547,7 +513,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
               <div className="flex items-center gap-3">
                 <span className="text-xs font-semibold text-[#C9AA6B] tracking-widest uppercase">05</span>
                 <h2 className="text-base md:text-lg font-medium text-[#FAF4EE] group-hover:text-[#C9AA6B] transition-colors m-0">
-                  User Control &amp; Disabling Cookies in Browser
+                  User Control &amp; Managing Local Storage
                 </h2>
               </div>
               <span className={`text-[#C9AA6B] transform transition-transform duration-300 ${expandedSection === 'userControl' ? 'rotate-180' : ''}`}>
@@ -558,12 +524,12 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
             {expandedSection === 'userControl' && (
               <div className="px-6 md:px-8 pb-8 pt-2 text-sm text-[#C2B4A3] flex flex-col gap-5 border-t border-[#2E231A]/60 font-light">
                 <p>
-                  You have the absolute right to decide whether to accept or reject non-essential cookies. You can exercise your preferences directly using our <a href="#privacy-controller" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 120, behavior: 'smooth' }); }} className="text-[#C9AA6B] underline font-normal">Cookie Preferences Controller</a> above, or by configuring your web browser settings.
+                  You have full control over data stored in your browser. You can manage your preferences directly using our <a href="#privacy-controller" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 120, behavior: 'smooth' }); }} className="text-[#C9AA6B] underline font-normal">Data &amp; Privacy Controller</a> above, or clear your browser's site data and local storage at any time.
                 </p>
 
                 <div className="p-4 rounded-xl bg-[#0D0A08]/50 border border-[#2E231A]">
                   <h3 className="text-xs font-semibold text-[#FAF4EE] uppercase tracking-wider mb-2">
-                    Browser-Specific Instructions:
+                    Browser Data Management Guides:
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                     <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-lg bg-[#16120F] border border-[#2E231A] hover:border-[#C9AA6B]/50 text-[#D9C8B4] hover:text-[#FAF4EE] transition-all no-underline text-center">
@@ -582,7 +548,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                 </div>
 
                 <div className="text-xs text-[#A69584] leading-relaxed p-3.5 rounded-lg bg-[#2E231A]/30 border-l-2 border-[#C9AA6B]">
-                  <strong>Note on Disabling Essential Cookies:</strong> If you choose to block all cookies via browser settings, some features of our website (such as retaining items in your shopping bag, logging into your bespoke profile, or completing checkout) may not function properly.
+                  <strong>Note on Clearing Local Storage:</strong> Clearing local storage will empty your active shopping bag items and log you out of your session on this browser.
                 </div>
               </div>
             )}
@@ -667,7 +633,7 @@ export default function CookiePolicyPage({ onBackToShop, onBackToHome, onNavigat
                       Studio &amp; Flagship Store
                     </h3>
                     <p className="text-xs text-[#A69584] m-0">
-                      Jaipur, Rajasthan, India
+                      306, Shree Shiv Nagar, Nayla Road, Jaisinghpura Khor, Jaipur – 302027
                     </p>
                   </div>
                 </div>
