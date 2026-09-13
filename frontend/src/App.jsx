@@ -222,6 +222,7 @@ export default function App() {
         const slug = category.toLowerCase().replace(/\s+/g, '-');
         path = `/category/${slug}`;
       }
+      else if (page === 'product') path = `/product/${category}`;
       else if (page === 'cart') path = '/cart';
       else if (page === 'appointment') path = '/appointment';
       else if (page === 'privacy') path = '/privacy';
