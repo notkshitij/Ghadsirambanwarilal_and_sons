@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
-import Footer from './Footer';
 import appointmentBg from '../assets/appointment_bg.jpg';
 
-export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate, onCartClick }) {
+export default function AppointmentPage({ onNavigate, onCartClick }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -18,9 +17,7 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleBrandClick = () => {
-    if (onBackToHome) {
-      onBackToHome();
-    } else if (onNavigate) {
+    if (onNavigate) {
       onNavigate('home');
     } else {
       window.history.pushState(null, '', '/');
@@ -64,16 +61,14 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
     }
 
     setIsSubmitting(true);
-    // Smooth transition
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 400);
+    }, 350);
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col justify-between overflow-x-hidden font-sans text-[#FAF4EE] bg-[#0D0A08]">
+    <div className="h-screen max-h-[100dvh] w-full relative flex flex-col justify-between overflow-hidden font-sans text-[#FAF4EE] bg-[#0D0A08]">
       
       {/* Background Image Layer (Custom Jewelry Box & Necklace Background) */}
       <div 
@@ -84,9 +79,7 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
       />
 
       {/* Cinematic Gradient Overlays for Readability & Luxury Aesthetics */}
-      {/* Mobile Overlay: Balanced so the jewelry shines through while form stays crisp */}
-      <div className="block md:hidden fixed inset-0 bg-gradient-to-b from-[#0D0A08]/92 via-[#0D0A08]/78 to-[#0D0A08]/96 pointer-events-none z-0" />
-      {/* Desktop Overlay: Left fade for form contrast, right subtle overlay for jewelry brilliance */}
+      <div className="block md:hidden fixed inset-0 bg-gradient-to-b from-[#0D0A08]/92 via-[#0D0A08]/80 to-[#0D0A08]/96 pointer-events-none z-0" />
       <div className="hidden md:block fixed inset-0 bg-gradient-to-r from-[#0D0A08]/98 via-[#0D0A08]/85 to-[#0D0A08]/30 pointer-events-none z-0" />
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(13,10,8,0.55)_100%)] pointer-events-none z-0" />
 
@@ -99,40 +92,31 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
         alwaysShowBg={true} 
       />
 
-      {/* Main Appointment Section */}
-      <div className="relative w-full flex-1 flex flex-col justify-center z-10 pt-24 pb-14 sm:pt-28 sm:pb-20 px-4 sm:px-6">
+      {/* Main Appointment Section - Fits Screen Without Scrolling */}
+      <div className="relative w-full flex-1 flex flex-col justify-center items-center md:items-start z-10 pt-16 md:pt-20 pb-4 px-4 sm:px-6 overflow-y-auto md:overflow-hidden">
         <main 
-          className="w-full mx-auto md:mx-0 md:ml-[8%] lg:ml-[10%] relative z-10 transition-all duration-300"
+          className="w-full mx-auto md:mx-0 md:ml-[8%] lg:ml-[10%] relative z-10 transition-all duration-300 my-auto"
           style={{ maxWidth: '520px' }}
         >
           {!isSubmitted ? (
-            <div className="flex flex-col items-start w-full bg-[#14100D]/90 backdrop-blur-xl border border-[#C9AA6B]/30 p-6 sm:p-8 md:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.7)]">
+            <div className="flex flex-col items-start w-full bg-[#14100D]/92 backdrop-blur-xl border border-[#C9AA6B]/30 p-5 sm:p-7 md:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.7)]">
               
-              {/* Back Link */}
-              <button 
-                type="button" 
-                onClick={handleBrandClick}
-                className="flex items-center gap-1.5 text-[0.7rem] sm:text-[0.74rem] tracking-[0.16em] text-[#C9AA6B] hover:text-[#F4E3A1] uppercase bg-transparent border-none cursor-pointer p-0 mb-5 sm:mb-6 font-sans font-medium transition-colors"
-              >
-                ← Back to Home
-              </button>
-
-              {/* Header Title & Subtitle */}
-              <span className="font-sans text-[0.62rem] sm:text-[0.68rem] font-semibold tracking-[0.26em] text-[#C9AA6B] uppercase mb-2">
+              {/* Header Title & Subtitle (No back-to-home button) */}
+              <span className="font-sans text-[0.6rem] sm:text-[0.66rem] font-semibold tracking-[0.24em] text-[#C9AA6B] uppercase mb-1">
                 Private Atelier Consultation
               </span>
-              <h1 className="font-cormorant font-light text-2xl sm:text-3xl md:text-4xl tracking-[0.04em] text-left m-0 mb-2.5 text-[#FAF4EE]">
+              <h1 className="font-cormorant font-light text-2xl sm:text-3xl tracking-[0.04em] text-left m-0 mb-1 text-[#FAF4EE]">
                 Book An Appointment
               </h1>
-              <p className="font-sans text-[0.8rem] sm:text-[0.85rem] font-light tracking-wide text-[#D9C8B4] text-left m-0 mb-7 sm:mb-8 leading-relaxed">
+              <p className="font-sans text-[0.74rem] sm:text-[0.78rem] font-light tracking-wide text-[#D9C8B4] text-left m-0 mb-4 sm:mb-5 leading-relaxed">
                 Experience bespoke heritage jewellery. Reserve a private consultation with our master artisans.
               </p>
 
               {/* Booking Form */}
-              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4 sm:gap-5" noValidate>
+              <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3 sm:gap-3.5" noValidate>
                 {/* Full Name */}
                 <div className="flex flex-col w-full relative">
-                  <label className="text-[0.68rem] tracking-[0.12em] uppercase text-[#A69280] mb-1.5 font-medium">
+                  <label className="text-[0.65rem] tracking-[0.12em] uppercase text-[#A69280] mb-1 font-medium">
                     Full Name <span className="text-[#C9AA6B]">*</span>
                   </label>
                   <input
@@ -145,16 +129,16 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
                     required
                     className={`w-full bg-[#0D0A08]/60 border ${
                       errors.name ? 'border-red-400' : 'border-[#C9AA6B]/30 focus:border-[#D4AF37]'
-                    } py-3 px-3.5 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40`}
+                    } py-2.5 px-3 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40`}
                   />
-                  {errors.name && <span className="text-[11px] text-red-400 mt-1 font-light">{errors.name}</span>}
+                  {errors.name && <span className="text-[10px] text-red-400 mt-0.5 font-light">{errors.name}</span>}
                 </div>
 
-                {/* Mobile & Email Row (Stacked on Mobile, 2-col on Tablet+) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4 w-full">
+                {/* Mobile & Email Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                   {/* Mobile No */}
                   <div className="flex flex-col w-full relative">
-                    <label className="text-[0.68rem] tracking-[0.12em] uppercase text-[#A69280] mb-1.5 font-medium">
+                    <label className="text-[0.65rem] tracking-[0.12em] uppercase text-[#A69280] mb-1 font-medium">
                       Mobile No <span className="text-[#C9AA6B]">*</span>
                     </label>
                     <input
@@ -167,14 +151,14 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
                       required
                       className={`w-full bg-[#0D0A08]/60 border ${
                         errors.phone ? 'border-red-400' : 'border-[#C9AA6B]/30 focus:border-[#D4AF37]'
-                      } py-3 px-3.5 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40`}
+                      } py-2.5 px-3 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40`}
                     />
-                    {errors.phone && <span className="text-[11px] text-red-400 mt-1 font-light">{errors.phone}</span>}
+                    {errors.phone && <span className="text-[10px] text-red-400 mt-0.5 font-light">{errors.phone}</span>}
                   </div>
 
                   {/* Email */}
                   <div className="flex flex-col w-full relative">
-                    <label className="text-[0.68rem] tracking-[0.12em] uppercase text-[#A69280] mb-1.5 font-medium">
+                    <label className="text-[0.65rem] tracking-[0.12em] uppercase text-[#A69280] mb-1 font-medium">
                       Email Address <span className="text-[#C9AA6B]">*</span>
                     </label>
                     <input
@@ -187,16 +171,16 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
                       required
                       className={`w-full bg-[#0D0A08]/60 border ${
                         errors.email ? 'border-red-400' : 'border-[#C9AA6B]/30 focus:border-[#D4AF37]'
-                      } py-3 px-3.5 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40`}
+                      } py-2.5 px-3 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40`}
                     />
-                    {errors.email && <span className="text-[11px] text-red-400 mt-1 font-light">{errors.email}</span>}
+                    {errors.email && <span className="text-[10px] text-red-400 mt-0.5 font-light">{errors.email}</span>}
                   </div>
                 </div>
 
                 {/* Location & Preferred Date */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                   <div className="flex flex-col w-full relative">
-                    <label className="text-[0.68rem] tracking-[0.12em] uppercase text-[#A69280] mb-1.5 font-medium">
+                    <label className="text-[0.65rem] tracking-[0.12em] uppercase text-[#A69280] mb-1 font-medium">
                       City / Location
                     </label>
                     <input
@@ -205,27 +189,27 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
                       value={formData.location}
                       onChange={handleChange}
                       placeholder="e.g. Mumbai, Jaipur, Delhi"
-                      className="w-full bg-[#0D0A08]/60 border border-[#C9AA6B]/30 focus:border-[#D4AF37] py-3 px-3.5 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40"
+                      className="w-full bg-[#0D0A08]/60 border border-[#C9AA6B]/30 focus:border-[#D4AF37] py-2.5 px-3 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40"
                     />
                   </div>
 
                   <div className="flex flex-col w-full relative">
-                    <label className="text-[0.68rem] tracking-[0.12em] uppercase text-[#A69280] mb-1.5 font-medium">
-                      Preferred Date (Optional)
+                    <label className="text-[0.65rem] tracking-[0.12em] uppercase text-[#A69280] mb-1 font-medium">
+                      Preferred Date
                     </label>
                     <input
                       type="date"
                       name="preferredDate"
                       value={formData.preferredDate}
                       onChange={handleChange}
-                      className="w-full bg-[#0D0A08]/60 border border-[#C9AA6B]/30 focus:border-[#D4AF37] py-3 px-3.5 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40"
+                      className="w-full bg-[#0D0A08]/60 border border-[#C9AA6B]/30 focus:border-[#D4AF37] py-2.5 px-3 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors focus:ring-1 focus:ring-[#D4AF37]/40"
                     />
                   </div>
                 </div>
 
                 {/* Enquiry */}
                 <div className="flex flex-col w-full relative">
-                  <label className="text-[0.68rem] tracking-[0.12em] uppercase text-[#A69280] mb-1.5 font-medium">
+                  <label className="text-[0.65rem] tracking-[0.12em] uppercase text-[#A69280] mb-1 font-medium">
                     Consultation Details <span className="text-[#C9AA6B]">*</span>
                   </label>
                   <textarea
@@ -233,20 +217,20 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
                     value={formData.enquiry}
                     onChange={handleChange}
                     placeholder="Tell us what you are looking for (e.g. Bridal Kundan set, Polki necklace, customization)..."
-                    rows="3"
+                    rows="2"
                     required
                     className={`w-full bg-[#0D0A08]/60 border ${
                       errors.enquiry ? 'border-red-400' : 'border-[#C9AA6B]/30 focus:border-[#D4AF37]'
-                    } py-3 px-3.5 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors resize-y focus:ring-1 focus:ring-[#D4AF37]/40`}
+                    } py-2 px-3 text-base sm:text-sm text-[#FAF4EE] placeholder-[#6E5D4F] font-sans outline-none rounded-none transition-colors resize-none focus:ring-1 focus:ring-[#D4AF37]/40`}
                   />
-                  {errors.enquiry && <span className="text-[11px] text-red-400 mt-1 font-light">{errors.enquiry}</span>}
+                  {errors.enquiry && <span className="text-[10px] text-red-400 mt-0.5 font-light">{errors.enquiry}</span>}
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-2 bg-gradient-to-r from-[#D4AF37] via-[#F4E3A1] to-[#C89B3C] hover:brightness-110 active:scale-[0.99] text-[#0D0A08] font-sans text-xs tracking-[0.2em] uppercase py-4 border-none cursor-pointer transition-all font-semibold select-none shadow-[0_4px_16px_rgba(201,170,107,0.3)] disabled:opacity-75"
+                  className="w-full mt-1 bg-gradient-to-r from-[#D4AF37] via-[#F4E3A1] to-[#C89B3C] hover:brightness-110 active:scale-[0.99] text-[#0D0A08] font-sans text-xs tracking-[0.18em] uppercase py-3.5 border-none cursor-pointer transition-all font-semibold select-none shadow-[0_4px_16px_rgba(201,170,107,0.3)] disabled:opacity-75"
                 >
                   {isSubmitting ? 'Submitting Request...' : 'Schedule Private Appointment'}
                 </button>
@@ -254,46 +238,45 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
             </div>
           ) : (
             /* Confirmation State */
-            <div className="text-center py-10 sm:py-14 px-6 sm:px-10 w-full border border-[#C9AA6B]/40 bg-[#14100D]/95 backdrop-blur-xl shadow-2xl rounded-none text-[#FAF4EE]">
-              {/* Success Badge */}
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full border border-[#D4AF37]/50 flex items-center justify-center bg-[#D4AF37]/10 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
-                <svg viewBox="0 0 24 24" className="w-8 h-8 stroke-[#D4AF37] fill-none stroke-[1.6]" strokeLinecap="round" strokeLinejoin="round">
+            <div className="text-center py-8 sm:py-10 px-5 sm:px-8 w-full border border-[#C9AA6B]/40 bg-[#14100D]/95 backdrop-blur-xl shadow-2xl rounded-none text-[#FAF4EE]">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full border border-[#D4AF37]/50 flex items-center justify-center bg-[#D4AF37]/10 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                <svg viewBox="0 0 24 24" className="w-7 h-7 stroke-[#D4AF37] fill-none stroke-[1.6]" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
 
-              <span className="font-sans text-[0.65rem] font-semibold tracking-[0.26em] text-[#C9AA6B] uppercase mb-2 block">
+              <span className="font-sans text-[0.62rem] font-semibold tracking-[0.24em] text-[#C9AA6B] uppercase mb-1 block">
                 Appointment Received
               </span>
-              <h2 className="font-cormorant font-normal text-2xl sm:text-3xl text-[#FAF4EE] m-0 mb-3 tracking-wide">
+              <h2 className="font-cormorant font-normal text-2xl sm:text-3xl text-[#FAF4EE] m-0 mb-2 tracking-wide">
                 Consultation Request Confirmed
               </h2>
-              <p className="font-sans text-xs sm:text-sm font-light text-[#D9C8B4] mb-7 leading-relaxed max-w-sm mx-auto">
+              <p className="font-sans text-xs sm:text-sm font-light text-[#D9C8B4] mb-5 leading-relaxed max-w-sm mx-auto">
                 Thank you, <span className="text-[#FAF4EE] font-medium">{formData.name}</span>. Our concierge team will reach out to you within 24 hours to finalize your private consultation time.
               </p>
 
               {/* Summary Details */}
-              <div className="border border-[#C9AA6B]/25 bg-[#0D0A08]/80 p-4 sm:p-5 mb-7 text-left text-xs divide-y divide-[#C9AA6B]/15 font-sans">
-                <div className="flex justify-between py-2">
+              <div className="border border-[#C9AA6B]/25 bg-[#0D0A08]/80 p-3.5 sm:p-4 mb-5 text-left text-xs divide-y divide-[#C9AA6B]/15 font-sans">
+                <div className="flex justify-between py-1.5">
                   <span className="text-[#A69280]">Name</span>
                   <span className="font-medium text-[#FAF4EE]">{formData.name}</span>
                 </div>
-                <div className="flex justify-between py-2">
+                <div className="flex justify-between py-1.5">
                   <span className="text-[#A69280]">Mobile</span>
                   <span className="font-medium text-[#FAF4EE]">{formData.phone}</span>
                 </div>
-                <div className="flex justify-between py-2">
+                <div className="flex justify-between py-1.5">
                   <span className="text-[#A69280]">Email</span>
                   <span className="font-medium text-[#FAF4EE] truncate max-w-[200px]">{formData.email}</span>
                 </div>
                 {formData.location && (
-                  <div className="flex justify-between py-2">
+                  <div className="flex justify-between py-1.5">
                     <span className="text-[#A69280]">Location</span>
                     <span className="font-medium text-[#FAF4EE]">{formData.location}</span>
                   </div>
                 )}
                 {formData.preferredDate && (
-                  <div className="flex justify-between py-2">
+                  <div className="flex justify-between py-1.5">
                     <span className="text-[#A69280]">Preferred Date</span>
                     <span className="font-medium text-[#C9AA6B]">{formData.preferredDate}</span>
                   </div>
@@ -304,7 +287,7 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('shop') : (window.location.href = '/shop')}
-                  className="w-full bg-gradient-to-r from-[#D4AF37] via-[#F4E3A1] to-[#C89B3C] hover:brightness-110 text-[#0D0A08] font-sans text-xs tracking-[0.16em] uppercase py-3.5 border-none cursor-pointer transition-all font-semibold shadow-md"
+                  className="w-full bg-gradient-to-r from-[#D4AF37] via-[#F4E3A1] to-[#C89B3C] hover:brightness-110 text-[#0D0A08] font-sans text-xs tracking-[0.16em] uppercase py-3 border-none cursor-pointer transition-all font-semibold shadow-md"
                 >
                   Return to Shop
                 </button>
@@ -314,7 +297,7 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
                     setIsSubmitted(false);
                     setFormData({ name: '', phone: '', email: '', location: '', preferredDate: '', enquiry: '' });
                   }}
-                  className="w-full bg-transparent hover:bg-white/5 border border-[#C9AA6B]/30 text-[#C9AA6B] font-sans text-xs tracking-[0.16em] uppercase py-3.5 cursor-pointer transition-all font-medium"
+                  className="w-full bg-transparent hover:bg-white/5 border border-[#C9AA6B]/30 text-[#C9AA6B] font-sans text-xs tracking-[0.16em] uppercase py-3 cursor-pointer transition-all font-medium"
                 >
                   Book Another
                 </button>
@@ -324,8 +307,7 @@ export default function AppointmentPage({ onBackToShop, onBackToHome, onNavigate
         </main>
       </div>
 
-      {/* Footer */}
-      <Footer onBrandClick={handleBrandClick} onNavigate={onNavigate} />
+      {/* No Footer rendered on this page as requested */}
     </div>
   );
 }
