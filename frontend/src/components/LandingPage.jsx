@@ -7,6 +7,7 @@ import heroBgMobile from '../assets/background-mobile.png';
 import necklaceCategoryImg from '../assets/Product Image/diff product 2/diff_product_4.png';
 import braceletCategoryImg from '../assets/Product Image/diff product 7/diff_product_1.png';
 import hairClipsCategoryImg from '../assets/Product Image/diff product 9/diff_product_1.png';
+import jhumkeCategoryImg from '../assets/Product Image/diff product 11/diff_product_1.png';
 import Footer from './Footer';
 import ScrollProgressLine from './ScrollProgressLine';
 
@@ -246,8 +247,8 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
               </h2>
             </div>
 
-            {/* 2x2 Matrix on Mobile / 3 Columns on Desktop */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-[380px] sm:max-w-[800px] md:max-w-[860px] lg:max-w-[940px] mx-auto w-full px-4 sm:px-0">
+            {/* 2x2 Matrix on Mobile / 4 Columns on Desktop */}
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6 max-w-[380px] sm:max-w-[680px] md:max-w-[1100px] lg:max-w-[1200px] mx-auto w-full px-4 sm:px-0">
               {/* Necklaces Card */}
               <div
                 onClick={() => onNavigate && onNavigate('category', 'Necklaces')}
@@ -316,6 +317,31 @@ export default function LandingPage({ onOpenCart, onBookClick, onNavigate, isSpl
                 <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-5 sm:right-5 flex items-center justify-between z-10">
                   <h3 className="font-cormorant text-base sm:text-lg md:text-xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
                     Hair Clips
+                  </h3>
+                  <span className="font-sans text-[0.7rem] sm:text-sm md:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
+              </div>
+
+              {/* Jhumke Card */}
+              <div
+                onClick={() => onNavigate && onNavigate('category', 'Jhumke')}
+                className="group relative w-full rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer border border-[#2A1F16] bg-[#16120F] transition-all duration-500 hover:border-[#C9AA6B]/50 hover:shadow-[0_8px_30px_rgba(201,170,107,0.12)]"
+                style={{ aspectRatio: '3/4' }}
+              >
+                <img
+                  src={jhumkeCategoryImg}
+                  alt="Jhumke"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                {/* Dark Vignette Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
+
+                {/* Bottom Bar: Title + Arrow */}
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-5 sm:right-5 flex items-center justify-between z-10">
+                  <h3 className="font-cormorant text-base sm:text-lg md:text-xl font-light text-[#FAF4EE] m-0 tracking-wide group-hover:text-[#C9AA6B] transition-colors leading-tight">
+                    Jhumke
                   </h3>
                   <span className="font-sans text-[0.7rem] sm:text-sm md:text-base text-[#C9AA6B] transform transition-transform duration-300 group-hover:translate-x-1">
                     →

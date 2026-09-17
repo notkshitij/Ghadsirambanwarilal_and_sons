@@ -46,7 +46,7 @@ export default function App() {
     if (path === '/shop' || path.startsWith('/category/')) return 'shop';
     if (path.startsWith('/product/')) return 'product';
     if (path === '/cart') return 'cart';
-    if (path === '/appointment') return 'appointment';
+    if (path === '/appointment' || path === '/book-appointment') return 'appointment';
     if (path === '/privacy') return 'privacy';
     if (path === '/terms') return 'terms';
     if (path === '/cookies' || path === '/cookie-policy') return 'cookies';
@@ -67,6 +67,7 @@ export default function App() {
       if (slug === 'necklaces' || slug === 'necklace') return 'Necklaces';
       if (slug === 'bracelets' || slug === 'bracelet') return 'Bracelets';
       if (slug === 'hair-clips' || slug === 'hairclips' || slug === 'hair_clips') return 'Hair Clips';
+      if (slug === 'jhumke' || slug === 'jhumka' || slug === 'jhumkas') return 'Jhumke';
     }
     return 'All';
   };

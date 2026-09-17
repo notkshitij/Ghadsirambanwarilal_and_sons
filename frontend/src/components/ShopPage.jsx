@@ -28,6 +28,11 @@ const CATEGORY_META = {
     title: 'Hair Clips',
     desc: 'Opulent artisanal hair clips adorned with brilliant polki diamonds, rich colour stones, and cascading pearls.',
   },
+  Jhumke: {
+    tag: 'Royal Earrings',
+    title: 'Jhumke',
+    desc: 'Exquisite handcrafted jhumke adorned with fine polky diamonds, vibrant colour stones, and lustrous pearl tassels in rich gold framing.',
+  },
 };
 
 export default function ShopPage({ 
@@ -97,6 +102,14 @@ export default function ShopPage({
         name.includes('clip')
       );
     }
+    if (activeCategory === 'Jhumke') {
+      return (
+        sub.includes('jhumk') ||
+        sub.includes('earring') ||
+        name.includes('jhumk') ||
+        name.includes('earring')
+      );
+    }
     return sub === activeCategory.toLowerCase() || cat === activeCategory.toLowerCase();
   });
 
@@ -106,7 +119,7 @@ export default function ShopPage({
     desc: `Handcrafted fine signature jewellery in ${activeCategory}.`,
   };
 
-  const categoriesList = ['All', 'Necklaces', 'Bracelets', 'Hair Clips'];
+  const categoriesList = ['All', 'Necklaces', 'Bracelets', 'Hair Clips', 'Jhumke'];
 
   return (
     <div className="min-h-screen bg-[#0D0A08] text-[#FAF4EE] flex flex-col justify-between font-sans">

@@ -44,6 +44,13 @@ import diff10_3 from '../assets/Product Image/diff product 10/diff_product_3.png
 import diff10_4 from '../assets/Product Image/diff product 10/diff_product_4.png';
 import diff10_5 from '../assets/Product Image/diff product 10/diff_product_5.png';
 
+import diff11_1 from '../assets/Product Image/diff product 11/diff_product_1.png';
+import diff11_2 from '../assets/Product Image/diff product 11/diff_product_2.png';
+import diff11_3 from '../assets/Product Image/diff product 11/diff_product_3.png';
+
+import diff12_1 from '../assets/Product Image/diff product 12/diff_product_1.jpg';
+import diff12_2 from '../assets/Product Image/diff product 12/diff_product_2.jpg';
+
 export const INITIAL_PRODUCTS = [
   {
     id: 'mayur-meenakari-polki-pendant',
@@ -242,9 +249,49 @@ export const INITIAL_PRODUCTS = [
       'Pearls': '60 carats'
     }
   },
+  {
+    id: 'stones-garden-jhumka',
+    name: 'Stones Garden Jhumka',
+    price: 60000,
+    originalPrice: 78000,
+    stock: 10,
+    image: diff11_1,
+    images: [diff11_1, diff11_2, diff11_3],
+    category: 'Polki & Kundan',
+    subcategory: 'Jhumke',
+    description: 'An exquisite handcrafted Stones Garden Jhumka adorned with fine Polky diamonds, vibrant colour stones, lustrous pearls, and cascading multi-stone tassels in rich gold framing.',
+    materials: 'Handcrafted in fine gold with uncut Polky diamonds, natural colour stones, and cultured pearls.',
+    care: 'Store separately in jewellery box with bubble paper provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
+    specs: {
+      'Gold': '2 gram (approx)',
+      'Polky': '4 carats',
+      'Colour stones': '45 carats',
+      'Pearls': '25 carats'
+    }
+  },
+  {
+    id: 'jade-square-pendant',
+    name: 'Jade Square Pendant',
+    price: 80000,
+    originalPrice: 100000,
+    stock: 8,
+    image: diff12_1,
+    images: [diff12_1, diff12_2],
+    category: 'Polki & Kundan',
+    subcategory: 'Necklaces',
+    description: 'A breathtaking handcrafted Jade Square Pendant featuring an ornate floral motif with fine polky diamonds, vivid colour stones, cascading jade drops, and lustrous seed pearls strung on an elegant jade bead chain.',
+    materials: 'Handcrafted in fine gold with uncut polky diamonds, natural jade colour stones, and cultured seed pearls.',
+    care: 'Store separately in jewellery box with bubble paper provided. Avoid contact with perfume and lotions. Clean gently with a soft cloth.',
+    specs: {
+      'Gold': '2 gram (approx)',
+      'Polky': '2.5 carats',
+      'Colour stones': '50 carats',
+      'Pearls': '15 carats'
+    }
+  },
 ];
 
-export const INITIAL_CATEGORIES = ['Necklaces', 'Bracelets', 'Hair Clips'];
+export const INITIAL_CATEGORIES = ['Necklaces', 'Bracelets', 'Hair Clips', 'Jhumke'];
 
 // Image asset map for default product fallback
 const DEFAULT_IMAGE_MAP = {
@@ -258,6 +305,8 @@ const DEFAULT_IMAGE_MAP = {
   'aranya-navratna-pendant': { image: diff4_1, images: [diff4_1, diff4_2] },
   'navaratna-splendor-choker': { image: diff5_1, images: [diff5_1, diff5_2, diff5_3] },
   'indrani-mango-detachable-necklace': { image: diff10_1, images: [diff10_1, diff10_3, diff10_4, diff10_5, diff10_2] },
+  'stones-garden-jhumka': { image: diff11_1, images: [diff11_1, diff11_2, diff11_3] },
+  'jade-square-pendant': { image: diff12_1, images: [diff12_1, diff12_2] },
 };
 
 export const getStoredProducts = () => {
@@ -280,6 +329,14 @@ export const getStoredProducts = () => {
     const indraniInInit = INITIAL_PRODUCTS.find((p) => p.id === 'indrani-mango-detachable-necklace');
     if (indraniInInit && !list.some((p) => p.id === 'indrani-mango-detachable-necklace')) {
       list.push(indraniInInit);
+    }
+    const jhumkaInInit = INITIAL_PRODUCTS.find((p) => p.id === 'stones-garden-jhumka');
+    if (jhumkaInInit && !list.some((p) => p.id === 'stones-garden-jhumka')) {
+      list.push(jhumkaInInit);
+    }
+    const jadePendantInInit = INITIAL_PRODUCTS.find((p) => p.id === 'jade-square-pendant');
+    if (jadePendantInInit && !list.some((p) => p.id === 'jade-square-pendant')) {
+      list.push(jadePendantInInit);
     }
 
     // Rehydrate default product images, prices, names, and sizes if needed

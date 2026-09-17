@@ -142,7 +142,6 @@ export default function Footer({ onBrandClick, noBorder, style, onNavigate }) {
           <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
             {[
               { label: 'About Us', page: 'about' },
-              { label: 'Private Appointment', page: 'appointment' },
               { label: 'Studio & Contact', page: 'contact' },
               { label: 'Size Guide', page: 'size-guide' },
               { label: 'Care Guide', page: 'care-guide' },
